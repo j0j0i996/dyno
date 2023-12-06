@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/stromcheck/static/css/main.dce6689d.css",
+    "main.js": "/stromcheck/static/js/main.b28c5e77.js",
+    "static/js/787.8e8bc1bb.chunk.js": "/stromcheck/static/js/787.8e8bc1bb.chunk.js",
+    "static/media/wind-turbine.svg": "/stromcheck/static/media/wind-turbine.dbfa2cf130e5c13416b57d9ec1565572.svg",
+    "index.html": "/stromcheck/index.html",
+    "main.dce6689d.css.map": "/stromcheck/static/css/main.dce6689d.css.map",
+    "main.b28c5e77.js.map": "/stromcheck/static/js/main.b28c5e77.js.map",
+    "787.8e8bc1bb.chunk.js.map": "/stromcheck/static/js/787.8e8bc1bb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dce6689d.css",
+    "static/js/main.b28c5e77.js"
+  ]
+}
