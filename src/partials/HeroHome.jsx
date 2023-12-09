@@ -1,16 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import Modal from "../utils/Modal";
 import WordCarousel from "../utils/WordCarousel";
 import HeroImage from "../images/hero-image.png";
 
 function HeroHome() {
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
-  const video = useRef(null);
-
-  useEffect(() => {
-    videoModalOpen ? video.current.play() : video.current.pause();
-  }, [videoModalOpen]);
-
   return (
     <section className="relative">
       {/* Illustration behind hero content */}
@@ -204,29 +196,6 @@ function HeroHome() {
                 <span className="ml-3">Watch the full video (2 min)</span>
               </button>
             </div>
-
-            {/* Modal */}
-            <Modal
-              id="modal"
-              ariaLabel="modal-headline"
-              show={videoModalOpen}
-              handleClose={() => setVideoModalOpen(false)}
-            >
-              <div className="relative pb-9/16">
-                <video
-                  ref={video}
-                  className="absolute w-full h-full"
-                  width="1920"
-                  height="1080"
-                  loop
-                  autoPlay
-                  controls
-                >
-                  <source src="/videos/video.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </Modal>
           </div>
         </div>
       </div>
