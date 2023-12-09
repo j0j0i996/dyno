@@ -1,17 +1,18 @@
 import { defineConfig } from 'vite'
 import postcss from './postcss.config.js'
 import react from '@vitejs/plugin-react'
+import { ViteGhPages } from 'vite-plugin-gh-pages'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/stromcheck/',
   define: {
     'process.env': process.env
   },
+  base: '/stromcheck/',
   css: {
     postcss,
   },
-  plugins: [react()],
+  plugins: [react(), ViteGhPages],
   resolve: {
     alias: [
       {
