@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import postcss from './postcss.config.js'
 import react from '@vitejs/plugin-react'
-import { ViteGhPages } from 'vite-plugin-gh-pages'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,7 +11,7 @@ export default defineConfig({
   css: {
     postcss,
   },
-  plugins: [react(), ViteGhPages],
+  plugins: [react()],
   resolve: {
     alias: [
       {
