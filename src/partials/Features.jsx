@@ -3,6 +3,7 @@ import Transition from "../utils/Transition";
 
 import FeaturesBg from "../images/features-bg.png";
 import FeaturesElement from "../images/features-element.png";
+import QuizQuestion from "../utils/QuizTab";
 
 function Features() {
   const [tab, setTab] = useState(99999);
@@ -25,32 +26,33 @@ function Features() {
     <section className="relative">
       {/* Section background (needs .relative class on parent and next sibling elements) */}
       <div
-        className="absolute inset-0 bg-gray-900 pointer-events-none mb-16"
+        className="pointer-events-none absolute inset-0 mb-16 bg-gray-900"
         aria-hidden="true"
       ></div>
-      <div className="absolute left-0 right-0 m-auto w-px p-px h-20 bg-gray-200 transform -translate-y-1/2"></div>
+      <div className="absolute left-0 right-0 m-auto h-20 w-px -translate-y-1/2 transform bg-gray-200 p-px"></div>
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="pt-12 md:pt-20">
           {/* Section header */}
-          <div className="text-white max-w-4xl mx-auto text-center pb-12 md:pb-8">
+          <div className="mx-auto max-w-4xl pb-12 text-center text-white md:pb-8">
             <h1 className="h2">Was beschreibt dich am besten?</h1>
           </div>
 
           {/* Section content */}
-          <div className="md:grid md:grid-cols-12 md:gap-6">
+          <div className="md:grid md:grid-cols-6 md:gap-6">
             {/* Content */}
             <div
-              className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6 md:mt-6"
+              className="mx-auto max-w-xl md:col-span-7 md:mt-6 md:w-full md:max-w-none lg:col-span-6"
               data-aos="fade-right"
             >
               {/* Tabs buttons */}
-              <div className="mb-8 md:mb-0">
+              <QuizQuestion></QuizQuestion>
+              <div className="mb-8 flex p-5 md:mb-20">
                 <a
-                  className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${
+                  className={`m-5 mb-3 items-center rounded border p-5 text-lg transition duration-300 ease-in-out ${
                     tab !== 1
-                      ? "bg-white shadow-md border-gray-200 hover:shadow-lg"
-                      : "bg-teal-200 border-transparent"
+                      ? "border-gray-200 bg-white shadow-md hover:shadow-lg"
+                      : "border-transparent bg-teal-200"
                   }`}
                   href="#0"
                   onClick={(e) => {
@@ -59,7 +61,7 @@ function Features() {
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">
+                    <div className="mb-1 font-bold leading-snug tracking-tight">
                       Ich besitze flexible Lasten.
                     </div>
                     <div className="text-gray-600">
@@ -68,7 +70,7 @@ function Features() {
                       anschaffen.
                     </div>
                   </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+                  <div className="ml-3 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white shadow">
                     <svg
                       fill="#000000"
                       version="1.1"
@@ -82,10 +84,10 @@ function Features() {
                   </div>
                 </a>
                 <a
-                  className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${
+                  className={`m-5 mb-3 items-center rounded border p-5 text-lg transition duration-300 ease-in-out ${
                     tab !== 2
-                      ? "bg-white shadow-md border-gray-200 hover:shadow-lg"
-                      : "bg-teal-200 border-transparent"
+                      ? "border-gray-200 bg-white shadow-md hover:shadow-lg"
+                      : "border-transparent bg-teal-200"
                   }`}
                   href="#0"
                   onClick={(e) => {
@@ -94,7 +96,7 @@ function Features() {
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">
+                    <div className="mb-1 font-bold leading-snug tracking-tight">
                       Ich bin bereit Teile meines Stromverbrauchs auf andere
                       Tageszeiten zu verschieben.
                     </div>
@@ -105,9 +107,9 @@ function Features() {
                       Strom.
                     </div>
                   </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+                  <div className="ml-3 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white shadow">
                     <svg
-                      className="w-3 h-3 fill-current"
+                      className="h-3 w-3 fill-current"
                       viewBox="0 0 12 12"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -120,10 +122,10 @@ function Features() {
                   </div>
                 </a>
                 <a
-                  className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${
+                  className={`m-5 mb-3 items-center rounded border p-5 text-lg transition duration-300 ease-in-out ${
                     tab !== 3
-                      ? "bg-white shadow-md border-gray-200 hover:shadow-lg"
-                      : "bg-teal-200 border-transparent"
+                      ? "border-gray-200 bg-white shadow-md hover:shadow-lg"
+                      : "border-transparent bg-teal-200"
                   }`}
                   href="#0"
                   onClick={(e) => {
@@ -132,15 +134,15 @@ function Features() {
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">
-                      Ich suche nach dem günstigsten Tarif.
+                    <div className="mb-1 font-bold leading-snug tracking-tight">
+                      Ich suche nach dem günstigsten Stromtarif.
                     </div>
                     <div className="text-gray-600">
                       Meinen Stromverbauch möchte ich nicht anpassen. Trotzdem
                       suche ich nach dem günstigsten Tarif.
                     </div>
                   </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+                  <div className="ml-3 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white shadow">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="16"
@@ -156,10 +158,10 @@ function Features() {
                   </div>
                 </a>
                 <a
-                  className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${
+                  className={`m-5 mb-3 items-center rounded border p-5 text-lg transition duration-300 ease-in-out ${
                     tab !== 4
-                      ? "bg-white shadow-md border-gray-200 hover:shadow-lg"
-                      : "bg-teal-200 border-transparent"
+                      ? "border-gray-200 bg-white shadow-md hover:shadow-lg"
+                      : "border-transparent bg-teal-200"
                   }`}
                   href="#0"
                   onClick={(e) => {
@@ -168,7 +170,7 @@ function Features() {
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">
+                    <div className="mb-1 font-bold leading-snug tracking-tight">
                       Ich möchte monatlich einen festen Betrag bezahlen.
                     </div>
                     <div className="text-gray-600">
@@ -177,9 +179,9 @@ function Features() {
                       einloggen und dann nicht mehr drüber nachdenken.
                     </div>
                   </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+                  <div className="ml-3 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white shadow">
                     <svg
-                      className="w-3 h-3 fill-current"
+                      className="h-3 w-3 fill-current"
                       viewBox="0 0 12 12"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -191,12 +193,13 @@ function Features() {
             </div>
 
             {/* Tabs items */}
+            {/*className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3*/}
             <div
-              className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0 md:order-1"
+              className="mx-auto mb-8 grid max-w-xl place-content-center md:order-1 md:col-span-5 md:mb-0 md:w-full md:max-w-none lg:col-span-6"
               data-aos="zoom-y-out"
               ref={tabs}
             >
-              <div className="relative flex flex-col text-center lg:text-right">
+              <div className="relative flex flex-col rounded border border-transparent bg-teal-200 p-5 text-lg">
                 {/* Item 1 */}
                 <Transition
                   show={tab === 1}
@@ -209,22 +212,14 @@ function Features() {
                   leaveStart="opacity-100 translate-y-0"
                   leaveEnd="opacity-0 -translate-y-16"
                 >
-                  <div className="relative inline-flex flex-col">
-                    <img
-                      className="md:max-w-none mx-auto rounded"
-                      src={FeaturesBg}
-                      width="500"
-                      height="462"
-                      alt="Features bg"
-                    />
-                    <img
-                      className="md:max-w-none absolute w-full left-0 transform animate-float"
-                      src={FeaturesElement}
-                      width="500"
-                      height="44"
-                      alt="Element"
-                      style={{ top: "30%" }}
-                    />
+                  <div>
+                    <div className="mb-1 font-bold leading-snug tracking-tight ">
+                      Ich suche nach dem günstigsten Stromtarif.
+                    </div>
+                    <div className="text-gray-600">
+                      Meinen Stromverbauch möchte ich nicht anpassen. Trotzdem
+                      suche ich nach dem günstigsten Tarif.
+                    </div>
                   </div>
                 </Transition>
                 {/* Item 2 */}
@@ -241,14 +236,14 @@ function Features() {
                 >
                   <div className="relative inline-flex flex-col">
                     <img
-                      className="md:max-w-none mx-auto rounded"
+                      className="mx-auto rounded md:max-w-none"
                       src={FeaturesBg}
                       width="500"
                       height="462"
                       alt="Features bg"
                     />
                     <img
-                      className="md:max-w-none absolute w-full left-0 transform animate-float"
+                      className="animate-float absolute left-0 w-full transform md:max-w-none"
                       src={FeaturesElement}
                       width="500"
                       height="44"
@@ -271,14 +266,14 @@ function Features() {
                 >
                   <div className="relative inline-flex flex-col">
                     <img
-                      className="md:max-w-none mx-auto rounded"
+                      className="mx-auto rounded md:max-w-none"
                       src={FeaturesBg}
                       width="500"
                       height="462"
                       alt="Features bg"
                     />
                     <img
-                      className="md:max-w-none absolute w-full left-0 transform animate-float"
+                      className="animate-float absolute left-0 w-full transform md:max-w-none"
                       src={FeaturesElement}
                       width="500"
                       height="44"
