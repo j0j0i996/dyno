@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import HeroImage from "../images/hero-image.png";
 
 const QuizQuestion = () => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -10,13 +11,12 @@ const QuizQuestion = () => {
       text: "Ich besitzte ein Elektroauto oder eine Wärmepumpe \
       oder möchtest mir in Zukunft eins von beiden \
       anschaffen.",
-      explain: `<p>ⓘ Du solltest einen Tarif wählen, der auf deine flexiblen Lasten zu geschnitten ist.
-       Ein dynamischer Tarif passt hier sehr gut. \
-      Den Betrieb der Wärmepumpe bzw. das Laden deines Elektroautos kannst du so einstellen, \
-      dass vor allem zu Strom verbrauchst wenn der Börsenpreis niedrig ist. \
-      Da viele Wärmepumpen, Elektroautos und Ladesäulen diesen optimierten Betrieb \
-      schon automatisch unterstützen, musst du dich nach der Einrichtung \
-      um nichts mehr kümmern. </p>`,
+      explain: `<p>Du solltest einen Tarif wählen, der auf deine flexiblen Lasten zu geschnitten ist.
+      Deine Wärmepumpe bzw. deine Ladensäule kannst du so einstellen, \
+      dass sie vor allem zu Zeiten von niedrigen Börsenpreisen in Betrieb sind. \
+      Viele Wärmepumpen, Elektroautos und Ladesäulen unterstützen diesen optimierten Betrieb \
+      schon automatisch, so dass du dich nach der Einrichtung \
+      um nichts mehr kümmern musst. Ein <b>dynamischer Stromtarif</b> für Elektroautos / Wärmepumpen eignet sich hier am besten.</p>`,
       tarif: "dynamischen",
     },
     {
@@ -27,16 +27,14 @@ const QuizQuestion = () => {
       Dadurch kannst du CO2-Emissionen und Geld sparen.",
       explain: `
       <p>
-      ⓘ Zwischen 10:00 Uhr und 17:00 Uhr und zwischen 00:00 Uhr und 05:00 Uhr trifft oft 
-      ein hohes erneuerbares Angebot auf eine niedrige Nachfrage. 
-      Dadurch sinkt der Preis an den Strombörsen. 
+      Zwischen 10:00 Uhr und 17:00 Uhr sowie zwischen 00:00 Uhr und 05:00 Uhr trifft häufig 
+      ein hohes Angebot an erneuerbaren Energien auf eine niedrige Nachfrage durch Verbraucher. 
+      Dadurch sinkt der Börsenpreis in entsprechenden Stunden. 
       Wenn du in diesen Zeiten viel Strom verbrauchst, 
-      empfehlen wir dir einen dynamischen Tarif. 
-      Der genaue Anteil der Erneuerbaren und des Strompreises 
-      selbst hängen natürlich immer vom Wetter und anderen 
-      Marktfaktoren des jeweiligen Tages ab. Bei 
+      empfehlen wir dir einen <b>dynamischen Stromtarif</b>. 
+      Bei 
       <a class="underline text-blue-600" href="https://www.agora-energiewende.de/daten-tools/agorameter/chart/today/power_generation_price/03.07.2023/06.07.2023/hourly\">Agora Energiewende</a>
-     kannst du dafür ein Gefühl dafür bekommen.</p>
+     kannst du den Anteil der Erneuerbaren im Strommix und den Strompreis für jede Stunde seit 2012 sehen.</p>
       `,
       tarif: "dynamischen",
     },
@@ -45,7 +43,7 @@ const QuizQuestion = () => {
       header: "Ich suche nach dem günstigsten Stromtarif.",
       text: "Meinen Verbrauch möchte ich nicht von der Tageszeit abhängig machen.\
       Trotzdem suche ich nach dem günstigsten Stromtarif.",
-      explain: `<p>ⓘ Mit dynamischen und variablen Tarifen werden deine Kosten im Schnitt
+      explain: `<p>Mit <b>dynamischen und variablen Tarifen</b> werden deine Kosten im Schnitt
       geringer sein als mit Fixpreis Tarifen. Bei Fixpreis Tarifen schlägt dein Energieversorger 
       nämlich einen Risikozuschlag auf. 
       Dafür trägst bei dynamischen und variablen selbst das Risiko für schwankende Strompreise. 
@@ -58,8 +56,8 @@ const QuizQuestion = () => {
       header: "Ich möchte monatlich einen festen Betrag zahlen.",
       text: "So kann ich meinen Stromtarif fest in meine monatlichen \
       Ausgaben einplanen.",
-      explain: `<p>ⓘ Das ist sehr verständlich. 
-      Hier für eignen sich vor allem Fixpreis Tarife. 
+      explain: `<p>Das ist sehr verständlich. 
+      Hier für eignen sich vor allem <b>Fixpreis Tarife</b>. 
       So kannst du deinen Strompreis einmal einloggen und musst dann nicht 
       mehr drüber nachdenken. Unsere Vergleichsplattform fokussiert sich 
       allerdings auf dynamische und variable Tarife. 
@@ -80,7 +78,7 @@ const QuizQuestion = () => {
           <div
             key={answer.id}
             onClick={() => handleAnswerClick(answer.id)}
-            className={`m-5 mb-3 cursor-pointer items-center rounded border p-5 text-lg transition duration-300 ease-in-out ${
+            className={`mx-5 cursor-pointer items-center rounded border p-5 text-lg transition duration-300 ease-in-out ${
               selectedAnswer === answer.id
                 ? "border-transparent bg-teal-200"
                 : "border-transparent bg-white shadow-md hover:shadow-lg"
@@ -95,13 +93,22 @@ const QuizQuestion = () => {
       </div>
 
       {selectedAnswer !== null && (
-        <div>
-          <div
-            className="sid relative m-5 mx-20 flex flex-col rounded border border-transparent bg-white p-5 text-lg leading-snug tracking-tight"
-            data-aos="zoom-y-out"
-            data-aos-delay="100"
-          >
+        <div data-aos="zoom-y-out" data-aos-delay="25">
+          <div className="mx-5 my-7 flex rounded border-4 border-solid border-teal-500 bg-teal-100 p-3 text-lg">
+            <div className="flex items-center">
+              <svg
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                class="h-9 w-9  text-teal-500"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>lightbulb</title>
+                <path d="M12,2A7,7,0,0,0,8,14.74V17a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V14.74A7,7,0,0,0,12,2ZM9,21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V20H9Z" />
+              </svg>
+            </div>
             <div
+              className="mx-3"
               dangerouslySetInnerHTML={{
                 __html: answers.find((answer) => answer.id === selectedAnswer)
                   .explain,
@@ -109,19 +116,22 @@ const QuizQuestion = () => {
             />
           </div>
           {selectedAnswer !== 4 && (
-            <div
-              className="m-5 mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center"
-              data-aos="zoom-y-out"
-              data-aos-delay="100"
-            >
+            <div className=" mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
               <div>
                 <a
                   className="btn mb-4 w-full bg-blue-600 text-white hover:bg-blue-700 sm:mb-0 sm:w-auto"
                   href="#0"
                 >
-                  Finde deinen{" "}
-                  {answers.find((answer) => answer.id === selectedAnswer).tarif}{" "}
-                  Tarif
+                  <p>
+                    Finde deinen{" "}
+                    <b>
+                      {
+                        answers.find((answer) => answer.id === selectedAnswer)
+                          .tarif
+                      }
+                    </b>{" "}
+                    Tarif
+                  </p>
                 </a>
               </div>
             </div>

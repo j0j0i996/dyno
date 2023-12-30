@@ -1,13 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import WordCirculator from "../utils/WordCirculator";
-import HeroImage from "../images/hero-image.png";
 
 function LandingStart() {
   return (
     <section className="relative">
       {/* Illustration behind hero content */}
       <div
-        className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none"
+        className="pointer-events-none absolute left-1/2 bottom-0 -translate-x-1/2 transform"
         aria-hidden="true"
       >
         <svg
@@ -36,13 +35,13 @@ function LandingStart() {
         </svg>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Hero content */}
         <div className="pt-32 pb-12 md:pt-40 md:pb-20">
           {/* Section header */}
-          <div className="text-center pb-12 md:pb-16">
+          <div className="pb-12 text-center md:pb-16">
             <h1
-              className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4"
+              className="leading-tighter mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl"
               data-aos="zoom-y-out"
             >
               <WordCirculator
@@ -51,14 +50,14 @@ function LandingStart() {
               />
             </h1>
             <h1
-              className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4"
+              className="leading-tighter mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl"
               data-aos="zoom-y-out"
             >
               Welcher Stromtarif passt zu mir?
             </h1>
-            <div className="max-w-3xl mx-auto">
+            <div className="mx-auto max-w-3xl">
               <p
-                className="text-xl text-gray-600 mb-8"
+                className="mb-8 text-xl text-gray-600"
                 data-aos="zoom-y-out"
                 data-aos-delay="150"
               >
@@ -69,13 +68,13 @@ function LandingStart() {
                 profitieren kannst!
               </p>
               <div
-                className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center"
+                className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center"
                 data-aos="zoom-y-out"
                 data-aos-delay="300"
               >
                 <div>
                   <a
-                    className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0"
+                    className="btn mb-4 w-full bg-blue-600 text-white hover:bg-blue-700 sm:mb-0 sm:w-auto"
                     href="#0"
                   >
                     Finde deinen Tarif
@@ -83,7 +82,7 @@ function LandingStart() {
                 </div>
                 <div>
                   <a
-                    className="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4"
+                    className="btn w-full bg-gray-900 text-white hover:bg-gray-800 sm:ml-4 sm:w-auto"
                     href="#0"
                   >
                     Lerne mehr
