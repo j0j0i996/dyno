@@ -2,7 +2,7 @@ import React from "react";
 
 import Header from "../partials/Header";
 import LandingStart from "../partials/LandingStart";
-import FeaturesHome from "../partials/Features";
+import Quiz from "../partials/Quiz";
 import Testimonials from "../partials/Testimonials";
 import Newsletter from "../partials/Newsletter";
 import Footer from "../partials/Footer";
@@ -17,7 +17,7 @@ function Home() {
       <main className="flex-grow">
         {/*  Page sections */}
         <LandingStart />
-        <FeaturesHome />
+        <Quiz />
         <Testimonials />
         <Newsletter />
       </main>
