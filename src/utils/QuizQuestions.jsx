@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import HeatPumpSVG from "../images/heatpump.svg";
 import EcarSVG from "../images/ecar.svg";
+import OtherSVG from "../images/other.svg";
 
 const QuizHeader = ({ question }) => {
   return (
@@ -20,10 +21,10 @@ const QuizAnswerItem = ({
     <div
       key={answerName}
       onClick={() => handleAnswerClick(answerName)}
-      className={`mx-5 cursor-pointer items-center rounded border p-5 text-lg transition duration-300 ease-in-out ${
+      className={`ease-in-ou mx-5 cursor-pointer items-center rounded border p-5 text-lg transition duration-300 ${
         selected
           ? "border-transparent bg-teal-200"
-          : "border-transparent bg-white shadow-md hover:shadow-lg"
+          : "border-transparent bg-white shadow-md hover:bg-teal-100 hover:shadow-lg"
       }`}
     >
       {children}
@@ -33,14 +34,26 @@ const QuizAnswerItem = ({
 
 const QuizSubmitButton = ({ children, onSubmit, selectedAnswer }) => {
   return (
-    <div
-      key={children}
-      className=" mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center"
-    >
+    <div key={children} className="mx-16 max-w-xs sm:max-w-none">
       <div>
         <a
           className="btn mb-4 w-full cursor-pointer bg-blue-600 text-white hover:bg-blue-700 sm:mb-0 sm:w-auto"
           onClick={() => onSubmit(selectedAnswer)}
+        >
+          {children}
+        </a>
+      </div>
+    </div>
+  );
+};
+
+const QuizBackButton = ({ children, onBack }) => {
+  return (
+    <div key={children} className="mx-16 max-w-xs sm:max-w-none">
+      <div>
+        <a
+          className="btn mb-4 w-full cursor-pointer text-blue-600 hover:bg-gray-800 sm:mb-0 sm:w-auto"
+          onClick={() => onBack()}
         >
           {children}
         </a>
@@ -106,6 +119,7 @@ export const QuizQuestion1 = ({ onSubmit }) => {
     {
       name: "fix",
       header: "Ich möchte monatlich einen festen Betrag zahlen.",
+      // TODO: don't use stringified html code for explains
       text: "So kann ich meinen Stromtarif fest in meine monatlichen \
       Ausgaben einplanen.",
       explain: `<p>Das ist sehr verständlich. 
@@ -120,81 +134,79 @@ export const QuizQuestion1 = ({ onSubmit }) => {
   ];
 
   return (
-    <div className="relative mx-auto max-w-7xl px-4 sm:px-2">
-      <div className="pt-12 md:pt-20">
-        {/* Section header */}
-        <QuizHeader question="Was beschreibt dich am besten?"></QuizHeader>
+    <div>
+      {/* Section header */}
+      <QuizHeader question="Was beschreibt dich am besten?"></QuizHeader>
 
-        {/* Section content */}
-        <div className="md:grid md:grid-cols-6 md:gap-6">
-          {/* Content */}
-          <div
-            className="mx-auto my-7 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
-            data-aos="fade-right"
-          >
-            <div className="container mx-auto mt-8">
-              <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
-                {answers.map((answer) => (
-                  <QuizAnswerItem
-                    answerName={answer.name}
-                    selected={selectedAnswer === answer.name}
-                    handleAnswerClick={handleAnswerClick}
-                  >
-                    <div className="mb-1 font-bold leading-snug tracking-tight">
-                      {answer.header}
-                    </div>
-                    <div className="text-gray-600">{answer.text}</div>
-                  </QuizAnswerItem>
-                ))}
-              </div>
-
-              {selectedAnswer !== null && (
-                <div data-aos="zoom-y-out" data-aos-delay="25">
-                  <div className="mx-5 my-7 flex rounded border-4 border-solid border-teal-500 bg-teal-100 p-3 text-lg">
-                    <div className="flex items-center">
-                      <svg
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        class="h-9 w-9  text-teal-500"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <title>lightbulb</title>
-                        <path d="M12,2A7,7,0,0,0,8,14.74V17a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V14.74A7,7,0,0,0,12,2ZM9,21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V20H9Z" />
-                      </svg>
-                    </div>
-                    <div
-                      className="mx-3"
-                      dangerouslySetInnerHTML={{
-                        __html: answers.find(
-                          (answer) => answer.name === selectedAnswer,
-                        ).explain,
-                      }}
-                    />
+      {/* Section content */}
+      <div className="md:grid md:grid-cols-6 md:gap-6">
+        {/* Content */}
+        <div
+          className="mx-auto my-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
+          data-aos="fade-right"
+        >
+          <div className="container mx-auto mt-6">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
+              {answers.map((answer) => (
+                <QuizAnswerItem
+                  answerName={answer.name}
+                  selected={selectedAnswer === answer.name}
+                  handleAnswerClick={handleAnswerClick}
+                >
+                  <div className="mb-1 font-bold leading-snug tracking-tight">
+                    {answer.header}
                   </div>
-                  {selectedAnswer !== "fix" && (
-                    <div>
-                      <QuizSubmitButton
-                        onSubmit={onSubmit}
-                        selectedAnswer={selectedAnswer}
-                      >
-                        <p>
-                          Finde deinen{" "}
-                          <b>
-                            {
-                              answers.find(
-                                (answer) => answer.name === selectedAnswer,
-                              ).tarif
-                            }
-                          </b>{" "}
-                          Tarif
-                        </p>
-                      </QuizSubmitButton>
-                    </div>
-                  )}
-                </div>
-              )}
+                  <div className="text-gray-600">{answer.text}</div>
+                </QuizAnswerItem>
+              ))}
             </div>
+
+            {selectedAnswer !== null && (
+              <div data-aos="zoom-y-out" data-aos-delay="25">
+                <div className="mx-5 my-7 flex rounded border-4 border-solid border-teal-500 bg-teal-100 p-3 text-lg">
+                  <div className="flex items-center">
+                    <svg
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      class="h-9 w-9  text-teal-500"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title>lightbulb</title>
+                      <path d="M12,2A7,7,0,0,0,8,14.74V17a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V14.74A7,7,0,0,0,12,2ZM9,21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V20H9Z" />
+                    </svg>
+                  </div>
+                  <div
+                    className="mx-3"
+                    dangerouslySetInnerHTML={{
+                      __html: answers.find(
+                        (answer) => answer.name === selectedAnswer,
+                      ).explain,
+                    }}
+                  />
+                </div>
+                {selectedAnswer !== "fix" && (
+                  <div className="mt-5 flex items-center justify-center">
+                    <QuizSubmitButton
+                      onSubmit={onSubmit}
+                      selectedAnswer={selectedAnswer}
+                    >
+                      <p>
+                        Finde deinen{" "}
+                        <b>
+                          {
+                            answers.find(
+                              (answer) => answer.name === selectedAnswer,
+                            ).tarif
+                          }
+                        </b>{" "}
+                        Tarif
+                      </p>
+                    </QuizSubmitButton>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -202,7 +214,7 @@ export const QuizQuestion1 = ({ onSubmit }) => {
   );
 };
 
-export const QuizQuestion2 = ({ onSubmit }) => {
+export const QuizQuestion2 = ({ onSubmit, onBack }) => {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
 
   const handleAnswerClick = (answerName) => {
@@ -220,68 +232,138 @@ export const QuizQuestion2 = ({ onSubmit }) => {
       name: "car",
       header: "Elektroauto",
       symbol: EcarSVG,
-      resize_pct: "50%",
-      text_input: false,
+      resize_pct: "40%",
     },
     {
       name: "heat",
       header: "Wärmepumpe",
       symbol: HeatPumpSVG,
-      resize_pct: "70%",
-      text_input: false,
+      resize_pct: "55%",
     },
     {
       name: "other",
       header: "Andere",
-      symbol: null,
-      text_input: true,
+      symbol: OtherSVG,
+      resize_pct: "40%",
     },
   ];
 
   return (
-    <div className="relative mx-auto max-w-7xl px-4 sm:px-2">
-      <div className="pt-12 md:pt-20">
-        {/* Section header */}
-        <QuizHeader question="Welche Geräte besitzt du oder planst du anzuschaffen?"></QuizHeader>
+    <div>
+      {/* Section header */}
+      <QuizHeader question="Welche Geräte besitzt du oder planst du anzuschaffen?"></QuizHeader>
 
-        {/* Section content */}
-        <div className="md:grid md:grid-cols-6 md:gap-6">
-          {/* Content */}
-          <div
-            className="mx-auto my-7 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-9"
-            data-aos="fade-right"
-          >
-            <div className="container mx-auto mt-8">
-              <div className="gap-3md:grid-cols-2 m-5 grid grid-cols-1 items-center lg:grid-cols-3">
-                {answers.map((answer) => (
-                  <QuizAnswerItem
-                    answerName={answer.name}
-                    selected={selectedAnswers.indexOf(answer.name) !== -1}
-                    handleAnswerClick={handleAnswerClick}
-                  >
-                    <div className="mb-1 text-center font-bold leading-snug tracking-tight">
-                      {answer.header}
-                    </div>
-                    <div className="flex items-center justify-center">
-                      <img width={answer.resize_pct} src={answer.symbol} />
-                    </div>
-                  </QuizAnswerItem>
-                ))}
-              </div>
-              # TODO Füge zurück button ein # TODO Zeige weiter, nur wenn liste
-              nicht leer ist
-              {selectedAnswers !== null && (
-                <div data-aos="zoom-y-out" data-aos-delay="25">
-                  <div>
-                    <QuizSubmitButton
-                      onSubmit={onSubmit}
-                      selectedAnswer={selectedAnswers}
-                    >
-                      <p>Weiter</p>
-                    </QuizSubmitButton>
+      {/* Section content */}
+      <div className="md:grid md:grid-cols-6 md:gap-6">
+        {/* Content */}
+        <div
+          className="mx-auto my-7 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-9"
+          data-aos="fade-right"
+        >
+          <div className="container mx-auto mt-6">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+              {answers.map((answer) => (
+                <QuizAnswerItem
+                  answerName={answer.name}
+                  selected={selectedAnswers.indexOf(answer.name) !== -1}
+                  handleAnswerClick={handleAnswerClick}
+                >
+                  <div className="mb-1 text-center font-bold leading-snug tracking-tight">
+                    {answer.header}
                   </div>
+                  <div className="flex items-center justify-center">
+                    <img width={answer.resize_pct} src={answer.symbol} />
+                  </div>
+                </QuizAnswerItem>
+              ))}
+            </div>
+            <div data-aos="zoom-y-out" data-aos-delay="25">
+              <div className="mt-5 flex items-center justify-center">
+                <QuizBackButton onBack={onBack}>
+                  <p>← Zurück</p>
+                </QuizBackButton>
+                <div className={selectedAnswers.length ? "" : "invisible"}>
+                  <QuizSubmitButton
+                    onSubmit={onSubmit}
+                    selectedAnswer={selectedAnswers}
+                  >
+                    <p>Weiter →</p>
+                  </QuizSubmitButton>
                 </div>
-              )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const QuizQuestion3 = ({ onSubmit, onBack }) => {
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+
+  const handleAnswerClick = (answerName) => {
+    setSelectedAnswer(answerName);
+  };
+
+  const answers = [
+    {
+      name: "1",
+    },
+    {
+      name: "2",
+    },
+    {
+      name: "3",
+    },
+    {
+      name: "4",
+    },
+    {
+      name: "5+",
+    },
+  ];
+
+  return (
+    <div>
+      {/* Section header */}
+      <QuizHeader question="Wie viele Personen wohnen in deinem Haushalt?"></QuizHeader>
+
+      {/* Section content */}
+      <div className="md:grid md:grid-cols-6 md:gap-6">
+        {/* Content */}
+        <div
+          className="mx-auto my-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-9"
+          data-aos="fade-right"
+        >
+          <div className="container mx-auto mt-6">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-5">
+              {answers.map((answer) => (
+                <QuizAnswerItem
+                  answerName={answer.name}
+                  selected={selectedAnswer === answer.name}
+                  handleAnswerClick={handleAnswerClick}
+                >
+                  <div className="text-center text-lg font-bold leading-snug tracking-tight">
+                    {answer.name}
+                  </div>
+                </QuizAnswerItem>
+              ))}
+            </div>
+          </div>
+          <div data-aos="zoom-y-out" data-aos-delay="25">
+            <div className="mt-5 flex items-center justify-center">
+              <QuizBackButton onBack={onBack}>
+                <p>← Zurück</p>
+              </QuizBackButton>
+              <div className={selectedAnswer ? "" : "invisible"}>
+                <QuizSubmitButton
+                  onSubmit={onSubmit}
+                  selectedAnswer={selectedAnswer}
+                >
+                  <p>Weiter →</p>
+                </QuizSubmitButton>
+              </div>
             </div>
           </div>
         </div>
