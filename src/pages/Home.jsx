@@ -6,8 +6,19 @@ import Quiz from "../partials/Quiz";
 import Testimonials from "../partials/Testimonials";
 import Newsletter from "../partials/Newsletter";
 import Footer from "../partials/Footer";
+import { Element, scroller } from "react-scroll";
 
 function Home() {
+  const scrollToQuiz = () => {
+    // Replace 'sectionId' with the actual ID of the target section
+    scroller.scrollTo("quiz", {
+      duration: 150,
+      delay: 100,
+      smooth: true,
+      offset: -100,
+    });
+  };
+
   return (
     <div className="flex min-h-screen flex-col overflow-hidden">
       {/*  Site header */}
@@ -16,9 +27,10 @@ function Home() {
       {/*  Page content */}
       <main className="flex-grow">
         {/*  Page sections */}
-        <LandingStart />
-        <Quiz />
-        <Testimonials />
+        <LandingStart onTarifClick={scrollToQuiz} />
+        <Element name="quiz">
+          <Quiz />
+        </Element>
         <Newsletter />
       </main>
 

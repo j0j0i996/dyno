@@ -6,7 +6,7 @@ import OtherSVG from "../images/other.svg";
 const QuizHeader = ({ question }) => {
   return (
     <div key={question} className="mx-auto max-w-4xl text-center text-white">
-      <h1 className="h2">{question}</h1>
+      <h1 className="h3">{question}</h1>
     </div>
   );
 };

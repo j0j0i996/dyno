@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import WordCirculator from "../utils/WordCirculator";
 
-function LandingStart() {
+function LandingStart({ onTarifClick }) {
   return (
     <section className="relative">
       {/* Illustration behind hero content */}
@@ -53,7 +53,7 @@ function LandingStart() {
               className="leading-tighter mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl"
               data-aos="zoom-y-out"
             >
-              Welcher Stromtarif passt zu mir?
+              Welcher Stromtarif passt zu dir?
             </h1>
             <div className="mx-auto max-w-3xl">
               <p
@@ -75,6 +75,7 @@ function LandingStart() {
                 <div>
                   <a
                     className="btn mb-4 w-full bg-blue-600 text-white hover:bg-blue-700 sm:mb-0 sm:w-auto"
+                    onClick={() => onTarifClick()}
                     href="#0"
                   >
                     Finde deinen Tarif
