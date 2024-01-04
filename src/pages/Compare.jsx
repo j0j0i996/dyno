@@ -1,0 +1,28 @@
+import React from "react";
+
+import Header from "../partials/Header";
+
+import Newsletter from "../partials/Newsletter";
+import Footer from "../partials/Footer";
+import { Element, scroller } from "react-scroll";
+
+function Compare() {
+  return (
+    <div className="flex min-h-screen flex-col overflow-hidden">
+      {/*  Site header */}
+      <Header />
+
+      {/*  Page content */}
+      <main className="flex-grow">
+        {/*  Page sections */}
+
+        <Newsletter />
+      </main>
+
+      {/*  Site footer */}
+      <Footer />
+    </div>
+  );
+}
+
+export default Compare;

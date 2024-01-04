@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import "aos/dist/aos.css";
 import "./css/style.css";
@@ -7,9 +7,11 @@ import "./css/style.css";
 import AOS from "aos";
 
 import Home from "./pages/Home";
+import Compare from "./pages/Compare";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import ResetPassword from "./pages/ResetPassword";
+import FilterQuestions from "./pages/FilterQuestions";
 
 function App() {
   const location = useLocation();
@@ -33,9 +35,11 @@ function App() {
     <>
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route path="/questionnaire" element={<FilterQuestions />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/compare" element={<Compare />} />
       </Routes>
     </>
   );

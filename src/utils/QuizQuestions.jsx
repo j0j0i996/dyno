@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import HeatPumpSVG from "../images/heatpump.svg";
 import EcarSVG from "../images/ecar.svg";
 import OtherSVG from "../images/other.svg";
+import { Link } from "react-router-dom";
 
 const QuizHeader = ({ question }) => {
   return (
@@ -81,7 +82,7 @@ export const QuizQuestion1 = ({ onSubmit }) => {
       dass sie vor allem zu Zeiten von niedrigen Börsenpreisen in Betrieb sind. \
       Viele Wärmepumpen, Elektroautos und Ladesäulen unterstützen diesen optimierten Betrieb \
       schon automatisch, so dass du dich nach der Einrichtung \
-      um nichts mehr kümmern musst. Ein <b>dynamischer Stromtarif</b> für Elektroautos / Wärmepumpen eignet sich hier am besten.</p>`,
+      um nichts mehr kümmern musst. Ein <b>dynamischer Stromtarif</b> eignet sich hier am besten.</p>`,
       tarif: "dynamischen",
     },
     {
@@ -111,8 +112,7 @@ export const QuizQuestion1 = ({ onSubmit }) => {
       explain: `<p>Mit <b>dynamischen und variablen Tarifen</b> werden deine Kosten im Schnitt
       geringer sein als mit Fixpreis Tarifen. Bei Fixpreis Tarifen schlägt dein Energieversorger 
       nämlich einen Risikozuschlag auf. 
-      Dafür trägst bei dynamischen und variablen selbst das Risiko für schwankende Strompreise. 
-      In diesem <a class="underline text-blue-600">Blogpost</a> haben wir das Risiko analysiert.
+      Dafür trägst bei dynamischen und variablen selbst das Risiko für schwankende Strompreise.
       </p>`,
       tarif: "dynamischen oder variablen",
     },
@@ -192,7 +192,7 @@ export const QuizQuestion1 = ({ onSubmit }) => {
                       selectedAnswer={selectedAnswer}
                     >
                       <p>
-                        Finde deinen{" "}
+                        Zu den{" "}
                         <b>
                           {
                             answers.find(
@@ -200,7 +200,7 @@ export const QuizQuestion1 = ({ onSubmit }) => {
                             ).tarif
                           }
                         </b>{" "}
-                        Tarif
+                        Tarifen
                       </p>
                     </QuizSubmitButton>
                   </div>
@@ -357,12 +357,14 @@ export const QuizQuestion3 = ({ onSubmit, onBack }) => {
                 <p>← Zurück</p>
               </QuizBackButton>
               <div className={selectedAnswer ? "" : "invisible"}>
-                <QuizSubmitButton
-                  onSubmit={onSubmit}
-                  selectedAnswer={selectedAnswer}
-                >
-                  <p>Weiter →</p>
-                </QuizSubmitButton>
+                <Link to="/compare">
+                  <QuizSubmitButton
+                    onSubmit={onSubmit}
+                    selectedAnswer={selectedAnswer}
+                  >
+                    <p>Weiter →</p>
+                  </QuizSubmitButton>
+                </Link>
               </div>
             </div>
           </div>

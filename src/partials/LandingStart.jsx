@@ -78,7 +78,7 @@ function LandingStart({ onTarifClick }) {
                     onClick={() => onTarifClick()}
                     href="#0"
                   >
-                    Finde deinen Tarif
+                    Mache den Check
                   </a>
                 </div>
                 <div>
@@ -86,7 +86,7 @@ function LandingStart({ onTarifClick }) {
                     className="btn w-full bg-gray-900 text-white hover:bg-gray-800 sm:ml-4 sm:w-auto"
                     href="#0"
                   >
-                    Lerne mehr
+                    Direkt zu den Tarifen
                   </a>
                 </div>
               </div>

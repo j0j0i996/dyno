@@ -3,11 +3,11 @@ import React from "react";
 function Newsletter() {
   return (
     <section>
-      <div className="mx-auto mt-20 max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto mt-32 max-w-6xl px-4 sm:px-6">
         <div className="pb-12 md:pb-20">
           {/* CTA box */}
           <div
-            className="relative overflow-hidden rounded bg-gray-900 py-10 px-8 shadow-2xl md:py-16 md:px-12"
+            className="relative overflow-hidden rounded bg-gray-200 py-10 px-8 shadow-2xl md:py-16 md:px-12"
             data-aos="zoom-y-out"
           >
             {/* Background illustration */}
@@ -97,10 +97,10 @@ function Newsletter() {
             <div className="relative flex flex-col items-center justify-between lg:flex-row">
               {/* CTA content */}
               <div className="text-center lg:max-w-xl lg:text-left">
-                <h3 className="h3 mb-2 text-white">
+                <h3 className="h3 mb-2 text-gray-900">
                   Bleibe auf dem aktuellsten Stand
                 </h3>
-                <p className="mb-6 text-lg text-gray-300">
+                <p className="mb-6 text-lg text-gray-900">
                   Abboniere unseren Newsletter um zu Themen rund um dynamischen
                   Stromtarife auf dem aktuellsten Stand zu bleiben.
                 </p>
@@ -110,7 +110,7 @@ function Newsletter() {
                   <div className="mx-auto flex max-w-xs flex-col justify-center sm:max-w-md sm:flex-row lg:mx-0">
                     <input
                       type="email"
-                      className="form-input mb-2 w-full appearance-none rounded-sm border border-gray-700 bg-gray-800 px-4 py-3 text-white placeholder-gray-500 focus:border-gray-600 sm:mb-0 sm:mr-2"
+                      className="form-input mb-2 w-full appearance-none rounded-sm border border-gray-500 bg-gray-400 px-4 py-3 text-gray-100 placeholder-gray-200 focus:border-gray-600 sm:mb-0 sm:mr-2"
                       placeholder="Deine Email..."
                       aria-label="Deine Email..."
                     />
