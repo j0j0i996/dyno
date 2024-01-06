@@ -19,21 +19,12 @@ const AnswerItem = ({ children, answerName, selected, onChange }) => {
   );
 };
 
-const QuestionHeader = ({ question }) => {
-  return (
-    <div
-      key={question}
-      className="m-4 mx-auto max-w-4xl whitespace-nowrap text-center text-white"
-    >
-      <h1 className="h4">{question}</h1>
-    </div>
-  );
-};
-
 const Questionnaire = () => {
   const [selectedTarif, setSelectedTarif] = useState("");
   const [selectedDevices, setSelectedDevices] = useState([]);
   const [postalCode, setPostalCode] = useState("");
+  const [validPostalCode, setValidPostalCode] = useState(false);
+  const [consumption, setConsumption] = useState("");
   const [electricityConsumption, setElectricityConsumption] = useState("");
   const [householdSize, setHouseholdSize] = useState("");
   const [livingArea, setLivingArea] = useState("");
@@ -52,6 +43,21 @@ const Questionnaire = () => {
     }
   };
 
+  const handlePostalCodeChange = (postalCode) => {
+    if (postalCode.length == 5) {
+      setValidPostalCode(true);
+      setPostalCode(postalCode);
+    } else if (postalCode.length > 5) {
+    } else {
+      setPostalCode(postalCode);
+      setValidPostalCode(false);
+    }
+  };
+
+  const handleConsumptionChange = (cons) => {
+    setConsumption(cons);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -68,7 +74,7 @@ const Questionnaire = () => {
     {
       name: "dynamic",
       label: "Dynamisch",
-      info: "Dein Strompreis folgt dem stündliche Börsenpreis.",
+      info: "Dein Strompreis folgt dem stündlichen Börsenpreis.",
     },
     {
       name: "variable",
@@ -118,11 +124,40 @@ const Questionnaire = () => {
   return (
     <div className="questionnaire-container">
       <section className="relative">
+        <div
+          className="-z-1 pointer-events-none absolute left-1/2 -translate-x-1/2 transform bg-blue-500"
+          aria-hidden="true"
+        >
+          <svg
+            width="100000"
+            height="300"
+            viewBox="0 0 1360 578"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient
+                x1="50%"
+                y1="0%"
+                x2="50%"
+                y2="100%"
+                id="illustration-01"
+              >
+                <stop stopColor="#99C5FA" offset="0%" />
+                <stop stopColor="#B2F5EA" offset="77.402%" />
+                <stop stopColor="#285E61" offset="100%" />
+              </linearGradient>
+            </defs>
+            <g fill="url(#illustration-01)" fillRule="evenodd">
+              <circle cx="1232" cy="210" r="128" />
+            </g>
+          </svg>
+        </div>
+
         {/* Illustration behind hero content */}
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           {/* Hero content */}
-          <div className="pt-12 pb-6 md:pt-40 md:pb-20">
-            <div className="grid rounded-xl bg-gray-200 py-8">
+          <div className="pt-12 pb-6 md:pt-40">
+            <div className="grid rounded-xl bg-gray-200 pt-8">
               <h1
                 className="h1 leading-tighter mx-auto mb-4 font-extrabold tracking-tighter"
                 data-aos="zoom-y-out"
@@ -132,7 +167,7 @@ const Questionnaire = () => {
                 </span>
               </h1>
               {/* Section header */}
-              <div className=" text-center md:pb-16">
+              <div className=" text-center">
                 <form onSubmit={handleSubmit}>
                   <div className="md:grid md:grid-cols-6 md:gap-6">
                     {/* Content */}
@@ -143,7 +178,9 @@ const Questionnaire = () => {
                       {/* Question tarif */}
                       {/* TODO: Füge info button mit link zu welcher tarif passt zu mir */}
                       <div className="container mx-auto mt-6 items-center rounded-xl bg-gray-800 pt-2 pb-4 ">
-                        <QuestionHeader question="Nach welcher Art von Stromtarif suchst du?"></QuestionHeader>
+                        <div className="m-4 mx-auto max-w-4xl whitespace-nowrap text-white">
+                          <h1 className="h4">Wähle einen Tariftyp</h1>
+                        </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                           {tarifAnswers.map((answer) => (
                             <AnswerItem
@@ -157,12 +194,19 @@ const Questionnaire = () => {
                               <div className="text-gray-600">{answer.info}</div>
                             </AnswerItem>
                           ))}
+                          <div className="text-white">
+                            TODO: Nach uten und Empfehlung
+                          </div>
                         </div>
                       </div>
 
                       {/* Question device */}
                       <div className="container mx-auto mt-6 items-center rounded-xl bg-gray-800 pt-2 pb-4 ">
-                        <QuestionHeader question="Hast du flexible Lasten in deinem Haushalt?"></QuestionHeader>
+                        <div className="m-4 mx-auto max-w-4xl whitespace-nowrap text-white">
+                          <h1 className="h4">
+                            Hast du flexible Lasten in deinem Haushalt?
+                          </h1>
+                        </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
                           {deviceAnswers.map((answer) => (
                             <AnswerItem
@@ -186,52 +230,64 @@ const Questionnaire = () => {
                         </div>
                       </div>
 
-                      <div>
-                        <label>What is your postal code?</label>
-                        <input
-                          type="text"
-                          value={postalCode}
-                          onChange={(e) => setPostalCode(e.target.value)}
-                        />
-                      </div>
-
-                      <div>
-                        <label>How many kWh do you consume?</label>
-                        <input
-                          type="text"
-                          value={electricityConsumption}
-                          onChange={(e) =>
-                            setElectricityConsumption(e.target.value)
-                          }
-                        />
-                      </div>
-
-                      <div>
-                        <label>
-                          Don't know your consumption? How many people live in
-                          your household? On how many square meters?
-                        </label>
-                        <div>
-                          <label>Household Size:</label>
+                      {/* Question PLZ */}
+                      <div className="container mx-auto mt-6 rounded-xl bg-gray-800 pt-2 pb-4 ">
+                        <div className="flex items-center justify-between px-16">
+                          <div className="m-4 max-w-4xl whitespace-nowrap text-white">
+                            <h1 className="h4">Deine Postleitzahl</h1>
+                          </div>
                           <input
-                            type="text"
-                            value={householdSize}
-                            onChange={(e) => setHouseholdSize(e.target.value)}
-                          />
-                        </div>
-                        <div>
-                          <label>Living Area (in square meters):</label>
-                          <input
-                            type="text"
-                            value={livingArea}
-                            onChange={(e) => setLivingArea(e.target.value)}
+                            type="number"
+                            className={`text-bold rounded-xl border-4  border-blue-500 bg-white font-bold ${
+                              validPostalCode ? "bg-green-200" : ""
+                            }`}
+                            value={postalCode}
+                            pattern="\d{5}"
+                            placeholder="Deine PLZ"
+                            onChange={(e) =>
+                              handlePostalCodeChange(e.target.value)
+                            }
+                            required
+                            maxlength="5"
                           />
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <button type="submit">Submit</button>
+                  <div className="container mx-auto mt-6 rounded-xl bg-gray-800 pt-2 pb-4 ">
+                    <div className="mt-6 flex w-full justify-between px-16">
+                      <div className="m-4 max-w-4xl whitespace-nowrap text-white">
+                        <h1 className="h4">
+                          Dein jährlicher Stromverbrauch in kwH
+                        </h1>
+                      </div>
+                      <div>
+                        <input
+                          type="number"
+                          className={`text-bold rounded-xl border-4  border-blue-500 bg-white font-bold ${
+                            consumption != "" ? "bg-green-200" : ""
+                          }`}
+                          value={consumption}
+                          pattern="\d{5}"
+                          placeholder="1000"
+                          onChange={(e) =>
+                            handleConsumptionChange(e.target.value)
+                          }
+                          required
+                          maxlength="5"
+                        />
+                        <div className="text-white">TODO: weißt du nicht?</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="btn mt-6 w-full rounded-xl bg-blue-600 text-white hover:bg-blue-700"
+                  >
+                    Weiter zum Tarifvergleich
+                  </button>
                 </form>
               </div>
             </div>

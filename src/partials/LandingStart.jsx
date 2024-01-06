@@ -53,7 +53,7 @@ function LandingStart({ onTarifClick }) {
               className="leading-tighter mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl"
               data-aos="zoom-y-out"
             >
-              Welcher Stromtarif passt zu dir?
+              Finde deinen neuen Stromtarif
             </h1>
             <div className="mx-auto max-w-3xl">
               <p
@@ -61,11 +61,18 @@ function LandingStart({ onTarifClick }) {
                 data-aos="zoom-y-out"
                 data-aos-delay="150"
               >
-                Durch den verstärkten Ausbau erneuerbarer Energiequellen sinkt
-                der Strompreis, gleichzeitig unterliegt er stärkeren
-                Schwankungen. Aus diesem Grund entsteht eine neue Generation von
-                Stromtarifen. Finde heraus, ob und in welcher Weise du davon
-                profitieren kannst!
+                Dynamische und variable Stromtarife in Deutschland immer
+                beliebter. Dabei orientiert sich der Strompreis direkt am
+                stündlichen oder monatlichen Börsenpreis.{" "}
+              </p>
+              <p
+                className="mb-8 text-xl text-gray-600"
+                data-aos="zoom-y-out"
+                data-aos-delay="150"
+              >
+                Wir helfen dir dabei heraus zu finden, wie die Tarife
+                funktionieren, ob sie für dich vorteilhaft sind und welchen
+                Anbieter du wählen solltest.
               </p>
               <div
                 className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center"
@@ -78,15 +85,15 @@ function LandingStart({ onTarifClick }) {
                     onClick={() => onTarifClick()}
                     href="#0"
                   >
-                    Mache den Check
+                    Welcher Tariftyp passt zu mir?
                   </a>
                 </div>
                 <div>
                   <a
                     className="btn w-full bg-gray-900 text-white hover:bg-gray-800 sm:ml-4 sm:w-auto"
-                    href="#0"
+                    href="/questionnaire"
                   >
-                    Direkt zu den Tarifen
+                    Anbieter vergleichen
                   </a>
                 </div>
               </div>

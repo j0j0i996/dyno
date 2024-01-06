@@ -15,7 +15,6 @@ function FilterQuestions() {
       <main className="flex-grow">
         {/*  Page sections */}
         <Questionnaire></Questionnaire>
-        <Newsletter />
       </main>
 
       {/*  Site footer */}

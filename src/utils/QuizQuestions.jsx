@@ -6,7 +6,10 @@ import { Link } from "react-router-dom";
 
 const QuizHeader = ({ question }) => {
   return (
-    <div key={question} className="mx-auto max-w-4xl text-center text-white">
+    <div
+      key={question}
+      className="m-1 mx-auto max-w-4xl text-center text-white"
+    >
       <h1 className="h3">{question}</h1>
     </div>
   );
@@ -22,13 +25,19 @@ const QuizAnswerItem = ({
     <div
       key={answerName}
       onClick={() => handleAnswerClick(answerName)}
-      className={`ease-in-ou mx-5 cursor-pointer items-center rounded border p-5 text-lg transition duration-300 ${
+      className={`relative mx-4 flex cursor-pointer rounded border p-4 text-lg transition duration-300 ease-in-out ${
         selected
           ? "border-transparent bg-teal-200"
           : "border-transparent bg-white shadow-md hover:bg-teal-100 hover:shadow-lg"
       }`}
     >
-      {children}
+      {/* Checkbox in the upper right corner */}
+      <div className="absolute top-1/2 left-3 flex h-5 w-5 -translate-y-1/2 transform items-center justify-center rounded-full border-2 border-blue-500">
+        {selected && (
+          <div className="h-2 w-2 rounded-full border border-blue-500 bg-blue-500"></div>
+        )}
+      </div>
+      <div className="ml-6 align-top">{children}</div>
     </div>
   );
 };
@@ -40,6 +49,7 @@ const QuizSubmitButton = ({ children, onSubmit, selectedAnswer }) => {
         <a
           className="btn mb-4 w-full cursor-pointer bg-blue-600 text-white hover:bg-blue-700 sm:mb-0 sm:w-auto"
           onClick={() => onSubmit(selectedAnswer)}
+          href="/questionnaire"
         >
           {children}
         </a>
@@ -142,7 +152,7 @@ export const QuizQuestion1 = ({ onSubmit }) => {
       <div className="md:grid md:grid-cols-6 md:gap-6">
         {/* Content */}
         <div
-          className="mx-auto my-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
+          className="mx-auto mb-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
           data-aos="fade-right"
         >
           <div className="container mx-auto mt-6">
