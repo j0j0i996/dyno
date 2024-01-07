@@ -8,7 +8,7 @@ const AnswerItem = ({ children, answerName, selected, onChange }) => {
     <div
       key={answerName}
       onClick={() => onChange(answerName)}
-      className={`ease-in-ou mx-5 cursor-pointer items-center rounded border p-5 text-lg transition duration-300 ${
+      className={`mx-5  flex cursor-pointer flex-col items-center rounded border px-5 text-lg transition duration-300 ease-in-out ${
         selected
           ? "border-transparent bg-teal-200"
           : "border-transparent bg-white shadow-md hover:bg-teal-100 hover:shadow-lg"
@@ -24,10 +24,18 @@ const Questionnaire = () => {
   const [selectedDevices, setSelectedDevices] = useState([]);
   const [postalCode, setPostalCode] = useState("");
   const [validPostalCode, setValidPostalCode] = useState(false);
-  const [consumption, setConsumption] = useState("");
+  const [consumption, setConsumption] = useState(1000);
   const [electricityConsumption, setElectricityConsumption] = useState("");
   const [householdSize, setHouseholdSize] = useState("");
   const [livingArea, setLivingArea] = useState("");
+  const [consKnown, setConsKnown] = useState(true);
+  const [selectedHouseholdsize, setSelectedHouseholdsize] = useState("");
+
+  const handleHouseholdsizeChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedHouseholdsize(selectedValue);
+    setConsumption(selectedValue * 1000);
+  };
 
   const handleTarifChange = (answerName) => {
     setSelectedTarif(answerName);
@@ -56,6 +64,10 @@ const Questionnaire = () => {
 
   const handleConsumptionChange = (cons) => {
     setConsumption(cons);
+  };
+
+  const handleConsKnown = () => {
+    setConsKnown(!consKnown);
   };
 
   const handleSubmit = (event) => {
@@ -122,7 +134,7 @@ const Questionnaire = () => {
   ];
 
   return (
-    <div className="questionnaire-container">
+    <div className="questionnaire-container mb-32">
       <section className="relative">
         <div
           className="-z-1 pointer-events-none absolute left-1/2 -translate-x-1/2 transform bg-blue-500"
@@ -159,7 +171,7 @@ const Questionnaire = () => {
           <div className="pt-12 pb-6 md:pt-40">
             <div className="grid rounded-xl bg-gray-200 pt-8">
               <h1
-                className="h1 leading-tighter mx-auto mb-4 font-extrabold tracking-tighter"
+                className="h1 leading-tighter mx-auto font-extrabold tracking-tighter"
                 data-aos="zoom-y-out"
               >
                 <span className="bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
@@ -175,39 +187,15 @@ const Questionnaire = () => {
                       className="mx-auto max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-9"
                       data-aos="fade-right"
                     >
-                      {/* Question tarif */}
-                      {/* TODO: Füge info button mit link zu welcher tarif passt zu mir */}
-                      <div className="container mx-auto mt-6 items-center rounded-xl bg-gray-800 pt-2 pb-4 ">
-                        <div className="m-4 mx-auto max-w-4xl whitespace-nowrap text-white">
-                          <h1 className="h4">Wähle einen Tariftyp</h1>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                          {tarifAnswers.map((answer) => (
-                            <AnswerItem
-                              answerName={answer.name}
-                              selected={selectedTarif === answer.name}
-                              onChange={handleTarifChange}
-                            >
-                              <div className="text-center text-lg font-bold leading-snug tracking-tight">
-                                {answer.label}
-                              </div>
-                              <div className="text-gray-600">{answer.info}</div>
-                            </AnswerItem>
-                          ))}
-                          <div className="text-white">
-                            TODO: Nach uten und Empfehlung
-                          </div>
-                        </div>
-                      </div>
-
                       {/* Question device */}
-                      <div className="container mx-auto mt-6 items-center rounded-xl bg-gray-800 pt-2 pb-4 ">
-                        <div className="m-4 mx-auto max-w-4xl whitespace-nowrap text-white">
+                      {/* Todo: add info */}
+                      <div className="container mx-auto mt-12 items-center rounded-xl bg-gray-800 pt-3 pb-3 ">
+                        <div className=" mx-auto max-w-4xl whitespace-nowrap text-white">
                           <h1 className="h4">
                             Hast du flexible Lasten in deinem Haushalt?
                           </h1>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
+                        <div className="mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
                           {deviceAnswers.map((answer) => (
                             <AnswerItem
                               answerName={answer.name}
@@ -216,10 +204,10 @@ const Questionnaire = () => {
                               }
                               onChange={handleDevicesChange}
                             >
-                              <div className="text-center text-lg font-bold leading-snug tracking-tight">
+                              <div className="mt-3 text-center text-lg font-bold leading-snug tracking-tight">
                                 {answer.label}
                               </div>
-                              <div className="flex items-center justify-center">
+                              <div className="mb-3 flex items-center justify-center">
                                 <img
                                   width={answer.resize_pct}
                                   src={answer.symbol}
@@ -231,9 +219,9 @@ const Questionnaire = () => {
                       </div>
 
                       {/* Question PLZ */}
-                      <div className="container mx-auto mt-6 rounded-xl bg-gray-800 pt-2 pb-4 ">
+                      <div className="container mx-auto mt-10 rounded-xl bg-gray-800 pt-3 pb-3 ">
                         <div className="flex items-center justify-between px-16">
-                          <div className="m-4 max-w-4xl whitespace-nowrap text-white">
+                          <div className=" max-w-4xl whitespace-nowrap text-white">
                             <h1 className="h4">Deine Postleitzahl</h1>
                           </div>
                           <input
@@ -255,36 +243,117 @@ const Questionnaire = () => {
                     </div>
                   </div>
 
-                  <div className="container mx-auto mt-6 rounded-xl bg-gray-800 pt-2 pb-4 ">
-                    <div className="mt-6 flex w-full justify-between px-16">
-                      <div className="m-4 max-w-4xl whitespace-nowrap text-white">
-                        <h1 className="h4">
-                          Dein jährlicher Stromverbrauch in kwH
-                        </h1>
+                  <div className="container mx-auto mt-10 rounded-xl bg-gray-800 py-3">
+                    <div className="flex w-full items-center justify-between px-16">
+                      <div className="max-w-4xl whitespace-nowrap text-white">
+                        <h1 className="h4">Dein jährlicher Stromverbrauch</h1>
                       </div>
-                      <div>
-                        <input
-                          type="number"
-                          className={`text-bold rounded-xl border-4  border-blue-500 bg-white font-bold ${
-                            consumption != "" ? "bg-green-200" : ""
-                          }`}
-                          value={consumption}
-                          pattern="\d{5}"
-                          placeholder="1000"
-                          onChange={(e) =>
-                            handleConsumptionChange(e.target.value)
-                          }
-                          required
-                          maxlength="5"
-                        />
-                        <div className="text-white">TODO: weißt du nicht?</div>
+                      <div className="flex flex-col">
+                        {consKnown && (
+                          <div className="flex flex-col">
+                            <div className="relative flex items-center">
+                              <input
+                                type="number"
+                                className={`text-bold rounded-xl border-4  border-blue-500 bg-white font-bold ${
+                                  consumption != "" ? "bg-green-200" : ""
+                                }`}
+                                value={consumption}
+                                pattern="\d{5}"
+                                placeholder="1000"
+                                onChange={(e) =>
+                                  handleConsumptionChange(e.target.value)
+                                }
+                                maxlength="5"
+                              />
+
+                              <text className="absolute right-8 font-bold text-gray-400">
+                                kwh
+                              </text>
+                            </div>
+                            <a
+                              className="btn my-3 mx-5 w-full cursor-pointer bg-gray-300 p-2 text-sm text-gray-700 hover:bg-gray-400 sm:mb-0 sm:w-auto"
+                              onClick={() => handleConsKnown()}
+                            >
+                              Weiß ich nicht
+                            </a>
+                          </div>
+                        )}
+                        {!consKnown && (
+                          <div className="flex flex-col">
+                            <label className="flex items-center ">
+                              <text className="mx-5 font-bold text-white">
+                                Anzahl Personen in deinem Haushalt
+                              </text>
+                              <select
+                                id="numberSelector"
+                                value={selectedHouseholdsize}
+                                onChange={handleHouseholdsizeChange}
+                                className="rounded"
+                              >
+                                <option value="" disabled>
+                                  Haushaltsgröße
+                                </option>
+                                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => (
+                                  <option key={number} value={number}>
+                                    {number}
+                                  </option>
+                                ))}
+                              </select>
+                            </label>
+                            <div className="flex items-center">
+                              <text className="mx-4 mt-5 flex-1 font-bold text-white">
+                                Geschätzer Verbrauch
+                              </text>
+                              <text className="mt-5 flex-1 text-xl font-bold text-white">
+                                {consumption} kWh
+                              </text>
+                            </div>
+                          </div>
+                        )}
                       </div>
+                    </div>
+                  </div>
+
+                  {/* Question tarif */}
+                  {/* TODO: Füge info button mit link zu welcher tarif passt zu mir */}
+                  <div className="container mx-auto mt-10 items-center rounded-xl bg-gray-800 pt-3 pb-3 ">
+                    <div className="mx-auto max-w-4xl whitespace-nowrap text-white">
+                      <h1 className="h4">Wähle einen Tariftyp</h1>
+                    </div>
+                    <div className="mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                      {tarifAnswers.map((answer) => (
+                        <AnswerItem
+                          answerName={answer.name}
+                          selected={selectedTarif === answer.name}
+                          onChange={handleTarifChange}
+                          note={answer.name}
+                          noteApplied={answer.name == "dynamic"}
+                          noteColor={"text-red-400"}
+                        >
+                          <div className="flex-1">
+                            <div className="mt-3  text-center text-lg font-bold leading-snug tracking-tight">
+                              {answer.label}
+                            </div>
+                            <div className="mb-3 text-gray-600">
+                              {answer.info}
+                            </div>
+                          </div>
+                          {answer.name == "dynamic" &&
+                            ["car", "heat", "battery", "other"].some((item) =>
+                              selectedDevices.includes(item),
+                            ) && (
+                              <div className="relative bottom-0 h-1/5 align-bottom text-sm font-bold text-blue-600">
+                                Empfohlen für flexible Lasten
+                              </div>
+                            )}
+                        </AnswerItem>
+                      ))}
                     </div>
                   </div>
 
                   <button
                     type="submit"
-                    className="btn mt-6 w-full rounded-xl bg-blue-600 text-white hover:bg-blue-700"
+                    className="btn mt-10 w-full rounded-xl bg-blue-600 text-white hover:bg-blue-700"
                   >
                     Weiter zum Tarifvergleich
                   </button>

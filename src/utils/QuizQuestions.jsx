@@ -202,7 +202,7 @@ export const QuizQuestion1 = ({ onSubmit }) => {
                       selectedAnswer={selectedAnswer}
                     >
                       <p>
-                        Zu den{" "}
+                        Anbieter von{" "}
                         <b>
                           {
                             answers.find(
@@ -210,7 +210,7 @@ export const QuizQuestion1 = ({ onSubmit }) => {
                             ).tarif
                           }
                         </b>{" "}
-                        Tarifen
+                        Tarifen vergleichen
                       </p>
                     </QuizSubmitButton>
                   </div>
