@@ -95,7 +95,7 @@ const Questionnaire = () => {
     },
     {
       name: "fix",
-      label: "Fix",
+      label: "Fixpreis",
       info: "Dein Stromanbierter legt einen festen Strompreis für die Vertragsdauer fest.",
     },
   ];
@@ -351,12 +351,13 @@ const Questionnaire = () => {
                     </div>
                   </div>
 
-                  <button
+                  <a
                     type="submit"
                     className="btn mt-10 w-full rounded-xl bg-blue-600 text-white hover:bg-blue-700"
+                    href="/compare"
                   >
                     Weiter zum Tarifvergleich
-                  </button>
+                  </a>
                 </form>
               </div>
             </div>

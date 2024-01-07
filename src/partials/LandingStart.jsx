@@ -81,7 +81,7 @@ function LandingStart({ onTarifClick }) {
               >
                 <div>
                   <a
-                    className="btn mb-4 w-full  bg-gray-900 text-white hover:bg-blue-700 sm:mb-0 sm:w-auto"
+                    className="btn mb-4 w-full  bg-gray-900 text-white  hover:bg-gray-800 sm:mb-0 sm:w-auto"
                     onClick={() => onTarifClick()}
                     href="#0"
                   >
@@ -90,7 +90,7 @@ function LandingStart({ onTarifClick }) {
                 </div>
                 <div>
                   <a
-                    className="btn w-full bg-blue-600 text-white hover:bg-gray-800 sm:ml-4 sm:w-auto"
+                    className="btn w-full bg-blue-600 text-white hover:bg-blue-700   sm:ml-4 sm:w-auto"
                     href="/questionnaire"
                   >
                     Anbieter vergleichen

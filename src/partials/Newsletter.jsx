@@ -101,7 +101,7 @@ function Newsletter() {
                   Bleibe auf dem aktuellsten Stand
                 </h3>
                 <p className="mb-6 text-lg text-gray-900">
-                  Abboniere unseren Newsletter um zu Themen rund um dynamischen
+                  Abboniere unseren Newsletter um zu Themen rund um dynamische
                   Stromtarife auf dem aktuellsten Stand zu bleiben.
                 </p>
 

@@ -4,6 +4,7 @@ import Header from "../partials/Header";
 
 import Newsletter from "../partials/Newsletter";
 import Footer from "../partials/Footer";
+import TarifCompare from "../partials/TarifCompare";
 import { Element, scroller } from "react-scroll";
 
 function Compare() {
@@ -15,7 +16,7 @@ function Compare() {
       {/*  Page content */}
       <main className="flex-grow">
         {/*  Page sections */}
-
+        <TarifCompare></TarifCompare>
         <Newsletter />
       </main>
 
