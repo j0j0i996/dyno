@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import HeatPumpSVG from "../images/heatpump.svg";
 import EcarSVG from "../images/ecar.svg";
 import OtherSVG from "../images/other.svg";
+import DynoOnly from "../images/dyno_only_yellow.png";
 
 const AnswerItem = ({ children, answerName, selected, onChange }) => {
   return (
     <div
       key={answerName}
       onClick={() => onChange(answerName)}
-      className={`mx-5  flex cursor-pointer flex-col items-center rounded border px-5 text-lg transition duration-300 ease-in-out ${
+      className={`text-tertiary-main  mx-5 flex cursor-pointer flex-col items-center rounded px-5 text-lg transition duration-300 ease-in-out ${
         selected
-          ? "border-transparent bg-teal-200"
-          : "border-transparent bg-white shadow-md hover:bg-teal-100 hover:shadow-lg"
+          ? "bg-secondary-400 "
+          : "bg-secondary-200 hover:bg-secondary-main  shadow-md hover:shadow-lg"
       }`}
     >
       {children}
@@ -24,7 +25,7 @@ const Questionnaire = () => {
   const [selectedDevices, setSelectedDevices] = useState([]);
   const [postalCode, setPostalCode] = useState("");
   const [validPostalCode, setValidPostalCode] = useState(false);
-  const [consumption, setConsumption] = useState(1000);
+  const [consumption, setConsumption] = useState("");
   const [electricityConsumption, setElectricityConsumption] = useState("");
   const [householdSize, setHouseholdSize] = useState("");
   const [livingArea, setLivingArea] = useState("");
@@ -52,6 +53,7 @@ const Questionnaire = () => {
   };
 
   const handlePostalCodeChange = (postalCode) => {
+    console.log(postalCode);
     if (postalCode.length == 5) {
       setValidPostalCode(true);
       setPostalCode(postalCode);
@@ -136,230 +138,214 @@ const Questionnaire = () => {
   return (
     <div className="questionnaire-container mb-32">
       <section className="relative">
-        <div
-          className="-z-1 pointer-events-none absolute left-1/2 -translate-x-1/2 transform bg-blue-500"
-          aria-hidden="true"
-        >
-          <svg
-            width="100000"
-            height="300"
-            viewBox="0 0 1360 578"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <linearGradient
-                x1="50%"
-                y1="0%"
-                x2="50%"
-                y2="100%"
-                id="illustration-01"
-              >
-                <stop stopColor="#99C5FA" offset="0%" />
-                <stop stopColor="#B2F5EA" offset="77.402%" />
-                <stop stopColor="#285E61" offset="100%" />
-              </linearGradient>
-            </defs>
-            <g fill="url(#illustration-01)" fillRule="evenodd">
-              <circle cx="1232" cy="210" r="128" />
-            </g>
-          </svg>
-        </div>
+        <img
+          className={`absolute left-48 top-64 h-24 w-24 rounded-lg`}
+          src={DynoOnly}
+        />
+        <img
+          className={`absolute right-32 bottom-64 h-32 w-32  scale-x-[-1] transform rounded-lg`}
+          src={DynoOnly}
+        />
 
         {/* Illustration behind hero content */}
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           {/* Hero content */}
-          <div className="pt-12 pb-6 md:pt-40">
-            <div className="grid rounded-xl bg-gray-200 pt-8">
+          <div className="pb-6 md:pt-40">
+            <div className="grid w-full rounded-xl pb-8">
               <h1
                 className="h1 leading-tighter mx-auto font-extrabold tracking-tighter"
                 data-aos="zoom-y-out"
               >
-                <span className="bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
+                <span className="to-primary-main from-primary-main  bg-gradient-to-r bg-clip-text text-transparent">
                   Finde deinen Tarif:
                 </span>
               </h1>
-              {/* Section header */}
-              <div className=" text-center">
-                <form onSubmit={handleSubmit}>
-                  <div className="md:grid md:grid-cols-6 md:gap-6">
-                    {/* Content */}
-                    <div
-                      className="mx-auto max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-9"
-                      data-aos="fade-right"
-                    >
-                      {/* Question device */}
-                      {/* Todo: add info */}
-                      <div className="container mx-auto mt-12 items-center rounded-xl bg-gray-800 pt-3 pb-3 ">
-                        <div className=" mx-auto max-w-4xl whitespace-nowrap text-white">
-                          <h1 className="h4">
-                            Hast du flexible Lasten in deinem Haushalt?
-                          </h1>
-                        </div>
-                        <div className="mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
-                          {deviceAnswers.map((answer) => (
-                            <AnswerItem
-                              answerName={answer.name}
-                              selected={
-                                selectedDevices.indexOf(answer.name) !== -1
-                              }
-                              onChange={handleDevicesChange}
-                            >
-                              <div className="mt-3 text-center text-lg font-bold leading-snug tracking-tight">
-                                {answer.label}
-                              </div>
-                              <div className="mb-3 flex items-center justify-center">
-                                <img
-                                  width={answer.resize_pct}
-                                  src={answer.symbol}
-                                />
-                              </div>
-                            </AnswerItem>
-                          ))}
-                        </div>
+            </div>
+            {/* Section header */}
+            <div className=" text-center">
+              <form onSubmit={handleSubmit}>
+                <div className="w-full md:grid md:grid-cols-6 md:gap-6">
+                  {/* Content */}
+                  <div
+                    className="mx-auto max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-9"
+                    data-aos="fade-right"
+                  >
+                    {/* Question device */}
+                    {/* Todo: add info */}
+                    <div className=" border-primary-main container mx-auto mt-6 items-center rounded-xl border-2 border-dotted pt-3 pb-3 ">
+                      <div className=" text-secondary-main  mx-auto max-w-4xl whitespace-nowrap ">
+                        <h1 className="h4">
+                          Hast du flexible Lasten in deinem Haushalt?
+                        </h1>
                       </div>
-
-                      {/* Question PLZ */}
-                      <div className="container mx-auto mt-10 rounded-xl bg-gray-800 pt-3 pb-3 ">
-                        <div className="flex items-center justify-between px-16">
-                          <div className=" max-w-4xl whitespace-nowrap text-white">
-                            <h1 className="h4">Deine Postleitzahl</h1>
-                          </div>
-                          <input
-                            type="number"
-                            className={`text-bold rounded-xl border-4  border-blue-500 bg-white font-bold ${
-                              validPostalCode ? "bg-green-200" : ""
-                            }`}
-                            value={postalCode}
-                            pattern="\d{5}"
-                            placeholder="Deine PLZ"
-                            onChange={(e) =>
-                              handlePostalCodeChange(e.target.value)
+                      <div className="mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
+                        {deviceAnswers.map((answer) => (
+                          <AnswerItem
+                            answerName={answer.name}
+                            selected={
+                              selectedDevices.indexOf(answer.name) !== -1
                             }
-                            required
-                            maxlength="5"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="container mx-auto mt-10 rounded-xl bg-gray-800 py-3">
-                    <div className="flex w-full items-center justify-between px-16">
-                      <div className="max-w-4xl whitespace-nowrap text-white">
-                        <h1 className="h4">Dein jährlicher Stromverbrauch</h1>
-                      </div>
-                      <div className="flex flex-col">
-                        {consKnown && (
-                          <div className="flex flex-col">
-                            <div className="relative flex items-center">
-                              <input
-                                type="number"
-                                className={`text-bold rounded-xl border-4  border-blue-500 bg-white font-bold ${
-                                  consumption != "" ? "bg-green-200" : ""
-                                }`}
-                                value={consumption}
-                                pattern="\d{5}"
-                                placeholder="1000"
-                                onChange={(e) =>
-                                  handleConsumptionChange(e.target.value)
-                                }
-                                maxlength="5"
-                              />
-
-                              <text className="absolute right-8 font-bold text-gray-400">
-                                kwh
-                              </text>
-                            </div>
-                            <a
-                              className="btn my-3 mx-5 w-full cursor-pointer bg-gray-300 p-2 text-sm text-gray-700 hover:bg-gray-400 sm:mb-0 sm:w-auto"
-                              onClick={() => handleConsKnown()}
-                            >
-                              Weiß ich nicht
-                            </a>
-                          </div>
-                        )}
-                        {!consKnown && (
-                          <div className="flex flex-col">
-                            <label className="flex items-center ">
-                              <text className="mx-5 font-bold text-white">
-                                Anzahl Personen in deinem Haushalt
-                              </text>
-                              <select
-                                id="numberSelector"
-                                value={selectedHouseholdsize}
-                                onChange={handleHouseholdsizeChange}
-                                className="rounded"
-                              >
-                                <option value="" disabled>
-                                  Haushaltsgröße
-                                </option>
-                                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => (
-                                  <option key={number} value={number}>
-                                    {number}
-                                  </option>
-                                ))}
-                              </select>
-                            </label>
-                            <div className="flex items-center">
-                              <text className="mx-4 mt-5 flex-1 font-bold text-white">
-                                Geschätzer Verbrauch
-                              </text>
-                              <text className="mt-5 flex-1 text-xl font-bold text-white">
-                                {consumption} kWh
-                              </text>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Question tarif */}
-                  {/* TODO: Füge info button mit link zu welcher tarif passt zu mir */}
-                  <div className="container mx-auto mt-10 items-center rounded-xl bg-gray-800 pt-3 pb-3 ">
-                    <div className="mx-auto max-w-4xl whitespace-nowrap text-white">
-                      <h1 className="h4">Wähle einen Tariftyp</h1>
-                    </div>
-                    <div className="mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                      {tarifAnswers.map((answer) => (
-                        <AnswerItem
-                          answerName={answer.name}
-                          selected={selectedTarif === answer.name}
-                          onChange={handleTarifChange}
-                          note={answer.name}
-                          noteApplied={answer.name == "dynamic"}
-                          noteColor={"text-red-400"}
-                        >
-                          <div className="flex-1">
-                            <div className="mt-3  text-center text-lg font-bold leading-snug tracking-tight">
+                            onChange={handleDevicesChange}
+                          >
+                            <div className="mt-3 text-center text-lg font-bold leading-snug tracking-tight">
                               {answer.label}
                             </div>
-                            <div className="mb-3 text-gray-600">
-                              {answer.info}
+                            <div className="mb-3 flex items-center justify-center">
+                              <img
+                                width={answer.resize_pct}
+                                src={answer.symbol}
+                              />
                             </div>
-                          </div>
-                          {answer.name == "dynamic" &&
-                            ["car", "heat", "battery", "other"].some((item) =>
-                              selectedDevices.includes(item),
-                            ) && (
-                              <div className="relative bottom-0 h-1/5 align-bottom text-sm font-bold text-blue-600">
-                                Empfohlen für flexible Lasten
-                              </div>
-                            )}
-                        </AnswerItem>
-                      ))}
+                          </AnswerItem>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Question PLZ */}
+                    <div className="border-primary-main container mx-auto mt-10 rounded-xl border-2 border-dotted pt-3 pb-3 ">
+                      <div className="flex items-center justify-between px-16">
+                        <div className=" text-secondary-main max-w-4xl whitespace-nowrap">
+                          <h1 className="h4">Deine Postleitzahl</h1>
+                        </div>
+                        <input
+                          type="number"
+                          className={`text-bold  bg-secondary-200  rounded-xl border-4 font-bold ${
+                            validPostalCode
+                              ? "border-quartiary-main"
+                              : "border-primary-main"
+                          }`}
+                          value={postalCode}
+                          pattern="\d{5}"
+                          placeholder="Deine PLZ"
+                          onChange={(e) =>
+                            handlePostalCodeChange(e.target.value)
+                          }
+                          required
+                          maxlength="5"
+                        />
+                      </div>
                     </div>
                   </div>
+                </div>
 
-                  <a
-                    type="submit"
-                    className="btn mt-10 w-full rounded-xl bg-blue-600 text-white hover:bg-blue-700"
-                    href="/compare"
-                  >
-                    Weiter zum Tarifvergleich
-                  </a>
-                </form>
-              </div>
+                <div className="border-primary-main container mx-auto mt-10 rounded-xl border-2 border-dotted py-3">
+                  <div className="flex w-full items-center justify-between px-16">
+                    <div className="text-secondary-main max-w-4xl whitespace-nowrap">
+                      <h1 className="h4">Dein jährlicher Stromverbrauch</h1>
+                    </div>
+                    <div className="flex flex-col">
+                      {consKnown && (
+                        <div className="flex flex-col">
+                          <div className="relative flex items-center">
+                            <input
+                              type="number"
+                              className={`text-bold bg-secondary-200   rounded-xl border-4 font-bold ${
+                                consumption != ""
+                                  ? "border-quartiary-main"
+                                  : "border-primary-main"
+                              }`}
+                              value={consumption}
+                              pattern="\d{5}"
+                              placeholder="1000"
+                              onChange={(e) =>
+                                handleConsumptionChange(e.target.value)
+                              }
+                              maxlength="5"
+                            />
+
+                            <text className="text-tertiary-main absolute right-8 font-bold">
+                              kwh
+                            </text>
+                          </div>
+                          <a
+                            className="btn text-tertiary-main bg-secondary-main my-3 mx-5 w-full cursor-pointer p-2 text-sm hover:bg-gray-400 sm:mb-0 sm:w-auto"
+                            onClick={() => handleConsKnown()}
+                          >
+                            Weiß ich nicht
+                          </a>
+                        </div>
+                      )}
+                      {!consKnown && (
+                        <div className="flex flex-col">
+                          <label className="flex items-center ">
+                            <text className="text-secondary-main mx-5 font-bold">
+                              Anzahl Personen in deinem Haushalt
+                            </text>
+                            <select
+                              id="numberSelector"
+                              value={selectedHouseholdsize}
+                              onChange={handleHouseholdsizeChange}
+                              className="bg-secondary-200 text-tertiary-main rounded"
+                            >
+                              <option value="" disabled>
+                                Haushaltsgröße
+                              </option>
+                              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => (
+                                <option key={number} value={number}>
+                                  {number}
+                                </option>
+                              ))}
+                            </select>
+                          </label>
+                          <div className="flex items-center">
+                            <text className="text-secondary-main mx-4 mt-5 flex-1 font-bold">
+                              Geschätzer Verbrauch
+                            </text>
+                            <text className="text-secondary-main mt-5 flex-1 text-xl font-bold">
+                              {consumption} kWh
+                            </text>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Question tarif */}
+                {/* TODO: Füge info button mit link zu welcher tarif passt zu mir */}
+                <div className="border-primary-main container mx-auto mt-10 items-center rounded-xl border-2 border-dotted pt-3 pb-3 ">
+                  <div className="text-secondary-main mx-auto max-w-4xl whitespace-nowrap">
+                    <h1 className="h4">Wähle einen Tariftyp</h1>
+                  </div>
+                  <div className="mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                    {tarifAnswers.map((answer) => (
+                      <AnswerItem
+                        answerName={answer.name}
+                        selected={selectedTarif === answer.name}
+                        onChange={handleTarifChange}
+                        note={answer.name}
+                        noteApplied={answer.name == "dynamic"}
+                        noteColor={"text-red-400"}
+                      >
+                        <div className="flex-1">
+                          <div className="mt-3  text-center text-lg font-bold leading-snug tracking-tight">
+                            {answer.label}
+                          </div>
+                          <div className="text-tertiary-main mb-3">
+                            {answer.info}
+                          </div>
+                        </div>
+                        {answer.name == "dynamic" &&
+                          ["car", "heat", "battery", "other"].some((item) =>
+                            selectedDevices.includes(item),
+                          ) && (
+                            <div className="text-quartiary-main relative bottom-0 h-1/5 align-bottom text-sm font-bold">
+                              Empfohlen für flexible Lasten
+                            </div>
+                          )}
+                      </AnswerItem>
+                    ))}
+                  </div>
+                </div>
+
+                <a
+                  type="submit"
+                  className="btn bg-primary-main text-secondary-main hover:bg-primary-600 mt-10 w-full rounded-xl"
+                  href="/compare"
+                >
+                  Weiter zum Tarifvergleich
+                </a>
+              </form>
             </div>
           </div>
         </div>

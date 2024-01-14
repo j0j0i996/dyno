@@ -8,7 +8,7 @@ const QuizHeader = ({ question }) => {
   return (
     <div
       key={question}
-      className="m-1 mx-auto max-w-4xl text-center text-white"
+      className="text-secondary-main m-1 mx-auto max-w-4xl text-center"
     >
       <h1 className="h3">{question}</h1>
     </div>
@@ -27,17 +27,17 @@ const QuizAnswerItem = ({
       onClick={() => handleAnswerClick(answerName)}
       className={`relative mx-4 flex cursor-pointer rounded border p-4 text-lg transition duration-300 ease-in-out ${
         selected
-          ? "border-transparent bg-teal-200"
-          : "border-transparent bg-white shadow-md hover:bg-teal-100 hover:shadow-lg"
+          ? "bg-secondary-main border-transparent"
+          : "bg-secondary-200 hover:bg-secondary-300 border-transparent shadow-md hover:shadow-lg"
       }`}
     >
-      {/* Checkbox in the upper right corner */}
-      <div className="absolute top-1/2 left-3 flex h-5 w-5 -translate-y-1/2 transform items-center justify-center rounded-full border-2 border-blue-500">
+      {/* Checkbox */}
+      <div className="border-primary-main absolute top-1/2 left-3 flex h-5 w-5 -translate-y-1/2 transform items-center justify-center rounded-full border-2">
         {selected && (
-          <div className="h-2 w-2 rounded-full border border-blue-500 bg-blue-500"></div>
+          <div className="border-primary-main bg-primary-main h-2 w-2 rounded-full border"></div>
         )}
       </div>
-      <div className="ml-6 align-top">{children}</div>
+      <div className="text-tertiary-main ml-6 align-top">{children}</div>
     </div>
   );
 };
@@ -47,24 +47,9 @@ const QuizSubmitButton = ({ children, onSubmit, selectedAnswer }) => {
     <div key={children} className="mx-16 max-w-xs sm:max-w-none">
       <div>
         <a
-          className="btn mb-4 w-full cursor-pointer bg-blue-600 text-white hover:bg-blue-700 sm:mb-0 sm:w-auto"
+          className="btn bg-secondary-main text-tertiary-main hover:bg-secondary-400 mb-4 w-full cursor-pointer sm:mb-0 sm:w-auto"
           onClick={() => onSubmit(selectedAnswer)}
           href="/questionnaire"
-        >
-          {children}
-        </a>
-      </div>
-    </div>
-  );
-};
-
-const QuizBackButton = ({ children, onBack }) => {
-  return (
-    <div key={children} className="mx-16 max-w-xs sm:max-w-none">
-      <div>
-        <a
-          className="btn mb-4 w-full cursor-pointer text-blue-600 hover:bg-gray-800 sm:mb-0 sm:w-auto"
-          onClick={() => onBack()}
         >
           {children}
         </a>
@@ -109,7 +94,7 @@ export const QuizQuestion1 = ({ onSubmit }) => {
       Wenn du in diesen Zeiten viel Strom verbrauchst, 
       empfehlen wir dir einen <b>dynamischen Stromtarif</b>. 
       Bei 
-      <a class="underline text-blue-600" href="https://www.agora-energiewende.de/daten-tools/agorameter/chart/today/power_generation_price/03.07.2023/06.07.2023/hourly\">Agora Energiewende</a>
+      <a class="underline text-primary-main" href="https://www.agora-energiewende.de/daten-tools/agorameter/chart/today/power_generation_price/03.07.2023/06.07.2023/hourly\">Agora Energiewende</a>
      kannst du den Anteil der Erneuerbaren im Strommix und den Strompreis für jede Stunde seit 2012 sehen.</p>
       `,
       tarif: "dynamischen",
@@ -122,7 +107,7 @@ export const QuizQuestion1 = ({ onSubmit }) => {
       explain: `<p>Mit <b>dynamischen und variablen Tarifen</b> werden deine Kosten im Schnitt
       geringer sein als mit Fixpreis Tarifen. Bei Fixpreis Tarifen schlägt dein Energieversorger 
       nämlich einen Risikozuschlag auf. 
-      Dafür trägst bei dynamischen und variablen selbst das Risiko für schwankende Strompreise.
+      Dafür trägst bei dynamischen und variablen Tarifen selbst das Risiko für schwankende Strompreise.
       </p>`,
       tarif: "dynamischen oder variablen",
     },
@@ -138,7 +123,7 @@ export const QuizQuestion1 = ({ onSubmit }) => {
       mehr drüber nachdenken. Dafür zahlst du an deinen Stromversorger einen Risikoaufschlag.
       Unsere Vergleichsplattform fokussiert sich  auf dynamische und variable Tarife. 
       Um Fixpreis Tarife zu vergleichen, kannst du andere 
-      Vergleichsplattformen wie <a class="underline text-blue-600" href="verivox.de">Verivox</a> oder <a class="underline text-blue-600">Check24</a> nutzen.
+      Vergleichsplattformen wie <a class="underline text-primary-main" href="verivox.de">Verivox</a> oder <a class="underline text-primary-main">Check24</a> nutzen.
       </p>`,
     },
   ];
@@ -166,20 +151,20 @@ export const QuizQuestion1 = ({ onSubmit }) => {
                   <div className="mb-1 font-bold leading-snug tracking-tight">
                     {answer.header}
                   </div>
-                  <div className="text-gray-600">{answer.text}</div>
+                  <div className="text-tertiary-main">{answer.text}</div>
                 </QuizAnswerItem>
               ))}
             </div>
 
             {selectedAnswer !== null && (
               <div data-aos="zoom-y-out" data-aos-delay="25">
-                <div className="mx-5 my-7 flex rounded border-4 border-solid border-teal-500 bg-teal-100 p-3 text-lg">
+                <div className="border-primary-main bg-tertiary-main text-secondary-main mx-5 my-7 flex rounded border-2 border-solid p-3 text-lg">
                   <div className="flex items-center">
                     <svg
                       fill="currentColor"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      class="h-9 w-9  text-teal-500"
+                      class="text-secondary-main h-9  w-9"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <title>lightbulb</title>
@@ -196,7 +181,7 @@ export const QuizQuestion1 = ({ onSubmit }) => {
                   />
                 </div>
                 {selectedAnswer !== "fix" && (
-                  <div className="mt-5 flex items-center justify-center">
+                  <div className=" mt-5 flex items-center justify-center">
                     <QuizSubmitButton
                       onSubmit={onSubmit}
                       selectedAnswer={selectedAnswer}
@@ -217,166 +202,6 @@ export const QuizQuestion1 = ({ onSubmit }) => {
                 )}
               </div>
             )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export const QuizQuestion2 = ({ onSubmit, onBack }) => {
-  const [selectedAnswers, setSelectedAnswers] = useState([]);
-
-  const handleAnswerClick = (answerName) => {
-    if (selectedAnswers.includes(answerName)) {
-      setSelectedAnswers(
-        selectedAnswers.filter((option) => option !== answerName),
-      );
-    } else {
-      setSelectedAnswers([...selectedAnswers, answerName]);
-    }
-  };
-
-  const answers = [
-    {
-      name: "car",
-      header: "Elektroauto",
-      symbol: EcarSVG,
-      resize_pct: "40%",
-    },
-    {
-      name: "heat",
-      header: "Wärmepumpe",
-      symbol: HeatPumpSVG,
-      resize_pct: "55%",
-    },
-    {
-      name: "other",
-      header: "Andere",
-      symbol: OtherSVG,
-      resize_pct: "40%",
-    },
-  ];
-
-  return (
-    <div>
-      {/* Section header */}
-      <QuizHeader question="Welche Geräte besitzt du oder planst du anzuschaffen?"></QuizHeader>
-
-      {/* Section content */}
-      <div className="md:grid md:grid-cols-6 md:gap-6">
-        {/* Content */}
-        <div
-          className="mx-auto my-7 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-9"
-          data-aos="fade-right"
-        >
-          <div className="container mx-auto mt-6">
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
-              {answers.map((answer) => (
-                <QuizAnswerItem
-                  answerName={answer.name}
-                  selected={selectedAnswers.indexOf(answer.name) !== -1}
-                  handleAnswerClick={handleAnswerClick}
-                >
-                  <div className="mb-1 text-center font-bold leading-snug tracking-tight">
-                    {answer.header}
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <img width={answer.resize_pct} src={answer.symbol} />
-                  </div>
-                </QuizAnswerItem>
-              ))}
-            </div>
-            <div data-aos="zoom-y-out" data-aos-delay="25">
-              <div className="mt-5 flex items-center justify-center">
-                <QuizBackButton onBack={onBack}>
-                  <p>← Zurück</p>
-                </QuizBackButton>
-                <div className={selectedAnswers.length ? "" : "invisible"}>
-                  <QuizSubmitButton
-                    onSubmit={onSubmit}
-                    selectedAnswer={selectedAnswers}
-                  >
-                    <p>Weiter →</p>
-                  </QuizSubmitButton>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export const QuizQuestion3 = ({ onSubmit, onBack }) => {
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-
-  const handleAnswerClick = (answerName) => {
-    setSelectedAnswer(answerName);
-  };
-
-  const answers = [
-    {
-      name: "1",
-    },
-    {
-      name: "2",
-    },
-    {
-      name: "3",
-    },
-    {
-      name: "4",
-    },
-    {
-      name: "5+",
-    },
-  ];
-
-  return (
-    <div>
-      {/* Section header */}
-      <QuizHeader question="Wie viele Personen wohnen in deinem Haushalt?"></QuizHeader>
-
-      {/* Section content */}
-      <div className="md:grid md:grid-cols-6 md:gap-6">
-        {/* Content */}
-        <div
-          className="mx-auto my-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-9"
-          data-aos="fade-right"
-        >
-          <div className="container mx-auto mt-6">
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-5">
-              {answers.map((answer) => (
-                <QuizAnswerItem
-                  answerName={answer.name}
-                  selected={selectedAnswer === answer.name}
-                  handleAnswerClick={handleAnswerClick}
-                >
-                  <div className="text-center text-lg font-bold leading-snug tracking-tight">
-                    {answer.name}
-                  </div>
-                </QuizAnswerItem>
-              ))}
-            </div>
-          </div>
-          <div data-aos="zoom-y-out" data-aos-delay="25">
-            <div className="mt-5 flex items-center justify-center">
-              <QuizBackButton onBack={onBack}>
-                <p>← Zurück</p>
-              </QuizBackButton>
-              <div className={selectedAnswer ? "" : "invisible"}>
-                <Link to="/compare">
-                  <QuizSubmitButton
-                    onSubmit={onSubmit}
-                    selectedAnswer={selectedAnswer}
-                  >
-                    <p>Weiter →</p>
-                  </QuizSubmitButton>
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
       </div>

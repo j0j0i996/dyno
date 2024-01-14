@@ -9,7 +9,7 @@ import { Element, scroller } from "react-scroll";
 
 function Compare() {
   return (
-    <div className="flex min-h-screen flex-col overflow-hidden">
+    <div className="bg-primary-main flex min-h-screen flex-col overflow-hidden">
       {/*  Site header */}
       <Header />
 

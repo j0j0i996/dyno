@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import DynoLogo from "../images/Dyno_high.png";
 
 function Header() {
   const [top, setTop] = useState(true);
@@ -15,43 +16,15 @@ function Header() {
 
   return (
     <header
-      className={`fixed z-30 w-full transition duration-300 ease-in-out md:bg-opacity-90 ${
-        !top && "bg-white shadow-lg backdrop-blur-sm"
-      }`}
+      className={`bg-tertiary-main fixed z-30 w-full shadow-lg  transition duration-300 md:bg-opacity-90`}
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
-        <div className="flex h-16 items-center justify-between md:h-20">
+        <div className="flex h-16 items-center justify-between">
           {/* Site branding */}
           <div className="mr-4 flex-shrink-0">
             {/* Logo */}
             <Link to="/" className="block" aria-label="Cruip">
-              <svg
-                className="h-8 w-8"
-                viewBox="0 0 32 32"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <defs>
-                  <radialGradient
-                    cx="21.152%"
-                    cy="86.063%"
-                    fx="21.152%"
-                    fy="86.063%"
-                    r="79.941%"
-                    id="header-logo"
-                  >
-                    <stop stopColor="#4FD1C5" offset="0%" />
-                    <stop stopColor="#81E6D9" offset="25.871%" />
-                    <stop stopColor="#338CF5" offset="100%" />
-                  </radialGradient>
-                </defs>
-                <rect
-                  width="32"
-                  height="32"
-                  rx="16"
-                  fill="url(#header-logo)"
-                  fillRule="nonzero"
-                />
-              </svg>
+              <img width={"11%"} src={DynoLogo} />
             </Link>
           </div>
 

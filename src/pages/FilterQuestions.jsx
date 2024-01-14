@@ -7,7 +7,7 @@ import Questionnaire from "../partials/Questionnaire";
 
 function FilterQuestions() {
   return (
-    <div className="flex min-h-screen flex-col overflow-hidden">
+    <div className="bg-tertiary-main flex min-h-screen flex-col overflow-hidden">
       {/*  Site header */}
       <Header />
 
