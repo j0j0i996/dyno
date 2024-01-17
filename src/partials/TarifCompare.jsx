@@ -174,7 +174,7 @@ function TarifCompare() {
             data-aos="zoom-y-out"
           >
             <span className="to-neutral-main from-neutral-main  bg-gradient-to-r bg-clip-text text-transparent">
-              Vergleiche dein Tarife
+              Vergleiche deine Tarife
             </span>
           </h1>
         </div>
