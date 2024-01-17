@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store, persistor } from "./data/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 import "aos/dist/aos.css";
 import "./css/style.css";
@@ -29,13 +32,15 @@ function App() {
   }, [location.pathname]); // triggered on route change
 
   return (
-    <>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/questionnaire" element={<FilterQuestions />} />
-        <Route path="/compare" element={<Compare />} />
-      </Routes>
-    </>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/questionnaire" element={<FilterQuestions />} />
+          <Route path="/compare" element={<Compare />} />
+        </Routes>
+      </PersistGate>
+    </Provider>
   );
 }
 

@@ -27,13 +27,10 @@ const WordCirculator = ({ words, interval }) => {
       >
         {extendedWords.map((word, index) => (
           <div key={index} style={{ height: "100px" }}>
-            <h1
-              className="leading-tighter mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl"
-              data-aos="zoom-y-out"
-            >
-              <span className="to-tertiary-main from-tertiary-main bg-gradient-to-r bg-clip-text text-transparent">
+            <h1 className="md:text-6xl" data-aos="zoom-y-out">
+              <span className="to-base-main from-base-main bg-gradient-to-r bg-clip-text text-transparent">
                 {word}
-                <text className="text-secondary-main">.</text>
+                <text className="text-neutral-main">.</text>
               </span>
             </h1>
           </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import DynoLogo from "../images/Dyno_high.png";
+import DynoLogo from "../images/dyno_logo_blue_white.png";
 
 function Header() {
   const [top, setTop] = useState(true);
@@ -16,7 +16,7 @@ function Header() {
 
   return (
     <header
-      className={`bg-tertiary-main fixed z-30 w-full shadow-lg  transition duration-300 md:bg-opacity-90`}
+      className={`bg-base-main fixed z-30 w-full shadow-lg  transition duration-300 md:bg-opacity-90`}
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <div className="flex h-16 items-center justify-between">

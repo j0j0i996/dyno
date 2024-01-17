@@ -8,7 +8,7 @@ const QuizHeader = ({ question }) => {
   return (
     <div
       key={question}
-      className="text-secondary-main m-1 mx-auto max-w-4xl text-center"
+      className="text-neutral-main m-1 mx-auto max-w-4xl text-center"
     >
       <h1 className="h3">{question}</h1>
     </div>
@@ -25,19 +25,17 @@ const QuizAnswerItem = ({
     <div
       key={answerName}
       onClick={() => handleAnswerClick(answerName)}
-      className={`relative mx-4 flex cursor-pointer rounded border p-4 text-lg transition duration-300 ease-in-out ${
-        selected
-          ? "bg-secondary-main border-transparent"
-          : "bg-secondary-200 hover:bg-secondary-300 border-transparent shadow-md hover:shadow-lg"
+      className={` text-base-main relative mx-3 flex cursor-pointer rounded p-4 text-lg shadow-md transition duration-300 ease-in-out  hover:shadow-lg focus:outline-none ${
+        selected ? "bg-neutral-main" : "bg-neutral-main   hover:shadow-lg"
       }`}
     >
       {/* Checkbox */}
       <div className="border-primary-main absolute top-1/2 left-3 flex h-5 w-5 -translate-y-1/2 transform items-center justify-center rounded-full border-2">
         {selected && (
-          <div className="border-primary-main bg-primary-main h-2 w-2 rounded-full border"></div>
+          <div className=" bg-primary-main h-2 w-2 rounded-full border"></div>
         )}
       </div>
-      <div className="text-tertiary-main ml-6 align-top">{children}</div>
+      <div className=" ml-6 align-top">{children}</div>
     </div>
   );
 };
@@ -47,7 +45,7 @@ const QuizSubmitButton = ({ children, onSubmit, selectedAnswer }) => {
     <div key={children} className="mx-16 max-w-xs sm:max-w-none">
       <div>
         <a
-          className="btn bg-secondary-main text-tertiary-main hover:bg-secondary-400 mb-4 w-full cursor-pointer sm:mb-0 sm:w-auto"
+          className="btn bg-neutral-main text-base-main hover:bg-primary-200 mb-4 w-full cursor-pointer sm:mb-0 sm:w-auto"
           onClick={() => onSubmit(selectedAnswer)}
           href="/questionnaire"
         >
@@ -151,20 +149,20 @@ export const QuizQuestion1 = ({ onSubmit }) => {
                   <div className="mb-1 font-bold leading-snug tracking-tight">
                     {answer.header}
                   </div>
-                  <div className="text-tertiary-main">{answer.text}</div>
+                  <div>{answer.text}</div>
                 </QuizAnswerItem>
               ))}
             </div>
 
             {selectedAnswer !== null && (
               <div data-aos="zoom-y-out" data-aos-delay="25">
-                <div className="border-primary-main bg-tertiary-main text-secondary-main mx-5 my-7 flex rounded border-2 border-solid p-3 text-lg">
+                <div className="border-primary-main bg-base-main text-neutral-main mx-5 my-7 flex rounded border-2 border-solid p-3 text-lg">
                   <div className="flex items-center">
                     <svg
                       fill="currentColor"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      class="text-secondary-main h-9  w-9"
+                      class="text-neutral-main h-9  w-9"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <title>lightbulb</title>

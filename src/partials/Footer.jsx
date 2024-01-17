@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DynoLogo from "../images/Dyno_inverted_high.png";
+import DynoLogo from "../images/dyno_logo_white_blue.png";
 
 function Footer() {
   return (
@@ -16,17 +16,17 @@ function Footer() {
                 <img width={"80%"} src={DynoLogo} />
               </Link>
             </div>
-            <div className="text-secondary-main text-sm">
+            <div className="text-neutral-main text-sm">
               <Link
                 to="#"
-                className="text-secondary-main hover:text-tertiary-main transition duration-150 ease-in-out hover:underline"
+                className="text-neutral-main hover:text-base-main transition duration-150 ease-in-out hover:underline"
               >
                 Allgemeine Geschäftsbedingungen (AGB)
               </Link>{" "}
               ·{" "}
               <Link
                 to="#"
-                className="text-secondary-main hover:text-tertiary-main transition duration-150 ease-in-out hover:underline"
+                className="text-neutral-main hover:text-base-main transition duration-150 ease-in-out hover:underline"
               >
                 Datenschutzerklärung
               </Link>
@@ -35,12 +35,12 @@ function Footer() {
 
           {/* 3rd block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h6 className="text-secondary-main mb-2 font-medium">Wissen</h6>
+            <h6 className="text-neutral-main mb-2 font-medium">Wissen</h6>
             <ul className="text-sm">
               <li className="mb-2">
                 <Link
                   to="https://www.linkedin.com/pulse/we-germans-great-being-geizig-thrifty-lets-use-energy-schulte%3FtrackingId=1Vv1B4%252BbRdiviCmVwPiSrg%253D%253D/?trackingId=1Vv1B4%2BbRdiviCmVwPiSrg%3D%3D"
-                  className="text-secondary-main hover:text-tertiary-main transition duration-150 ease-in-out"
+                  className="text-neutral-main hover:text-base-main transition duration-150 ease-in-out"
                 >
                   Warum dynamische Tarife?
                 </Link>
@@ -49,7 +49,7 @@ function Footer() {
               <li className="mb-2">
                 <Link
                   to="#"
-                  className="text-secondary-main transition duration-150 ease-in-out hover:text-tertiary-main"
+                  className="text-neutral-main transition duration-150 ease-in-out hover:text-base-main"
                 >
                   Tutorials & Guides
                 </Link>
@@ -57,7 +57,7 @@ function Footer() {
               <li className="mb-2">
                 <Link
                   to="#"
-                  className="text-secondary-main transition duration-150 ease-in-out hover:text-tertiary-main"
+                  className="text-neutral-main transition duration-150 ease-in-out hover:text-base-main"
                 >
                   Blog
                 </Link>
@@ -65,7 +65,7 @@ function Footer() {
               <li className="mb-2">
                 <Link
                   to="#"
-                  className="text-secondary-main transition duration-150 ease-in-out hover:text-tertiary-main"
+                  className="text-neutral-main transition duration-150 ease-in-out hover:text-base-main"
                 >
                   Support Center
                 </Link>
@@ -73,7 +73,7 @@ function Footer() {
               <li className="mb-2">
                 <Link
                   to="#"
-                  className="text-secondary-main transition duration-150 ease-in-out hover:text-tertiary-main"
+                  className="text-neutral-main transition duration-150 ease-in-out hover:text-base-main"
                 >
                   Partners
                 </Link>
@@ -84,14 +84,12 @@ function Footer() {
 
           {/* 4th block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h6 className="text-secondary-main mb-2 font-medium">
-              Unternehmen
-            </h6>
+            <h6 className="text-neutral-main mb-2 font-medium">Unternehmen</h6>
             <ul className="text-sm">
               <li className="mb-2">
                 <Link
                   to="#"
-                  className="text-secondary-main hover:text-tertiary-main transition duration-150 ease-in-out"
+                  className="text-neutral-main hover:text-base-main transition duration-150 ease-in-out"
                 >
                   Home
                 </Link>
@@ -99,7 +97,7 @@ function Footer() {
               <li className="mb-2">
                 <Link
                   to="#"
-                  className="text-secondary-main hover:text-tertiary-main transition duration-150 ease-in-out"
+                  className="text-neutral-main hover:text-base-main transition duration-150 ease-in-out"
                 >
                   Über uns
                 </Link>
@@ -108,7 +106,7 @@ function Footer() {
               <li className="mb-2">
                 <Link
                   to="#"
-                  className="text-secondary-main transition duration-150 ease-in-out hover:text-tertiary-main"
+                  className="text-neutral-main transition duration-150 ease-in-out hover:text-base-main"
                 >
                   Company values
                 </Link>
@@ -116,7 +114,7 @@ function Footer() {
               <li className="mb-2">
                 <Link
                   to="#"
-                  className="text-secondary-main transition duration-150 ease-in-out hover:text-tertiary-main"
+                  className="text-neutral-main transition duration-150 ease-in-out hover:text-base-main"
                 >
                   Pricing
                 </Link>
@@ -124,7 +122,7 @@ function Footer() {
               <li className="mb-2">
                 <Link
                   to="#"
-                  className="text-secondary-main transition duration-150 ease-in-out hover:text-tertiary-main"
+                  className="text-neutral-main transition duration-150 ease-in-out hover:text-base-main"
                 >
                   Privacy Policy
                 </Link>
@@ -135,8 +133,8 @@ function Footer() {
 
           {/* 5th block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-3">
-            <h6 className="text-secondary-main mb-2 font-medium">Newsletter</h6>
-            <p className="text-secondary-main mb-4 text-sm">
+            <h6 className="text-neutral-main mb-2 font-medium">Newsletter</h6>
+            <p className="text-neutral-main mb-4 text-sm">
               Abboniere unseren Newsletter um zu Themen rund um dynamischen
               Stromtarife auf dem aktuellsten Stand zu bleiben.
             </p>
@@ -150,7 +148,7 @@ function Footer() {
                     <input
                       id="newsletter"
                       type="email"
-                      className="form-input border-secondary-500 bg-secondary-200 text-tertiary-main placeholder-tertiary-400 focus:border-tertiary-main w-full px-3 py-2 pr-12 text-sm"
+                      className="form-input text-base-main placeholder-base-400 focus:border-base-main border-base-main w-full bg-neutral-200 px-3 py-2 pr-12 text-sm"
                       placeholder="Deine Email"
                       required
                     />
@@ -160,7 +158,7 @@ function Footer() {
                       aria-label="Subscribe"
                     >
                       <span
-                        className="bg-secondary-200 absolute inset-0 right-auto my-2 -ml-px w-px"
+                        className="absolute inset-0 right-auto my-2 -ml-px w-px bg-neutral-200"
                         aria-hidden="true"
                       ></span>
                       <svg
@@ -190,7 +188,7 @@ function Footer() {
             <li className="ml-4">
               <Link
                 to="https://github.com/j0j0i996/stromcheck"
-                className="hover:bg-secondary-main text-primary-main hover:text-tertiary-main bg-secondary-main flex items-center justify-center rounded-full shadow transition duration-150 ease-in-out"
+                className="hover:bg-neutral-main text-primary-main hover:text-base-main bg-neutral-main flex items-center justify-center rounded-full shadow transition duration-150 ease-in-out"
                 aria-label="Github"
               >
                 <svg
@@ -205,7 +203,7 @@ function Footer() {
             <li className="ml-4">
               <Link
                 to="https://www.linkedin.com/in/j-schulte/"
-                className="hover:bg-secondary-main text-primary-main hover:text-tertiary-main bg-secondary-main flex items-center justify-center rounded-full shadow transition duration-150 ease-in-out"
+                className="hover:bg-neutral-main text-primary-main hover:text-base-main bg-neutral-main flex items-center justify-center rounded-full shadow transition duration-150 ease-in-out"
                 aria-label="LinkedIn"
               >
                 <svg

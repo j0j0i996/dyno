@@ -2,17 +2,26 @@ import React, { useState } from "react";
 import HeatPumpSVG from "../images/heatpump.svg";
 import EcarSVG from "../images/ecar.svg";
 import OtherSVG from "../images/other.svg";
-import DynoOnly from "../images/dyno_only_yellow.png";
+import DynoOnly from "../images/dyno_only_white.png";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import {
+  setPersistSelectedTarif,
+  setPersistSelectedDevices,
+  setPersistPostalCode,
+  setPersistConsumption,
+} from "../data/questionnaireSlice";
 
 const AnswerItem = ({ children, answerName, selected, onChange }) => {
   return (
     <div
       key={answerName}
       onClick={() => onChange(answerName)}
-      className={`text-tertiary-main  mx-5 flex cursor-pointer flex-col items-center rounded px-5 text-lg transition duration-300 ease-in-out ${
+      className={`text-base-main  mx-5 flex cursor-pointer flex-col items-center rounded px-5 py-4 text-lg transition duration-300 ease-in-out ${
         selected
-          ? "bg-secondary-400 "
-          : "bg-secondary-200 hover:bg-secondary-main  shadow-md hover:shadow-lg"
+          ? "bg-primary-main text-neutral-main"
+          : "hover:bg-primary-200 bg-neutral-main  shadow-md hover:shadow-lg"
       }`}
     >
       {children}
@@ -21,34 +30,57 @@ const AnswerItem = ({ children, answerName, selected, onChange }) => {
 };
 
 const Questionnaire = () => {
-  const [selectedTarif, setSelectedTarif] = useState("");
-  const [selectedDevices, setSelectedDevices] = useState([]);
-  const [postalCode, setPostalCode] = useState("");
+  const persistedQuestionnaireData = useSelector(
+    (state) => state.questionnaire,
+  );
+  const [selectedTarif, setSelectedTarif] = useState(
+    persistedQuestionnaireData.selectedTarif,
+  );
+  const [selectedDevices, setSelectedDevices] = useState(
+    persistedQuestionnaireData.selectedDevices,
+  );
+  const [postalCode, setPostalCode] = useState(
+    persistedQuestionnaireData.postalCode,
+  );
   const [validPostalCode, setValidPostalCode] = useState(false);
-  const [consumption, setConsumption] = useState("");
-  const [electricityConsumption, setElectricityConsumption] = useState("");
-  const [householdSize, setHouseholdSize] = useState("");
-  const [livingArea, setLivingArea] = useState("");
+  const [consumption, setConsumption] = useState(
+    persistedQuestionnaireData.consumption,
+  );
   const [consKnown, setConsKnown] = useState(true);
   const [selectedHouseholdsize, setSelectedHouseholdsize] = useState("");
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    navigate("/compare");
+  };
 
   const handleHouseholdsizeChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedHouseholdsize(selectedValue);
     setConsumption(selectedValue * 1000);
+    dispatch(setPersistConsumption(selectedValue * 1000));
   };
 
   const handleTarifChange = (answerName) => {
     setSelectedTarif(answerName);
+    dispatch(setPersistSelectedTarif(answerName));
   };
 
   const handleDevicesChange = (answerName) => {
     if (selectedDevices.includes(answerName)) {
-      setSelectedDevices(
-        selectedDevices.filter((option) => option !== answerName),
+      const newDevices = selectedDevices.filter(
+        (option) => option !== answerName,
       );
+      setSelectedDevices(newDevices);
+      dispatch(setPersistSelectedDevices(newDevices));
     } else {
-      setSelectedDevices([...selectedDevices, answerName]);
+      const newDevices = [...selectedDevices, answerName];
+      setSelectedDevices(newDevices);
+      dispatch(setPersistSelectedDevices(newDevices));
     }
   };
 
@@ -57,6 +89,7 @@ const Questionnaire = () => {
     if (postalCode.length == 5) {
       setValidPostalCode(true);
       setPostalCode(postalCode);
+      dispatch(setPersistPostalCode(postalCode));
     } else if (postalCode.length > 5) {
     } else {
       setPostalCode(postalCode);
@@ -66,22 +99,11 @@ const Questionnaire = () => {
 
   const handleConsumptionChange = (cons) => {
     setConsumption(cons);
+    dispatch(setPersistConsumption(cons));
   };
 
   const handleConsKnown = () => {
     setConsKnown(!consKnown);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Handle form submission logic here
-    console.log("Selected Tarif:", selectedTarif);
-    console.log("Selected Devices:", selectedDevices);
-    console.log("Postal Code:", postalCode);
-    console.log("Electricity Consumption:", electricityConsumption);
-    console.log("Household Size:", householdSize);
-    console.log("Living Area:", livingArea);
   };
 
   const tarifAnswers = [
@@ -156,7 +178,7 @@ const Questionnaire = () => {
                 className="h1 leading-tighter mx-auto font-extrabold tracking-tighter"
                 data-aos="zoom-y-out"
               >
-                <span className="to-primary-main from-primary-main  bg-gradient-to-r bg-clip-text text-transparent">
+                <span className="to-neutral-main from-neutral-main  bg-gradient-to-r bg-clip-text text-transparent">
                   Finde deinen Tarif:
                 </span>
               </h1>
@@ -173,7 +195,7 @@ const Questionnaire = () => {
                     {/* Question device */}
                     {/* Todo: add info */}
                     <div className=" border-primary-main container mx-auto mt-6 items-center rounded-xl border-2 border-dotted pt-3 pb-3 ">
-                      <div className=" text-secondary-main  mx-auto max-w-4xl whitespace-nowrap ">
+                      <div className=" text-neutral-main  mx-auto max-w-4xl whitespace-nowrap ">
                         <h1 className="h4">
                           Hast du flexible Lasten in deinem Haushalt?
                         </h1>
@@ -187,10 +209,10 @@ const Questionnaire = () => {
                             }
                             onChange={handleDevicesChange}
                           >
-                            <div className="mt-3 text-center text-lg font-bold leading-snug tracking-tight">
+                            <div className="text-center text-lg font-bold leading-snug tracking-tight">
                               {answer.label}
                             </div>
-                            <div className="mb-3 flex items-center justify-center">
+                            <div className="flex items-center justify-center">
                               <img
                                 width={answer.resize_pct}
                                 src={answer.symbol}
@@ -204,14 +226,14 @@ const Questionnaire = () => {
                     {/* Question PLZ */}
                     <div className="border-primary-main container mx-auto mt-10 rounded-xl border-2 border-dotted pt-3 pb-3 ">
                       <div className="flex items-center justify-between px-16">
-                        <div className=" text-secondary-main max-w-4xl whitespace-nowrap">
+                        <div className=" text-neutral-main max-w-4xl whitespace-nowrap">
                           <h1 className="h4">Deine Postleitzahl</h1>
                         </div>
                         <input
                           type="number"
-                          className={`text-bold  bg-secondary-200  rounded-xl border-4 font-bold ${
+                          className={`text-bold  bg-neutral-main  rounded-xl border-4 font-bold ${
                             validPostalCode
-                              ? "border-quartiary-main"
+                              ? "border-green-main"
                               : "border-primary-main"
                           }`}
                           value={postalCode}
@@ -230,7 +252,7 @@ const Questionnaire = () => {
 
                 <div className="border-primary-main container mx-auto mt-10 rounded-xl border-2 border-dotted py-3">
                   <div className="flex w-full items-center justify-between px-16">
-                    <div className="text-secondary-main max-w-4xl whitespace-nowrap">
+                    <div className="text-neutral-main max-w-4xl whitespace-nowrap">
                       <h1 className="h4">Dein jährlicher Stromverbrauch</h1>
                     </div>
                     <div className="flex flex-col">
@@ -239,9 +261,9 @@ const Questionnaire = () => {
                           <div className="relative flex items-center">
                             <input
                               type="number"
-                              className={`text-bold bg-secondary-200   rounded-xl border-4 font-bold ${
+                              className={`text-bold bg-neutral-main   rounded-xl border-4 font-bold ${
                                 consumption != ""
-                                  ? "border-quartiary-main"
+                                  ? "border-green-main"
                                   : "border-primary-main"
                               }`}
                               value={consumption}
@@ -253,12 +275,12 @@ const Questionnaire = () => {
                               maxlength="5"
                             />
 
-                            <text className="text-tertiary-main absolute right-8 font-bold">
+                            <text className="text-base-main absolute right-8 font-bold">
                               kwh
                             </text>
                           </div>
                           <a
-                            className="btn text-tertiary-main bg-secondary-main my-3 mx-5 w-full cursor-pointer p-2 text-sm hover:bg-gray-400 sm:mb-0 sm:w-auto"
+                            className="btn text-base-main bg-neutral-main hover:bg-primary-200 my-3 mx-5 w-full cursor-pointer p-2 text-sm sm:mb-0 sm:w-auto"
                             onClick={() => handleConsKnown()}
                           >
                             Weiß ich nicht
@@ -268,14 +290,14 @@ const Questionnaire = () => {
                       {!consKnown && (
                         <div className="flex flex-col">
                           <label className="flex items-center ">
-                            <text className="text-secondary-main mx-5 font-bold">
+                            <text className="text-neutral-main mx-5 font-bold">
                               Anzahl Personen in deinem Haushalt
                             </text>
                             <select
                               id="numberSelector"
                               value={selectedHouseholdsize}
                               onChange={handleHouseholdsizeChange}
-                              className="bg-secondary-200 text-tertiary-main rounded"
+                              className="text-base-main rounded bg-neutral-200"
                             >
                               <option value="" disabled>
                                 Haushaltsgröße
@@ -288,10 +310,10 @@ const Questionnaire = () => {
                             </select>
                           </label>
                           <div className="flex items-center">
-                            <text className="text-secondary-main mx-4 mt-5 flex-1 font-bold">
+                            <text className="text-neutral-main mx-4 mt-5 flex-1 font-bold">
                               Geschätzer Verbrauch
                             </text>
-                            <text className="text-secondary-main mt-5 flex-1 text-xl font-bold">
+                            <text className="text-neutral-main mt-5 flex-1 text-xl font-bold">
                               {consumption} kWh
                             </text>
                           </div>
@@ -304,7 +326,7 @@ const Questionnaire = () => {
                 {/* Question tarif */}
                 {/* TODO: Füge info button mit link zu welcher tarif passt zu mir */}
                 <div className="border-primary-main container mx-auto mt-10 items-center rounded-xl border-2 border-dotted pt-3 pb-3 ">
-                  <div className="text-secondary-main mx-auto max-w-4xl whitespace-nowrap">
+                  <div className="text-neutral-main mx-auto max-w-4xl whitespace-nowrap">
                     <h1 className="h4">Wähle einen Tariftyp</h1>
                   </div>
                   <div className="mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -318,18 +340,16 @@ const Questionnaire = () => {
                         noteColor={"text-red-400"}
                       >
                         <div className="flex-1">
-                          <div className="mt-3  text-center text-lg font-bold leading-snug tracking-tight">
+                          <div className="text-center text-lg font-bold leading-snug tracking-tight">
                             {answer.label}
                           </div>
-                          <div className="text-tertiary-main mb-3">
-                            {answer.info}
-                          </div>
+                          <div className="">{answer.info}</div>
                         </div>
                         {answer.name == "dynamic" &&
                           ["car", "heat", "battery", "other"].some((item) =>
                             selectedDevices.includes(item),
                           ) && (
-                            <div className="text-quartiary-main relative bottom-0 h-1/5 align-bottom text-sm font-bold">
+                            <div className="text-neutral-main bg-base-main relative bottom-0  rounded-xl p-1 px-3 text-xs font-bold ">
                               Empfohlen für flexible Lasten
                             </div>
                           )}
@@ -338,13 +358,12 @@ const Questionnaire = () => {
                   </div>
                 </div>
 
-                <a
+                <button
                   type="submit"
-                  className="btn bg-primary-main text-secondary-main hover:bg-primary-600 mt-10 w-full rounded-xl"
-                  href="/compare"
+                  className="btn bg-primary-main text-neutral-main hover:bg-primary-600 mt-10 w-full rounded-xl"
                 >
                   Weiter zum Tarifvergleich
-                </a>
+                </button>
               </form>
             </div>
           </div>
