@@ -10,7 +10,7 @@ function Explain() {
       ></div>
 
       <div className="text-neutral-main relative mx-auto my-3 flex max-w-7xl items-center justify-center px-4 pt-6 sm:px-2">
-        <h1 className="h3">Tarife erklärt</h1>
+        <h1 className="h3">Der Dyno erklärt die Tarife</h1>
       </div>
       <div className="text-neutral-main relative mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 pt-6 sm:px-2 md:grid-cols-3">
         <div className="bg-neutral-main rounded-xl p-6">

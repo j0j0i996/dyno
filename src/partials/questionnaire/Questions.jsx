@@ -8,6 +8,7 @@ import {
   QuizAnswerItem,
   QuizSubmitButton,
   QuizRegularButton,
+  QuizBackButton,
 } from "./Components";
 import {
   setPersistSelectedTarif,
@@ -36,7 +37,6 @@ export const TypeQuestion = ({ onSubmit }) => {
       symbol: EcarSVG,
       resize_pct: "40%",
       result: "Dynamische Tarife passen am besten zu dir!",
-      tarif: "Dynamische",
     },
     {
       name: "time",
@@ -48,7 +48,6 @@ export const TypeQuestion = ({ onSubmit }) => {
         "Mitags, nachmittags und nachts ist der Börsenpreis meistens am günstigsten. \
       Wenn du vorallem hier Strom verbrauchst, kannst du mit einem dynamischen Stromtarif bis zu 35% Kosten sparen.",
       result: "Dynamische Tarife passen am besten zu dir!",
-      tarif: "dynamischen",
     },
     {
       name: "cheap",
@@ -61,7 +60,6 @@ export const TypeQuestion = ({ onSubmit }) => {
       symbol: EcarSVG,
       resize_pct: "40%",
       result: "Dynamische und variable Tarife passen am besten zu dir!",
-      tarif: "dynamischen oder variablen",
     },
     {
       name: "fix",
@@ -106,7 +104,7 @@ export const TypeQuestion = ({ onSubmit }) => {
 
             {selectedAnswer !== null && (
               <div data-aos="zoom-y-out" data-aos-delay="25">
-                <div className="my-6 mx-24 flex items-center justify-center ">
+                <div className="mx-24 mt-6 flex items-center justify-center ">
                   <div
                     className={`relative bottom-0 rounded-xl p-2 px-4 text-lg font-bold ${
                       selectedAnswer === "fix"
@@ -164,10 +162,8 @@ export const TypeQuestion = ({ onSubmit }) => {
   );
 };
 
-export const FlexibleQuestion = ({ onSubmit }) => {
-  const [selectedDevices, setSelectedDevices] = useState(
-    persistedQuestionnaireData.selectedDevices,
-  );
+export const FlexQuestion = ({ onSubmit, onBack, persistedDevices }) => {
+  const [selectedDevices, setSelectedDevices] = useState(persistedDevices);
 
   const deviceAnswers = [
     {
@@ -194,12 +190,6 @@ export const FlexibleQuestion = ({ onSubmit }) => {
       symbol: OtherSVG,
       resize_pct: "40%",
     },
-    {
-      name: "no",
-      label: "Nein",
-      symbol: OtherSVG,
-      resize_pct: "40%",
-    },
   ];
 
   const handleDevicesChange = (answerName) => {
@@ -208,12 +198,152 @@ export const FlexibleQuestion = ({ onSubmit }) => {
         (option) => option !== answerName,
       );
       setSelectedDevices(newDevices);
-      dispatch(setPersistSelectedDevices(newDevices));
     } else {
       const newDevices = [...selectedDevices, answerName];
       setSelectedDevices(newDevices);
-      dispatch(setPersistSelectedDevices(newDevices));
     }
   };
-  return test;
+  return (
+    <div>
+      <QuizHeader question="Welche flexible Lasten hast du in deinem Haushalt?"></QuizHeader>
+      <div className="md:grid md:grid-cols-6 md:gap-6">
+        {/* Content */}
+        <div
+          className="mx-auto mb-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
+          data-aos="fade-right"
+        >
+          <div className="container mx-auto mt-6">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
+              {deviceAnswers.map((answer) => (
+                <QuizAnswerItem
+                  answerName={answer.name}
+                  selected={selectedDevices.indexOf(answer.name) !== -1}
+                  handleAnswerClick={handleDevicesChange}
+                >
+                  <div className="text-center text-lg font-bold leading-snug tracking-tight">
+                    {answer.label}
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <img width={answer.resize_pct} src={answer.symbol} />
+                  </div>
+                </QuizAnswerItem>
+              ))}
+            </div>
+            <div className="flex items-center justify-center">
+              <QuizBackButton onBack={onBack}>
+                <p>Zurück</p>
+              </QuizBackButton>
+              <QuizSubmitButton
+                onSubmit={onSubmit}
+                selectedAnswer={selectedDevices}
+              >
+                <p>Weiter</p>
+              </QuizSubmitButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const PostalCodeQuestion = ({
+  onSubmit,
+  onBack,
+  persistedPostalCode,
+}) => {
+  const [postalCode, setPostalCode] = useState(persistedPostalCode);
+  const [validPostalCode, setValidPostalCode] = useState(false);
+
+  const handlePostalCodeChange = (postalCode) => {
+    if (postalCode.length == 5) {
+      setValidPostalCode(true);
+      setPostalCode(postalCode);
+      onSubmit(postalCode);
+    } else if (postalCode.length > 5) {
+    } else {
+      setPostalCode(postalCode);
+      setValidPostalCode(false);
+    }
+  };
+  return (
+    <div>
+      <QuizHeader question="Deine Postleitahl"></QuizHeader>
+      <div className="md:grid md:grid-cols-6 md:gap-6">
+        {/* Content */}
+        <div
+          className="mx-auto mb-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
+          data-aos="fade-right"
+        >
+          <div className="container mx-auto mt-6 flex flex-col items-center justify-center ">
+            <input
+              type="number"
+              className={`text-bold  bg-neutral-main  rounded-xl border-4 font-bold ${
+                validPostalCode ? "border-green-main" : "border-primary-main"
+              }`}
+              value={postalCode}
+              pattern="\d{5}"
+              placeholder="Deine PLZ"
+              onChange={(e) => handlePostalCodeChange(e.target.value)}
+              required
+              maxlength="5"
+            />
+            <div className="flex items-center justify-center">
+              <QuizBackButton onBack={onBack}>
+                <p>Zurück</p>
+              </QuizBackButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const HouseholdsizeQuestion = ({
+  onSubmit,
+  onBack,
+  persistedHousholdsize,
+}) => {
+  const [selectedHouseholdsize, setSelectedHouseholdsize] = useState(
+    persistedHousholdsize,
+  );
+
+  const onHouseholdsizechange = (housholdsize) => {
+    setSelectedHouseholdsize(housholdsize);
+    onSubmit(housholdsize);
+  };
+  return (
+    <div>
+      <QuizHeader question="Haushaltsgröße"></QuizHeader>
+      <div className="md:grid md:grid-cols-6 md:gap-6">
+        {/* Content */}
+        <div
+          className="mx-auto mb-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
+          data-aos="fade-right"
+        >
+          <div className="grid grid-cols-1 flex-col items-center justify-center  gap-3 md:grid-cols-2 lg:grid-cols-5">
+            {[1, 2, 3, 4, 5].map((size) => (
+              <a href="/compare">
+                <QuizAnswerItem
+                  answerName={size}
+                  handleAnswerClick={onHouseholdsizechange}
+                >
+                  <div className="text-center text-lg font-bold leading-snug tracking-tight">
+                    {size}
+                  </div>
+                </QuizAnswerItem>
+              </a>
+            ))}
+            <div className="flex items-center justify-center">
+              <QuizBackButton onBack={onBack}>
+                <p>Zurück</p>
+              </QuizBackButton>
+            </div>
+            ‚
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };

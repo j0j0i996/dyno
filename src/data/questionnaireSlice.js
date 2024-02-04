@@ -8,7 +8,7 @@ export const questionnaireSlice = createSlice({
       selectedDevices: [],
       postalCode: null,
       consumption: null,
-      
+      householdsize: null,
     },
     reducers: {
       setPersistSelectedTarif: (state, action) => {
@@ -23,6 +23,9 @@ export const questionnaireSlice = createSlice({
       setPersistConsumption: (state, action) => {
         state.consumption = action.payload;
       },
+      setPersistHouseholdsize: (state, action) => {
+        state.householdsize = action.payload;
+      },
       
     },
   });
@@ -32,7 +35,8 @@ export const questionnaireSlice = createSlice({
     setPersistSelectedTarif,
     setPersistSelectedDevices,
     setPersistPostalCode,
-    setPersistConsumption
+    setPersistConsumption,
+    setPersistHouseholdsize
   } = questionnaireSlice.actions;
   
   // Export the reducer

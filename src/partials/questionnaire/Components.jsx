@@ -38,12 +38,26 @@ export const QuizAnswerItem = ({
 
 export const QuizSubmitButton = ({ children, onSubmit, selectedAnswer }) => {
   return (
-    <div key={children} className="mx-16 max-w-xs sm:max-w-none">
+    <div key={children} className="mx-16 mt-6 max-w-xs sm:max-w-none">
       <div>
         <a
           className="btn bg-primary-main text-neutral-main hover:bg-primary-600 mb-4 w-full cursor-pointer sm:mb-0 sm:w-auto"
           onClick={() => onSubmit(selectedAnswer)}
-          href="/questionnaire"
+        >
+          {children}
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export const QuizBackButton = ({ children, onBack }) => {
+  return (
+    <div key={children} className="mx-16 mt-6 max-w-xs sm:max-w-none">
+      <div>
+        <a
+          className="btn text-neutral-main hover:bg-base-600 mb-4 w-full cursor-pointer sm:mb-0 sm:w-auto"
+          onClick={() => onBack()}
         >
           {children}
         </a>
@@ -59,7 +73,6 @@ export const QuizRegularButton = ({ children, onSubmit, selectedAnswer }) => {
         <a
           className="btn bg-neutral-main text-base-main hover:bg-primary-200 mb-4 w-full cursor-pointer sm:mb-0 sm:w-auto"
           onClick={() => onSubmit(selectedAnswer)}
-          href="/questionnaire"
         >
           {children}
         </a>
