@@ -41,18 +41,9 @@ function LandingStart({ onTarifClick }) {
               data-aos="zoom-y-out"
               data-aos-delay="150"
             >
-              Dynamische und variable Stromtarife werden in Deutschland immer
-              beliebter. Dabei orientiert sich der Strompreis direkt am
-              stündlichen oder monatlichen Börsenpreis.{" "}
-            </p>
-            <p
-              className="text-neutral-main mt-3 text-xl"
-              data-aos="zoom-y-out"
-              data-aos-delay="150"
-            >
-              Wir helfen dir dabei heraus zu finden, wie diese Tarife
-              funktionieren, ob sie für dich sinnvoll sind und welchen Anbieter
-              du wählen solltest.
+              Dynamische Stromtarife werden in Deutschland immer beliebter.
+              Finde heraus, ob sie für dich sinnvoll sind und welchen Anbieter
+              du wählen solltest.{" "}
             </p>
             <div
               className="mx-auto mt-12 max-w-xs items-center justify-center  sm:flex sm:max-w-none"
@@ -66,14 +57,6 @@ function LandingStart({ onTarifClick }) {
                   href="#0"
                 >
                   Welcher Tarif passt zu mir?
-                </a>
-              </div>
-              <div>
-                <a
-                  className="btn bg-neutral-main hover:bg-primary-200 mx-3 w-full  items-center text-black  sm:w-auto"
-                  href="/questionnaire"
-                >
-                  Anbieter vergleichen
                 </a>
               </div>
             </div>

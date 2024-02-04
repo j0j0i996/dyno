@@ -2,7 +2,8 @@ import React from "react";
 
 import Header from "../partials/Header";
 import LandingStart from "../partials/LandingStart";
-import WhatTypeQuiz from "../partials/WhatTypeQuiz";
+import Explain from "../partials/Explain";
+import WhatTypeQuiz from "../partials/questionnaire/WhatTypeQuiz";
 import Newsletter from "../partials/Newsletter";
 import Footer from "../partials/Footer";
 import { Element, scroller } from "react-scroll";
@@ -30,6 +31,7 @@ function Home() {
         <Element name="quiz">
           <WhatTypeQuiz />
         </Element>
+        <Explain></Explain>
         <Newsletter />
       </main>
 
