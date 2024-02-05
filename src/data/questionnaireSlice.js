@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const questionnaireSlice = createSlice({
     name: 'questionnaire',
     initialState: {
-      selectedTarif: null,
+      selectedTarif: 'dynamic',
       selectedDevices: [],
       postalCode: null,
       consumption: null,
