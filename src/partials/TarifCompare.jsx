@@ -107,7 +107,7 @@ function TarifCompare() {
       type: "dynamic",
       type_label: "Dynamisch",
       base_monthly_eur: 20,
-      additional_ct_kwh: 3.5,
+      additional_ct_kwh: 22,
     },
     {
       id: "3",
@@ -119,7 +119,7 @@ function TarifCompare() {
       type: "dynamic",
       type_label: "Dynamisch",
       base_monthly_eur: 20,
-      additional_ct_kwh: 3.5,
+      additional_ct_kwh: 19,
     },
     {
       id: "4",
@@ -130,7 +130,7 @@ function TarifCompare() {
       type: "variable",
       type_label: "Variabel",
       base_monthly_eur: 20,
-      additional_ct_kwh: 3.5,
+      additional_ct_kwh: 20,
     },
     {
       id: "5",

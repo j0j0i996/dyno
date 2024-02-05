@@ -162,6 +162,76 @@ export const TypeQuestion = ({ onSubmit }) => {
   );
 };
 
+export const LoadProfileQuestion = ({ onSubmit, onBack }) => {
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+
+  const handleAnswerClick = (answerName) => {
+    setSelectedAnswer(answerName);
+    onSubmit(selectedAnswer);
+  };
+
+  const answers = [
+    {
+      name: "day",
+      header: "Ich bin meistens tagsüber zuhause",
+      text: "Einer ist immer zu Hause und verbraucht Strom.",
+    },
+    {
+      name: "morning_evening",
+      header: "Ich bin meistens nur morgens und abends zuhause",
+    },
+    {
+      name: "other",
+      header: "Kann ich nicht so genau sagen",
+    },
+  ];
+
+  return (
+    <div>
+      {/* Section header */}
+      <QuizHeader question="Wie sieht dein Tagesrythmus aus?"></QuizHeader>
+
+      {/* Section content */}
+      <div className="md:grid md:grid-cols-6 md:gap-6">
+        {/* Content */}
+        <div
+          className="mx-auto mb-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
+          data-aos="fade-right"
+        >
+          <div className="container mx-auto mt-6">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+              {answers.map((answer) => (
+                <QuizAnswerItem
+                  answerName={answer.name}
+                  selected={selectedAnswer === answer.name}
+                  handleAnswerClick={handleAnswerClick}
+                  key={answer.name} // Don't forget to add a unique key when mapping elements
+                >
+                  <div className="flex h-full items-center justify-center text-center text-lg font-bold leading-snug tracking-tight">
+                    {answer.header}
+                  </div>
+                </QuizAnswerItem>
+              ))}
+            </div>
+
+            <div className="flex items-center justify-center">
+              <QuizBackButton onBack={onBack}>
+                <p>Zurück</p>
+              </QuizBackButton>
+              <QuizSubmitButton
+                onSubmit={onSubmit}
+                selectedAnswer={selectedAnswer}
+              >
+                <p>Weiter</p>
+              </QuizSubmitButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const FlexQuestion = ({ onSubmit, onBack, persistedDevices }) => {
   const [selectedDevices, setSelectedDevices] = useState(persistedDevices);
 
@@ -185,8 +255,8 @@ export const FlexQuestion = ({ onSubmit, onBack, persistedDevices }) => {
       resize_pct: "40%",
     },
     {
-      name: "other",
-      label: "Andere",
+      name: "no",
+      label: "Nein",
       symbol: OtherSVG,
       resize_pct: "40%",
     },
@@ -205,7 +275,7 @@ export const FlexQuestion = ({ onSubmit, onBack, persistedDevices }) => {
   };
   return (
     <div>
-      <QuizHeader question="Welche flexible Lasten hast du in deinem Haushalt?"></QuizHeader>
+      <QuizHeader question="Hast du flexible Lasten in deinem Haushalt?"></QuizHeader>
       <div className="md:grid md:grid-cols-6 md:gap-6">
         {/* Content */}
         <div
@@ -230,9 +300,6 @@ export const FlexQuestion = ({ onSubmit, onBack, persistedDevices }) => {
               ))}
             </div>
             <div className="flex items-center justify-center">
-              <QuizBackButton onBack={onBack}>
-                <p>Zurück</p>
-              </QuizBackButton>
               <QuizSubmitButton
                 onSubmit={onSubmit}
                 selectedAnswer={selectedDevices}
@@ -292,6 +359,9 @@ export const PostalCodeQuestion = ({
               <QuizBackButton onBack={onBack}>
                 <p>Zurück</p>
               </QuizBackButton>
+              <QuizSubmitButton onSubmit={onSubmit} selectedAnswer={postalCode}>
+                <p>Weiter</p>
+              </QuizSubmitButton>
             </div>
           </div>
         </div>
@@ -309,22 +379,22 @@ export const HouseholdsizeQuestion = ({
     persistedHousholdsize,
   );
 
-  const onHouseholdsizechange = (housholdsize) => {
-    setSelectedHouseholdsize(housholdsize);
-    onSubmit(housholdsize);
+  const onHouseholdsizechange = (householdsize) => {
+    setSelectedHouseholdsize(householdsize);
+    onSubmit(householdsize);
   };
   return (
     <div>
-      <QuizHeader question="Haushaltsgröße"></QuizHeader>
+      <QuizHeader question="Wie viele Personen wohnen in deinem Haushalt?"></QuizHeader>
       <div className="md:grid md:grid-cols-6 md:gap-6">
         {/* Content */}
         <div
           className="mx-auto mb-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
           data-aos="fade-right"
         >
-          <div className="grid grid-cols-1 flex-col items-center justify-center  gap-3 md:grid-cols-2 lg:grid-cols-5">
-            {[1, 2, 3, 4, 5].map((size) => (
-              <a href="/compare">
+          <div className="container mx-auto mt-6">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-5">
+              {[1, 2, 3, 4, 5].map((size) => (
                 <QuizAnswerItem
                   answerName={size}
                   handleAnswerClick={onHouseholdsizechange}
@@ -333,14 +403,63 @@ export const HouseholdsizeQuestion = ({
                     {size}
                   </div>
                 </QuizAnswerItem>
-              </a>
-            ))}
+              ))}
+            </div>
             <div className="flex items-center justify-center">
               <QuizBackButton onBack={onBack}>
                 <p>Zurück</p>
               </QuizBackButton>
+              <QuizSubmitButton
+                onSubmit={onSubmit}
+                selectedAnswer={selectedHouseholdsize}
+              >
+                <p>Weiter</p>
+              </QuizSubmitButton>
             </div>
-            ‚
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const Result = ({ onSubmit, onBack }) => {
+  return (
+    <div>
+      <QuizHeader
+        className="text-tags-bg-green"
+        question="Ergebnis 🚀"
+      ></QuizHeader>
+      <div className="text-neutral-main m-1 my-3 mx-auto max-w-4xl text-center">
+        <text className="text-xl">Dyno empfiehlt:</text>
+        <h1 className="text-tags-green-bg text-xl font-bold">
+          Dynamischer Stromtarif
+        </h1>
+      </div>
+      <div className="text-neutral-main m-1  mx-auto max-w-4xl text-center">
+        <h1 className="text-xl">Einsparpotential:</h1>
+        <text className="text-tags-green-bg text-xl font-bold">
+          250€ / Jahr
+        </text>
+      </div>
+
+      <div className="md:grid md:grid-cols-6 md:gap-6">
+        {/* Content */}
+        <div
+          className="mx-auto mb-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
+          data-aos="fade-right"
+        >
+          <div className="container mx-auto ">
+            <div className="flex items-center justify-center">
+              <QuizBackButton onBack={onBack}>
+                <p>Zurück</p>
+              </QuizBackButton>
+              <a href="/compare">
+                <QuizSubmitButton>
+                  <p>Jetzt Anbieter vergleichen</p>
+                </QuizSubmitButton>
+              </a>
+            </div>
           </div>
         </div>
       </div>

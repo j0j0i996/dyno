@@ -1,8 +1,10 @@
 import {
   TypeQuestion,
+  LoadProfileQuestion,
   FlexQuestion,
   PostalCodeQuestion,
   HouseholdsizeQuestion,
+  Result,
 } from "./Questions";
 
 import React, { useState } from "react";
@@ -39,21 +41,21 @@ function WhatTypeQuiz() {
     }
   };
 
-  const handleBackFlex = () => {
+  const handleSubmitFlex = (devices) => {
+    dispatch(setPersistSelectedDevices(devices));
+    setSelectedQuestionNo(2);
+  };
+
+  const handleBackLoad = () => {
     setSelectedQuestionNo(1);
   };
 
-  const handleSubmitFlex = (devices) => {
-    dispatch(setPersistSelectedDevices(devices));
+  const handleSubmitLoad = (devices) => {
     setSelectedQuestionNo(3);
   };
 
   const handleBackPostalCode = () => {
-    if (selectedType == "flex") {
-      setSelectedQuestionNo(2);
-    } else {
-      setSelectedQuestionNo(1);
-    }
+    setSelectedQuestionNo(2);
   };
 
   const handleSubmitPostalCode = (postalCode) => {
@@ -71,6 +73,14 @@ function WhatTypeQuiz() {
     setSelectedQuestionNo(5);
   };
 
+  const handleBackResult = () => {
+    setSelectedQuestionNo(4);
+  };
+
+  const handleSubmitResult = () => {
+    setSelectedQuestionNo(6);
+  };
+
   const dispatch = useDispatch();
   return (
     <section className="relative">
@@ -84,13 +94,16 @@ function WhatTypeQuiz() {
       <div className="relative mx-auto flex max-w-7xl items-center justify-center px-4 py-3 pt-9 sm:px-2">
         {/* Tabs buttons */}
         {selectedQuestionNo === 1 ? (
-          <TypeQuestion onSubmit={handleSubmitType}></TypeQuestion>
-        ) : selectedQuestionNo === 2 ? (
           <FlexQuestion
             onSubmit={handleSubmitFlex}
-            onBack={handleBackFlex}
             persistedDevices={persistedQuestionnaireData.selectedDevices}
           ></FlexQuestion>
+        ) : selectedQuestionNo === 2 ? (
+          <LoadProfileQuestion
+            onSubmit={handleSubmitLoad}
+            onBack={handleBackLoad}
+            persistedDevices={persistedQuestionnaireData.selectedDevices}
+          ></LoadProfileQuestion>
         ) : selectedQuestionNo === 3 ? (
           <PostalCodeQuestion
             onSubmit={handleSubmitPostalCode}
@@ -104,11 +117,10 @@ function WhatTypeQuiz() {
             persistedHousholdsize={persistedQuestionnaireData.householdsize}
           ></HouseholdsizeQuestion>
         ) : (
-          <FlexQuestion
-            onSubmit={handleSubmitFlex}
-            onBack={handleBackFlex}
-            persistedDevices={persistedQuestionnaireData.selectedDevices}
-          ></FlexQuestion>
+          <Result
+            onSubmit={handleSubmitResult}
+            onBack={handleBackResult}
+          ></Result>
         )}
       </div>
     </section>
