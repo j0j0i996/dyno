@@ -18,14 +18,19 @@ function Header() {
     <header
       className={`bg-base-main fixed z-30 w-full shadow-lg  transition duration-300 md:bg-opacity-90`}
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+      <div className="mx-auto  max-w-6xl px-5 sm:px-6">
         <div className="flex h-16 items-center justify-between">
           {/* Site branding */}
-          <div className="mr-4 flex-shrink-0">
+          <div className="">
             {/* Logo */}
             <Link to="/" className="block" aria-label="Cruip">
-              <img width={"11%"} src={DynoLogo} />
+              <img width={"20%"} src={DynoLogo} style={{ minWidth: "200px" }} />
             </Link>
+          </div>
+
+          <div className="">
+            {/* Logo */}
+            <h1 className="text-primary-main text-2xl font-bold">Beta</h1>
           </div>
 
           {/* Site navigation */}

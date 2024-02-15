@@ -33,7 +33,7 @@ function LandingStart({ onTarifClick }) {
             className="leading-tighter text-neutral-main mt-6 text-5xl font-extrabold tracking-tighter md:text-6xl"
             data-aos="zoom-y-out"
           >
-            Finde deinen neuen Stromtarif
+            Finde deinen passenden Stromtarif
           </h1>
           <div className="mx-auto max-w-3xl">
             <p
@@ -41,9 +41,11 @@ function LandingStart({ onTarifClick }) {
               data-aos="zoom-y-out"
               data-aos-delay="150"
             >
-              Dynamische Stromtarife werden in Deutschland immer beliebter.
-              Finde heraus, ob sie für dich sinnvoll sind und welchen Anbieter
-              du wählen solltest.{" "}
+              Besitzer von Elektroautos, Wärmepumpen oder Batteriespeichern
+              können mit dynamische Stromtarifen ca.{" "}
+              <b className="text-tags-green-bg">600€</b> im Jahr sparen. Finde
+              heraus, ob dynamische Tarife zu dir passen und welchen Anbieter du
+              wählen solltest.{" "}
             </p>
             <div
               className="mx-auto mt-12 max-w-xs items-center justify-center  sm:flex sm:max-w-none"

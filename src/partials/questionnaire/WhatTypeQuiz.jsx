@@ -120,6 +120,10 @@ function WhatTypeQuiz() {
           <Result
             onSubmit={handleSubmitResult}
             onBack={handleBackResult}
+            persistedConsumption={persistedQuestionnaireData.consumption}
+            flexibleDevices={
+              !persistedQuestionnaireData.selectedDevices.includes("no")
+            }
           ></Result>
         )}
       </div>

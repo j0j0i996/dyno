@@ -11,10 +11,15 @@ import { useSelector } from "react-redux";
 const TarifItem = ({ tarif }) => {
   const spotPrice = 8.15;
   const tagStylingMap = {
-    dynamic: "bg-green-main",
+    dynamic: "bg-tags-green-bg text-tags-green-text",
     variable: "bg-tags-coral-bg text-tags-coral-text",
   };
-  console.log(tagStylingMap[tarif.type]);
+  const persistedQuestionnaireData = useSelector(
+    (state) => state.questionnaire,
+  );
+  const consumption = persistedQuestionnaireData.consumption;
+
+  console.log(persistedQuestionnaireData);
   return (
     <div
       key={tarif.id}
@@ -46,7 +51,9 @@ const TarifItem = ({ tarif }) => {
             {Math.round(
               100 *
                 (tarif.base_monthly_eur +
-                  (((spotPrice + tarif.additional_ct_kwh) / 100) * 1000) / 12),
+                  (((spotPrice + tarif.additional_ct_kwh) / 100) *
+                    consumption) /
+                    12),
             ) / 100}{" "}
             €
           </h1>

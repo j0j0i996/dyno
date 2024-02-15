@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import HeatPumpSVG from "../../images/heatpump.svg";
 import EcarSVG from "../../images/ecar.svg";
-import OtherSVG from "../../images/other.svg";
+import BatterySVG from "../../images/battery.svg";
+import NoSVG from "../../images/no.svg";
 import { Link } from "react-router-dom";
 import {
   QuizHeader,
@@ -42,7 +43,7 @@ export const TypeQuestion = ({ onSubmit }) => {
       name: "time",
       header: "Ich verbrauche vor allem mittags, nachmittags oder nachts Strom",
       text: "Hier ist der Börsenstrompreis meistens günstig.",
-      symbol: OtherSVG,
+      symbol: NoSVG,
       resize_pct: "40%",
       explain:
         "Mitags, nachmittags und nachts ist der Börsenpreis meistens am günstigsten. \
@@ -250,15 +251,15 @@ export const FlexQuestion = ({ onSubmit, onBack, persistedDevices }) => {
     },
     {
       name: "battery",
-      label: "Heimspeicher",
-      symbol: OtherSVG,
-      resize_pct: "40%",
+      label: "Batteriespeicher",
+      symbol: BatterySVG,
+      resize_pct: "20%",
     },
     {
       name: "no",
       label: "Nein",
-      symbol: OtherSVG,
-      resize_pct: "40%",
+      symbol: NoSVG,
+      resize_pct: "33%",
     },
   ];
 
@@ -423,7 +424,12 @@ export const HouseholdsizeQuestion = ({
   );
 };
 
-export const Result = ({ onSubmit, onBack }) => {
+export const Result = ({
+  onSubmit,
+  onBack,
+  persistedConsumption,
+  flexibleDevices,
+}) => {
   return (
     <div>
       <QuizHeader
@@ -432,14 +438,25 @@ export const Result = ({ onSubmit, onBack }) => {
       ></QuizHeader>
       <div className="text-neutral-main m-1 my-3 mx-auto max-w-4xl text-center">
         <text className="text-xl">Dyno empfiehlt:</text>
-        <h1 className="text-tags-green-bg text-xl font-bold">
-          Dynamischer Stromtarif
-        </h1>
+
+        {flexibleDevices ? (
+          <h1 className="text-tags-green-bg text-xl font-bold">
+            <p>Dynamischer Stromtarif</p>
+          </h1>
+        ) : (
+          <h1 className="text-tags-yellow-bg text-xl font-bold">
+            <p>Variabler Stromtarif</p>
+          </h1>
+        )}
       </div>
       <div className="text-neutral-main m-1  mx-auto max-w-4xl text-center">
         <h1 className="text-xl">Einsparpotential:</h1>
         <text className="text-tags-green-bg text-xl font-bold">
-          250€ / Jahr
+          {(
+            persistedConsumption *
+            (0.4 * (0.27 + (flexibleDevices ? 0.21 : 0)))
+          ).toFixed(0)}
+          € / Jahr
         </text>
       </div>
 
