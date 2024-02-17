@@ -27,22 +27,16 @@ function WhatTypeQuiz() {
   );
   const [selectedType, setSelectedType] = useState(null);
 
-  const handleSubmitType = (answer) => {
-    setSelectedType(answer);
-    if (answer == "cheap") {
-      dispatch(setPersistSelectedTarif("variable"));
-    } else {
-      dispatch(setPersistSelectedTarif("dynamic"));
-    }
-    if (answer == "flex") {
-      setSelectedQuestionNo(2);
-    } else {
-      setSelectedQuestionNo(3);
-    }
-  };
-
   const handleSubmitFlex = (devices) => {
     dispatch(setPersistSelectedDevices(devices));
+    console.log(devices);
+    if (devices.includes("no")) {
+      dispatch(setPersistSelectedTarif("variable"));
+      console.log("variable");
+    } else {
+      dispatch(setPersistSelectedTarif("dynamic"));
+      console.log("dynamic");
+    }
     setSelectedQuestionNo(2);
   };
 
@@ -69,7 +63,7 @@ function WhatTypeQuiz() {
 
   const handleSubmitHouseholdsize = (householdsize) => {
     dispatch(setPersistHouseholdsize(householdsize));
-    dispatch(setPersistConsumption(householdsize * 1000));
+    dispatch(setPersistConsumption(500 + householdsize * 900));
     setSelectedQuestionNo(5);
   };
 
@@ -122,7 +116,7 @@ function WhatTypeQuiz() {
             onBack={handleBackResult}
             persistedConsumption={persistedQuestionnaireData.consumption}
             flexibleDevices={
-              !persistedQuestionnaireData.selectedDevices.includes("no")
+              persistedQuestionnaireData.selectedTarif === "dynamic"
             }
           ></Result>
         )}

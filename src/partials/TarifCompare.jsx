@@ -9,10 +9,10 @@ import DynoOnly from "../images/dyno_only_white.png";
 import { useSelector } from "react-redux";
 
 const TarifItem = ({ tarif }) => {
-  const spotPrice = 8.15;
+  const spotPrice = 9.11;
   const tagStylingMap = {
     dynamic: "bg-tags-green-bg text-tags-green-text",
-    variable: "bg-tags-coral-bg text-tags-coral-text",
+    variable: "bg-tags-yellow-bg text-tags-yellow-text",
   };
   const persistedQuestionnaireData = useSelector(
     (state) => state.questionnaire,
@@ -94,6 +94,18 @@ function TarifCompare() {
 
   const tarifs = [
     {
+      id: "3",
+      company: "Rabot",
+      product: "Rabot.Charge",
+      logo_svg: RabotLogo,
+      logo_resize_pct: "80%",
+      type: "dynamic",
+      type_label: "Dynamisch",
+      base_monthly_eur: 13.85,
+      additional_ct_kwh: 21.21 - 9.11 + 4.2,
+      link: "https://www.rabot-charge.de/tarife/",
+    },
+    {
       id: "1",
       company: "Tibber",
       company_info: "Tibber ist ein junges norwegisches Unternehmen aus ",
@@ -104,6 +116,7 @@ function TarifCompare() {
       type_label: "Dynamisch",
       base_monthly_eur: 22.72,
       additional_ct_kwh: 16.2,
+      link: "https://tibber.com/de/stromtarif?modal=preisrechner",
     },
     {
       id: "2",
@@ -111,33 +124,23 @@ function TarifCompare() {
       product: "Dynamic Pulse",
       logo_svg: EinsKommaLogo,
       logo_resize_pct: "50%",
-      type: "dynamic",
+      type: "ignore",
       type_label: "Dynamisch",
       base_monthly_eur: 20,
       additional_ct_kwh: 22,
     },
     {
-      id: "3",
-      company: "Rabot",
-      product: "Rabot.Home",
+      id: "4",
+      company: "Ostrom",
+      product: "SimplyDynamic",
 
-      logo_svg: RabotLogo,
+      logo_svg: OstromLogo,
       logo_resize_pct: "80%",
       type: "dynamic",
       type_label: "Dynamisch",
-      base_monthly_eur: 20,
-      additional_ct_kwh: 19,
-    },
-    {
-      id: "4",
-      company: "Ostrom",
-      product: "Simply Fair",
-      logo_svg: OstromLogo,
-      logo_resize_pct: "80%",
-      type: "variable",
-      type_label: "Variabel",
-      base_monthly_eur: 20,
-      additional_ct_kwh: 20,
+      base_monthly_eur: 22.73,
+      additional_ct_kwh: 16.65,
+      link: "https://join.ostrom.de/tariff-plan",
     },
     {
       id: "5",
@@ -147,9 +150,22 @@ function TarifCompare() {
       logo_resize_pct: "80%",
       type: "variable",
       type_label: "Variabel",
-      base_monthly_eur: 20,
-      additional_ct_kwh: 3.5,
+      base_monthly_eur: 22.49,
+      additional_ct_kwh: 16.34,
     },
+    {
+      id: "4",
+      company: "Ostrom",
+      product: "SimplyFair",
+      logo_svg: OstromLogo,
+      logo_resize_pct: "80%",
+      type: "variable",
+      type_label: "Variabel",
+      base_monthly_eur: 22.73,
+      additional_ct_kwh: 16.65,
+      link: "https://join.ostrom.de/tariff-plan",
+    },
+
     {
       id: "5",
       company: "Naturstrom",
@@ -158,8 +174,8 @@ function TarifCompare() {
       logo_resize_pct: "80%",
       type: "variable",
       type_label: "Variabel",
-      base_monthly_eur: 20,
-      additional_ct_kwh: 3.5,
+      base_monthly_eur: 13.9,
+      additional_ct_kwh: 20.01,
     },
   ];
   return (
