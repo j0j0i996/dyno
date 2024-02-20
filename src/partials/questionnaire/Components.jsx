@@ -4,7 +4,7 @@ export const QuizHeader = ({ question }) => {
   return (
     <div
       key={question}
-      className="text-neutral-main m-1 my-3 mx-auto max-w-4xl text-center"
+      className="text-neutral-main m-1 my-3 mx-auto text-center"
     >
       <h1 className="h3">{question}</h1>
     </div>

@@ -52,12 +52,11 @@ function Explain() {
         <div className="mb-6 md:w-1/2 md:px-8">
           <h1 className="h3 text-neutral-main">Fixpreis</h1>
           <div className="text-neutral-main mt-3 text-lg">
-            Bei einem Fixpreis Stromtarifen zahlst du jeden Monat denselben
-            Preis pro Kilowattstunde, unabhängig von Schwankungen auf dem
-            Strommarkt. Dies gibt dir die Sicherheit einer konstanten
-            Stromrechnung und schützt dich vor plötzlichen Preisanstiegen.
-            Allerdings zahlst du für diese Sicherheit auch einen Aufschlag an
-            deinen Stromanbieter.
+            Bei einem Fixpreis Stromtarif zahlst du jeden Monat denselben Preis
+            pro Kilowattstunde, unabhängig von Schwankungen auf dem Strommarkt.
+            Dies gibt dir die Sicherheit einer konstanten Stromrechnung und
+            schützt dich vor plötzlichen Preisanstiegen. Allerdings zahlst du
+            für diese Sicherheit auch einen Aufschlag an deinen Stromanbieter.
           </div>
         </div>
         <div className="md:w-1/2 md:px-8">
