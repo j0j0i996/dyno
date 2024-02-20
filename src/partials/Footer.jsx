@@ -7,12 +7,12 @@ function Footer() {
     <footer>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Top area: Blocks */}
-        <div className="border-quartiary-main grid gap-8 border-t py-8 sm:grid-cols-12 md:py-12">
+        <div className="border-quartiary-main grid grid-cols-1 gap-8 border-t py-8 md:grid-cols-12 md:py-12">
           {/* 1st block */}
-          <div className="sm:col-span-12 lg:col-span-3">
-            <div className="mb-2">
+          <div className="col-span-3">
+            <div className="mb-2 ">
               {/* Logo */}
-              <Link to="/" className="block" aria-label="Cruip">
+              <Link to="/" className="block " aria-label="Cruip">
                 <img width={"80%"} src={DynoLogo} />
               </Link>
             </div>

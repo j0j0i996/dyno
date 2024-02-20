@@ -23,9 +23,9 @@ const TarifItem = ({ tarif }) => {
   return (
     <div
       key={tarif.id}
-      className={`bg-neutral-main container  mx-auto my-3 flex items-center rounded-xl  px-3 py-6 text-lg transition duration-300 ease-in-out `}
+      className={`bg-neutral-main container  mx-auto my-3 flex flex-col items-center rounded-xl px-3  py-6 text-lg transition duration-300 ease-in-out md:flex-row `}
     >
-      <div className=" flex-1 ">
+      <div className=" md-6 flex-1 ">
         <img
           width={tarif.logo_resize_pct}
           src={tarif.logo_svg}
@@ -33,20 +33,20 @@ const TarifItem = ({ tarif }) => {
           className="mx-auto rounded-xl"
         />
       </div>
-      <div className="mx-auto flex flex-1 flex-col items-start place-self-start">
-        <h1 className="text-xl">{tarif.company}</h1>
-        <h1 className="h3">{tarif.product}</h1>
+      <div className="mx-auto mt-3 mb-3 flex flex-1 flex-row items-start place-self-start md:mt-0 md:flex-col">
+        <h1 className="mr-3 text-2xl">{tarif.company}</h1>
+        <h1 className="text-2xl font-bold ">{tarif.product}</h1>
 
         <div
-          className={`text-neutral-main mt-3 inline-block rounded-3xl p-1 px-2 text-base ${
+          className={`text-neutral-main ml-3 inline-block rounded-3xl p-1 px-2 text-base md:ml-0 md:mt-3 ${
             tagStylingMap[tarif.type]
           }`}
         >
           <text className="">{tarif.type_label}</text>
         </div>
       </div>
-      <div className=" mx-auto place-self-start ">
-        <div className="mb-3 flex items-end">
+      <div className="mx-auto mb-3 flex flex-col items-center md:mb-0 md:items-start">
+        <div className=" mb-3 flex items-end">
           <h1 className="h2">
             {Math.round(
               100 *
@@ -147,7 +147,7 @@ function TarifCompare() {
       company: "Lichtblick",
       product: "Vario",
       logo_svg: LichtblickLogo,
-      logo_resize_pct: "80%",
+      logo_resize_pct: "70%",
       type: "variable",
       type_label: "Variabel",
       base_monthly_eur: 22.49,
@@ -159,7 +159,7 @@ function TarifCompare() {
       company: "Ostrom",
       product: "SimplyFair",
       logo_svg: OstromLogo,
-      logo_resize_pct: "80%",
+      logo_resize_pct: "85%",
       type: "variable",
       type_label: "Variabel",
       base_monthly_eur: 22.73,
@@ -184,16 +184,16 @@ function TarifCompare() {
     <section className="relative">
       {/* Illustration behind hero content */}
       <img
-        className={`absolute right-48 top-64 h-24 w-24 scale-x-[-1] transform rounded-lg`}
+        className={`labsolute right-48 top-64 h-0 w-24 scale-x-[-1] transform rounded-lg lg:h-24`}
         src={DynoOnly}
       />
       <img
-        className={`absolute left-32 bottom-64 h-32 w-32   rounded-lg`}
+        className={`absolute left-32 bottom-64 h-0 w-32 rounded-lg   lg:h-32`}
         src={DynoOnly}
       />
       <div className="bg-primary-main mx-auto max-w-6xl px-4 sm:px-6">
         {/* Hero content */}
-        <div className="grid w-full rounded-xl md:pt-32">
+        <div className="grid w-full rounded-xl pt-24 md:pt-32">
           <h1
             className="h1 leading-tighter mx-auto font-extrabold tracking-tighter"
             data-aos="zoom-y-out"
@@ -203,7 +203,7 @@ function TarifCompare() {
             </span>
           </h1>
         </div>
-        <div className="pb-6 md:pt-12">
+        <div className="pb-6 pt-6 md:pt-12">
           <div className="bg-base-main grid rounded-xl px-4 pt-2">
             {tarifs.map(
               (tarif) =>

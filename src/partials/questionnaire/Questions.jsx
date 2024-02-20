@@ -83,10 +83,7 @@ export const TypeQuestion = ({ onSubmit }) => {
       {/* Section content */}
       <div className="md:grid md:grid-cols-6 md:gap-6">
         {/* Content */}
-        <div
-          className="mx-auto mb-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
-          data-aos="fade-right"
-        >
+        <div className="mx-auto mb-6 max-w-xl" data-aos="fade-right">
           <div className="container mx-auto mt-6">
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
               {answers.map((answer) => (
@@ -193,14 +190,14 @@ export const LoadProfileQuestion = ({ onSubmit, onBack }) => {
       <QuizHeader question="Wie sieht dein Tagesrythmus aus?"></QuizHeader>
 
       {/* Section content */}
-      <div className="md:grid md:grid-cols-6 md:gap-6">
+      <div className="md:grid md:grid-cols-3 md:gap-6">
         {/* Content */}
         <div
-          className="mx-auto mb-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
+          className="mx-auto mb-6 max-w-xl md:col-span-6 md:w-full md:max-w-none"
           data-aos="fade-right"
         >
           <div className="container mx-auto mt-6">
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
               {answers.map((answer) => (
                 <QuizAnswerItem
                   answerName={answer.name}
@@ -280,7 +277,7 @@ export const FlexQuestion = ({ onSubmit, onBack, persistedDevices }) => {
       <div className="md:grid md:grid-cols-6 md:gap-6">
         {/* Content */}
         <div
-          className="mx-auto mb-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
+          className="mx-auto mb-6 max-w-xl md:col-span-6 md:w-full md:max-w-none"
           data-aos="fade-right"
         >
           <div className="container mx-auto mt-6">
@@ -340,7 +337,7 @@ export const PostalCodeQuestion = ({
       <div className="md:grid md:grid-cols-6 md:gap-6">
         {/* Content */}
         <div
-          className="mx-auto mb-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
+          className="col-span-6 mx-auto mb-6 max-w-xl lg:w-full lg:max-w-none"
           data-aos="fade-right"
         >
           <div className="container mx-auto mt-6 flex flex-col items-center justify-center ">
@@ -390,7 +387,7 @@ export const HouseholdsizeQuestion = ({
       <div className="md:grid md:grid-cols-6 md:gap-6">
         {/* Content */}
         <div
-          className="mx-auto mb-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
+          className="mx-auto mb-6 max-w-xl  md:col-span-6 md:w-full md:max-w-none"
           data-aos="fade-right"
         >
           <div className="container mx-auto mt-6">
@@ -463,7 +460,7 @@ export const Result = ({
       <div className="md:grid md:grid-cols-6 md:gap-6">
         {/* Content */}
         <div
-          className="mx-auto mb-6 max-w-xl md:col-span-1 md:w-full md:max-w-none lg:col-span-6"
+          className="col-span-6 mx-auto mb-6  max-w-xl md:w-full md:max-w-none"
           data-aos="fade-right"
         >
           <div className="container mx-auto ">

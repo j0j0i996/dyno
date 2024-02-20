@@ -73,7 +73,7 @@ function Newsletter() {
             {/* Background illustration */}
 
             <img
-              className={`absolute top-14 right-40 h-48 w-48 scale-x-[-1] transform rounded-lg`}
+              className={`absolute top-14 right-40 h-0 scale-x-[-1] transform rounded-lg lg:h-48 lg:w-48`}
               src={DynoOnly}
             />
 
@@ -81,12 +81,13 @@ function Newsletter() {
               {/* CTA content */}
               <div className="text-center lg:max-w-xl lg:text-left">
                 <h3 className="h3 text-base-main mb-2">
-                  Wir stehen noch am Anfang
+                  Wir stehen gerade erst am Anfang
                 </h3>
                 <p className="text-base-main mb-6 text-lg">
-                  Der Dyno ist gerade erst geschlüpft. Abboniere unseren
-                  Newsletter um Neuigkeiten zu Dyno und Themen rund um
-                  dynamische Stromtarife zu erhalten.
+                  Der Dyno hat frisch das Licht der Welt erblickt, und es stehen
+                  viele spannende Entwicklungen bevor. Tauche ein in die Zukunft
+                  des Energiemarkts, indem du unseren Dyno-Newsletter
+                  abonnierst.
                 </p>
 
                 {/* CTA form */}
