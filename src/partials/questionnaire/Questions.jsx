@@ -197,7 +197,7 @@ export const LoadProfileQuestion = ({ onSubmit, onBack }) => {
           data-aos="fade-right"
         >
           <div className="container mx-auto mt-6">
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+            <div className="mx-8 grid grid-cols-1 gap-3 md:grid-cols-3">
               {answers.map((answer) => (
                 <QuizAnswerItem
                   answerName={answer.name}
@@ -391,7 +391,7 @@ export const HouseholdsizeQuestion = ({
           data-aos="fade-right"
         >
           <div className="container mx-auto mt-6">
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-5">
+            <div className="mx-8 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-5">
               {[1, 2, 3, 4, 5].map((size) => (
                 <QuizAnswerItem
                   answerName={size}
@@ -464,13 +464,13 @@ export const Result = ({
           data-aos="fade-right"
         >
           <div className="container mx-auto ">
-            <div className="flex items-center justify-center">
+            <div className="mx-8 flex items-center justify-center">
               <QuizBackButton onBack={onBack}>
                 <p>Zurück</p>
               </QuizBackButton>
               <a href="/compare">
                 <QuizSubmitButton>
-                  <p>Jetzt Anbieter vergleichen</p>
+                  <p>Anbieter vergleichen</p>
                 </QuizSubmitButton>
               </a>
             </div>
