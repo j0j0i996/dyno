@@ -42,7 +42,7 @@ function LandingStart({ onTarifClick }) {
               data-aos-delay="150"
             >
               Besitzer von Elektroautos, Wärmepumpen oder Batteriespeichern
-              können mit dynamische Stromtarifen bis zu{" "}
+              können mit dynamischen Stromtarifen bis zu{" "}
               <b className="text-tags-green-bg">600€</b> im Jahr sparen. Finde
               heraus, ob dynamische Tarife zu dir passen und welchen Anbieter du
               wählen solltest.{" "}

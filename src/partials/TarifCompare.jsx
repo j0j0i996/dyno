@@ -78,7 +78,7 @@ const TarifItem = ({ tarif }) => {
         <a
           type="submit"
           className="btn bg-primary-main hover:bg-primary-600 w-full rounded-xl text-neutral-200"
-          href="/compare"
+          href={tarif.link}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -152,6 +152,7 @@ function TarifCompare() {
       type_label: "Variabel",
       base_monthly_eur: 22.49,
       additional_ct_kwh: 16.34,
+      link: "https://www.lichtblick.de/oekostrom/",
     },
     {
       id: "4",
@@ -176,6 +177,7 @@ function TarifCompare() {
       type_label: "Variabel",
       base_monthly_eur: 13.9,
       additional_ct_kwh: 20.01,
+      link: "https://www.naturstrom.de/privatkunden/oekostrom/naturstrom-flex",
     },
   ];
   return (

@@ -19,11 +19,11 @@ function Explain() {
         <div className="w-1/2 px-8 align-top">
           <h1 className="h3 text-neutral-main my-3">Dynamisch</h1>
           <div className="text-neutral-main text-lg">
-            Dein Strompreis richtet sich nach den stündlichen Börsenpreis.
+            Dein Strompreis richtet sich nach den stündlichen Börsenpreisen.
             Morgens und abends ist dieser meistens etwas teurer als ein
             Fixpreistarif. Dafür ist er nachts, mittags, nachmittags und am
             Wochenende deutlich günstiger. Mit einem <b>Elektroauto</b> oder
-            einer <b>Wärmepumpe</b> kannst du bis zu{" "}
+            einer <b>Wärmepumpe</b> kannst du so bis zu{" "}
             <b className="text-tags-green-bg">600€</b> im Jahr sparen.
           </div>
         </div>

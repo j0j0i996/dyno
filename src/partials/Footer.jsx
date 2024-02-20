@@ -133,51 +133,17 @@ function Footer() {
 
           {/* 5th block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-3">
-            <h6 className="text-neutral-main mb-2 font-medium">Newsletter</h6>
+            <h6 className="text-neutral-main mb-2 font-medium">Feedback</h6>
+            <p className="text-neutral-main  text-sm">Feedback oder Ideen?</p>
             <p className="text-neutral-main mb-4 text-sm">
-              Abboniere unseren Newsletter um zu Themen rund um dynamischen
-              Stromtarife auf dem aktuellsten Stand zu bleiben.
+              Schreib uns gerne:{" "}
+              <Link
+                to="mailto:jonathan@dynocheck.de"
+                className="text-neutral-main hover:text-base-main transition duration-150 ease-in-out"
+              >
+                jonathan@dynocheck.de
+              </Link>
             </p>
-            <form>
-              <div className="mb-4 flex flex-wrap">
-                <div className="w-full">
-                  <label className="sr-only block text-sm" htmlFor="newsletter">
-                    Email
-                  </label>
-                  <div className="relative flex max-w-xs items-center">
-                    <input
-                      id="newsletter"
-                      type="email"
-                      className="form-input text-base-main placeholder-base-400 focus:border-base-main border-base-main w-full bg-neutral-200 px-3 py-2 pr-12 text-sm"
-                      placeholder="Deine Email"
-                      required
-                    />
-                    <button
-                      type="submit"
-                      className="absolute inset-0 left-auto"
-                      aria-label="Subscribe"
-                    >
-                      <span
-                        className="absolute inset-0 right-auto my-2 -ml-px w-px bg-neutral-200"
-                        aria-hidden="true"
-                      ></span>
-                      <svg
-                        className="text-primary-main mx-3 h-3 w-3 flex-shrink-0 fill-current"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z"
-                          fillRule="nonzero"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                  {/* Success message */}
-                  {/* <p className="mt-2 text-green-600 text-sm">Thanks for subscribing!</p> */}
-                </div>
-              </div>
-            </form>
           </div>
         </div>
 
