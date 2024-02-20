@@ -185,7 +185,7 @@ export const LoadProfileQuestion = ({ onSubmit, onBack }) => {
   ];
 
   return (
-    <div>
+    <div className="mx-auto">
       {/* Section header */}
       <QuizHeader question="Wie sieht dein Tagesrythmus aus?"></QuizHeader>
 
@@ -382,7 +382,7 @@ export const HouseholdsizeQuestion = ({
     onSubmit(householdsize);
   };
   return (
-    <div>
+    <div className="mx-auto">
       <QuizHeader question="Wie viele Personen wohnen in deinem Haushalt?"></QuizHeader>
       <div className="md:grid md:grid-cols-6 md:gap-6">
         {/* Content */}
