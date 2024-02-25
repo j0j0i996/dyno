@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DynoOnly from "../images/dyno_only_blue.png";
+import { useForm, ValidationError } from '@formspree/react';
 
 function Newsletter() {
   const [email, setEmail] = useState("");
@@ -16,48 +17,20 @@ function Newsletter() {
     setEmail(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const [state, handleSubmit] = useForm("mbjnygby");
 
-    e.preventDefault();
-
-    // Your form submission logic here
-    try {
-
-      const myForm = e.target;
-      const formData = new FormData(myForm);
-
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(
-              "Network response was not ok: " + response.statusText,
-            );
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log(
-            "API called successfully. Returned data: " + JSON.stringify(data),
-          );
-          setSuccessMessage(
-            "Du hast dich erfolgreich für den Newsletter von Dyno registriert.",
-          );
-        })
-        .catch((error) => {
-          console.error(error);
-          setErrorMessage(
-            "Your subscription could not be saved. Please try again.",
-          );
-        });
-    } catch (error) {
-      console.log(error);
-      setErrorMessage("An error occurred. Please try again.");
+  const onSubmitButton = () => {
+    if (state.succeeded) {
+      setSuccessMessage(
+        "Du hast dich erfolgreich für den Newsletter von Dyno registriert.",
+      );
     }
-  };
+    else if ((state.errors)) {
+      setErrorMessage(
+        "Your subscription could not be saved. Please try again.",
+      );
+    }
+  }
 
   return (
     <section>
@@ -87,22 +60,25 @@ function Newsletter() {
                   Registriere dich für den <b>Dyno-Newsletter</b> und frage eine kostenlose Tarifberatung an.
                 </p>
 
-                {/* Checkbox for "kostenlose Tarifberatung" */}
-                <label className="flex items-center mb-6">
-                  <input
-                    type="checkbox"
-                    checked={isInterested}
-                    onChange={isInterestedCheckboxChange}
-                    className="mr-2"
-                  />
-                  <span className="text-base-main text-lg">
-                    Ich bin interessiert an einer kostenlosen persönlichen Tarifberatung.
-                  </span>
-                </label>
+
 
                 {/* CTA form */}
-                <form className="w-full lg:w-auto" name="newsletter" onSubmit={handleSubmit} method="POST" data-netlify="true" netlify>
+                <form className="w-full lg:w-auto" onSubmit={handleSubmit}>
+                  <label className="flex items-center mb-6">
+                    <input
+                      type="checkbox"
+                      checked={isInterested}
+                      onChange={isInterestedCheckboxChange}
+                      className="mr-2"
+                      name="tarifberatung"
+                    />
+                    <span className="text-base-main text-lg">
+                      Ich bin interessiert an einer kostenlosen persönlichen Tarifberatung.
+                    </span>
+                  </label>
                   <div className="mx-auto flex max-w-xs flex-col justify-center sm:max-w-md sm:flex-row lg:mx-0">
+                    {/* Checkbox for "kostenlose Tarifberatung" */}
+
                     <input
                       type="email"
                       value={email}
@@ -110,11 +86,13 @@ function Newsletter() {
                       className="form-input text-base-main placeholder-base-400 focus:border-base-main border-base-main mb-2 w-full appearance-none rounded-sm border bg-neutral-200 px-4 py-3 sm:mb-0 sm:mr-2"
                       placeholder="Deine Email..."
                       aria-label="Deine Email..."
+                      name="email"
                       required
                     />
                     <button
                       type="submit"
                       className="btn bg-primary-main hover:bg-primary-700 text-neutral-200 shadow"
+                      onClick={onSubmitButton}
                     >
                       Abonnieren
                     </button>
