@@ -1,7 +1,6 @@
 import React from "react";
 
 import Header from "../partials/Header";
-import Newsletter from "../partials/Newsletter";
 import Footer from "../partials/Footer";
 import Questionnaire from "../partials/Questionnaire";
 

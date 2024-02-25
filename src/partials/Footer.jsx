@@ -13,7 +13,7 @@ function Footer() {
             <div className="mb-2 ">
               {/* Logo */}
               <Link to="/" className="block " aria-label="Cruip">
-                <img width={"80%"} src={DynoLogo} />
+                <img width={"20%"} src={DynoLogo} style={{ minWidth: "160px" }} />
               </Link>
             </div>
             <div className="text-neutral-main text-sm">
@@ -34,7 +34,7 @@ function Footer() {
           </div>
 
           {/* 3rd block */}
-          <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
+          <div className="col-span-3 sm:col-span-6 md:col-span-3 lg:col-span-2">
             <h6 className="text-neutral-main mb-2 font-medium">Wissen</h6>
             <ul className="text-sm">
               <li className="mb-2">
@@ -45,45 +45,11 @@ function Footer() {
                   Warum dynamische Tarife?
                 </Link>
               </li>
-              {/*
-              <li className="mb-2">
-                <Link
-                  to="#"
-                  className="text-neutral-main transition duration-150 ease-in-out hover:text-base-main"
-                >
-                  Tutorials & Guides
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link
-                  to="#"
-                  className="text-neutral-main transition duration-150 ease-in-out hover:text-base-main"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link
-                  to="#"
-                  className="text-neutral-main transition duration-150 ease-in-out hover:text-base-main"
-                >
-                  Support Center
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link
-                  to="#"
-                  className="text-neutral-main transition duration-150 ease-in-out hover:text-base-main"
-                >
-                  Partners
-                </Link>
-              </li>
-              */}
             </ul>
           </div>
 
           {/* 4th block */}
-          <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
+          <div className="sm:col-span-3 md:col-span-3 lg:col-span-2">
             <h6 className="text-neutral-main mb-2 font-medium">Unternehmen</h6>
             <ul className="text-sm">
               <li className="mb-2">
@@ -102,37 +68,11 @@ function Footer() {
                   Über uns
                 </Link>
               </li>
-              {/*
-              <li className="mb-2">
-                <Link
-                  to="#"
-                  className="text-neutral-main transition duration-150 ease-in-out hover:text-base-main"
-                >
-                  Company values
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link
-                  to="#"
-                  className="text-neutral-main transition duration-150 ease-in-out hover:text-base-main"
-                >
-                  Pricing
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link
-                  to="#"
-                  className="text-neutral-main transition duration-150 ease-in-out hover:text-base-main"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-              */}
             </ul>
           </div>
 
           {/* 5th block */}
-          <div className="sm:col-span-6 md:col-span-3 lg:col-span-3">
+          <div className="col-span-3 sm:col-span-6 md:col-span-3 lg:col-span-3">
             <h6 className="text-neutral-main mb-2 font-medium">Feedback</h6>
             <p className="text-neutral-main  text-sm">Feedback oder Ideen?</p>
             <p className="text-neutral-main mb-4 text-sm">

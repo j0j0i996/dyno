@@ -21,9 +21,8 @@ export const QuizAnswerItem = ({
     <div
       key={answerName}
       onClick={() => handleAnswerClick(answerName)}
-      className={` text-base-main relative mx-3 flex cursor-pointer rounded p-4 text-lg shadow-md transition duration-300 ease-in-out  hover:shadow-lg focus:outline-none ${
-        selected ? "bg-neutral-main" : "bg-neutral-main   hover:shadow-lg"
-      }`}
+      className={` text-base-main relative mx-3 flex cursor-pointer rounded p-4 text-lg shadow-md transition duration-300 ease-in-out  hover:shadow-lg focus:outline-none ${selected ? "bg-neutral-main" : "bg-neutral-main   hover:shadow-lg"
+        }`}
     >
       {/* Checkbox */}
       <div className="border-primary-main absolute top-1/2 left-3 flex h-5 w-5 -translate-y-1/2 transform items-center justify-center rounded-full border-2">
@@ -38,7 +37,7 @@ export const QuizAnswerItem = ({
 
 export const QuizSubmitButton = ({ children, onSubmit, selectedAnswer }) => {
   return (
-    <div key={children} className="mx-16 mt-6 max-w-xs sm:max-w-none">
+    <div key={children} className="mx-8 sm:mx-16 mt-6 max-w-none">
       <div>
         <a
           className="btn bg-primary-main text-neutral-main hover:bg-primary-600 mb-4 w-full cursor-pointer sm:mb-0 sm:w-auto"
@@ -53,7 +52,7 @@ export const QuizSubmitButton = ({ children, onSubmit, selectedAnswer }) => {
 
 export const QuizBackButton = ({ children, onBack }) => {
   return (
-    <div key={children} className="mx-16 mt-6 max-w-xs sm:max-w-none">
+    <div key={children} className="mx-8 sm:mx-16 mt-6 max-w-xs sm:max-w-none">
       <div>
         <a
           className="btn text-neutral-main hover:bg-base-600 mb-4 w-full cursor-pointer sm:mb-0 sm:w-auto"

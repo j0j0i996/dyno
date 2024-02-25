@@ -18,148 +18,6 @@ import {
   setPersistConsumption,
 } from "../../data/questionnaireSlice";
 
-export const TypeQuestion = ({ onSubmit }) => {
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [isTarifInfoOpen, setIsTarifInfoOpen] = useState(false);
-
-  const handleAnswerClick = (answerName) => {
-    setSelectedAnswer(answerName);
-  };
-
-  const answers = [
-    {
-      name: "flex",
-      header:
-        "Ich besitze E-Auto, Wärmepumpe, Heimspeicher oder andere flexible Lasten",
-      text: "z.B. Elektroauto, Wärmepumpe oder Heimspeicher",
-      explain:
-        "Flexible Lasten können smart gesteuert werden, so dass sie dann Strom verbrauchen, wenn der Börsenpreis gerade günstig ist. \
-        So kannst du mit einem Elektroauto bis zu 50% Kosten sparen.",
-      symbol: EcarSVG,
-      resize_pct: "40%",
-      result: "Dynamische Tarife passen am besten zu dir!",
-    },
-    {
-      name: "time",
-      header: "Ich verbrauche vor allem mittags, nachmittags oder nachts Strom",
-      text: "Hier ist der Börsenstrompreis meistens günstig.",
-      symbol: NoSVG,
-      resize_pct: "40%",
-      explain:
-        "Mitags, nachmittags und nachts ist der Börsenpreis meistens am günstigsten. \
-      Wenn du vorallem hier Strom verbrauchst, kannst du mit einem dynamischen Stromtarif bis zu 35% Kosten sparen.",
-      result: "Dynamische Tarife passen am besten zu dir!",
-    },
-    {
-      name: "cheap",
-      header: "Ich suche nach dem günstigsten Stromtarif",
-      text: "Meinen Verbrauch möchte ich nicht von der Tageszeit abhängig machen.",
-
-      explain:
-        "Mit dynamischen und variablen Stromtarifen sparst du dir den Risikoaufschlag deines Stromanbierters und profitierst, wenn der Börsenpreis fällt. \
-        2023 hättest du im Schnitt 25% gespart.",
-      symbol: EcarSVG,
-      resize_pct: "40%",
-      result: "Dynamische und variable Tarife passen am besten zu dir!",
-    },
-    {
-      name: "fix",
-      header: "Ich möchte einen fixen Betrag pro kWh zahlen",
-      // TODO: don't use stringified html code for explains
-      text: "So kann monatlich feste Ausgaben planen.",
-      symbol: EcarSVG,
-      resize_pct: "40%",
-      result:
-        "Dyno fokussiert sich bis jetzt leider nur auf dynamische und variable Tarife. \
-      Auf Seiten wie Verivox oder Check24 kannst du Fixpreis Tarife vergleichen.",
-    },
-  ];
-
-  return (
-    <div>
-      {/* Section header */}
-      <QuizHeader question="Was beschreibt dich am besten?"></QuizHeader>
-
-      {/* Section content */}
-      <div className="md:grid md:grid-cols-6 md:gap-6">
-        {/* Content */}
-        <div className="mx-auto mb-6 max-w-xl" data-aos="fade-right">
-          <div className="container mx-auto mt-6">
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
-              {answers.map((answer) => (
-                <QuizAnswerItem
-                  answerName={answer.name}
-                  selected={selectedAnswer === answer.name}
-                  handleAnswerClick={handleAnswerClick}
-                  key={answer.name} // Don't forget to add a unique key when mapping elements
-                >
-                  <div className="flex h-full items-center justify-center text-center text-lg font-bold leading-snug tracking-tight">
-                    {answer.header}
-                  </div>
-                </QuizAnswerItem>
-              ))}
-            </div>
-
-            {selectedAnswer !== null && (
-              <div data-aos="zoom-y-out" data-aos-delay="25">
-                <div className="mx-24 mt-6 flex items-center justify-center ">
-                  <div
-                    className={`relative bottom-0 rounded-xl p-2 px-4 text-lg font-bold ${
-                      selectedAnswer === "fix"
-                        ? "text-tags-coral-text bg-tags-coral-bg"
-                        : "text-tags-green-text bg-tags-green-bg"
-                    }`}
-                  >
-                    <button
-                      onMouseEnter={() => setIsTarifInfoOpen(true)}
-                      onMouseLeave={() => setIsTarifInfoOpen(false)}
-                    >
-                      {
-                        answers.find((answer) => answer.name === selectedAnswer)
-                          .result
-                      }{" "}
-                      {selectedAnswer !== "fix" && "ⓘ"}
-                    </button>
-                  </div>
-                  {isTarifInfoOpen && selectedAnswer !== "fix" && (
-                    <div className="relative flex items-center">
-                      <div
-                        className={`fixed z-50 ml-2 rounded-xl p-2 px-4 text-lg font-bold ${
-                          selectedAnswer === "fix"
-                            ? "text-tags-coral-text bg-tags-coral-bg"
-                            : "text-tags-green-text bg-tags-green-bg"
-                        }`}
-                      >
-                        <div className=" text-normal font-normal">
-                          {
-                            answers.find(
-                              (answer) => answer.name === selectedAnswer,
-                            ).explain
-                          }
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                {selectedAnswer !== "fix" && (
-                  <div className="flex items-center justify-center">
-                    <QuizSubmitButton
-                      onSubmit={onSubmit}
-                      selectedAnswer={selectedAnswer}
-                    >
-                      <p>Weiter</p>
-                    </QuizSubmitButton>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 export const LoadProfileQuestion = ({ onSubmit, onBack }) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
@@ -185,7 +43,7 @@ export const LoadProfileQuestion = ({ onSubmit, onBack }) => {
   ];
 
   return (
-    <div className="px-8 md:px-0">
+    <div className="w-full">
       {/* Section header */}
       <QuizHeader question="Wie sieht dein Tagesrythmus aus?"></QuizHeader>
 
@@ -197,7 +55,7 @@ export const LoadProfileQuestion = ({ onSubmit, onBack }) => {
           data-aos="fade-right"
         >
           <div className="container mx-auto mt-6">
-            <div className="mx-8 grid grid-cols-1 gap-3 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
               {answers.map((answer) => (
                 <QuizAnswerItem
                   answerName={answer.name}
@@ -205,7 +63,7 @@ export const LoadProfileQuestion = ({ onSubmit, onBack }) => {
                   handleAnswerClick={handleAnswerClick}
                   key={answer.name} // Don't forget to add a unique key when mapping elements
                 >
-                  <div className="flex h-full items-center justify-center text-center text-lg font-bold leading-snug tracking-tight">
+                  <div className="flex h-full items-center text-center text-lg font-bold leading-snug tracking-tight">
                     {answer.header}
                   </div>
                 </QuizAnswerItem>
@@ -272,9 +130,10 @@ export const FlexQuestion = ({ onSubmit, onBack, persistedDevices }) => {
     }
   };
   return (
-    <div>
+    <div className="w-full">
       <QuizHeader question="Hast du flexible Lasten in deinem Haushalt?"></QuizHeader>
-      <div className="md:grid md:grid-cols-6 md:gap-6">
+      {/* Section content */}
+      <div className="md:grid md:grid-cols-3 md:gap-6">
         {/* Content */}
         <div
           className="mx-auto mb-6 max-w-xl md:col-span-6 md:w-full md:max-w-none"
@@ -332,7 +191,7 @@ export const PostalCodeQuestion = ({
     }
   };
   return (
-    <div>
+    <div className="w-full">
       <QuizHeader question="Deine Postleitahl"></QuizHeader>
       <div className="md:grid md:grid-cols-6 md:gap-6">
         {/* Content */}
@@ -343,9 +202,8 @@ export const PostalCodeQuestion = ({
           <div className="container mx-auto mt-6 flex flex-col items-center justify-center ">
             <input
               type="number"
-              className={`text-bold  bg-neutral-main  rounded-xl border-4 font-bold ${
-                validPostalCode ? "border-green-main" : "border-primary-main"
-              }`}
+              className={`text-bold  bg-neutral-main  rounded-xl border-4 font-bold ${validPostalCode ? "border-green-main" : "border-primary-main"
+                }`}
               value={postalCode}
               pattern="\d{5}"
               placeholder="Deine PLZ"
@@ -382,7 +240,7 @@ export const HouseholdsizeQuestion = ({
     onSubmit(householdsize);
   };
   return (
-    <div className="px-8 md:px-0">
+    <div className="w-full">
       <QuizHeader question="Wie viele Personen wohnen in deinem Haushalt?"></QuizHeader>
       <div className="md:grid md:grid-cols-6 md:gap-6">
         {/* Content */}
@@ -428,7 +286,7 @@ export const Result = ({
   flexibleDevices,
 }) => {
   return (
-    <div>
+    <div className="w-full mx-auto">
       <QuizHeader
         className="text-tags-bg-green"
         question="Ergebnis 🚀"
@@ -457,25 +315,17 @@ export const Result = ({
         </text>
       </div>
 
-      <div className="md:grid md:grid-cols-6 md:gap-6">
-        {/* Content */}
-        <div
-          className="col-span-6 mx-auto mb-6  max-w-xl md:w-full md:max-w-none"
-          data-aos="fade-right"
-        >
-          <div className="container mx-auto ">
-            <div className="mx-8 flex items-center justify-center">
-              <QuizBackButton onBack={onBack}>
-                <p>Zurück</p>
-              </QuizBackButton>
-              <a href="/compare">
-                <QuizSubmitButton>
-                  <p>Anbieter vergleichen</p>
-                </QuizSubmitButton>
-              </a>
-            </div>
-          </div>
-        </div>
+
+      <div className="flex items-center justify-center">
+        <QuizBackButton onBack={onBack}>
+          <p>Zurück</p>
+        </QuizBackButton>
+        <a href="/compare">
+          <QuizSubmitButton>
+            <p>Anbieter vergleichen</p>
+          </QuizSubmitButton>
+        </a>
+
       </div>
     </div>
   );

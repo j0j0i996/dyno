@@ -29,15 +29,14 @@ const WordCirculator = ({ words, interval }) => {
       <div
         style={{
           transition: "transform 0.5s ease-in-out",
-          transform: `translateY(-${
-            currentIndex * (isSmallScreen ? 50 : 100)
-          }px)`,
+          transform: `translateY(-${currentIndex * (isSmallScreen ? 50 : 100)
+            }px)`,
         }}
       >
         {extendedWords.map((word, index) => (
           <div key={index} style={{ height: containerHeight }}>
             <h1
-              className="text-3xl  sm:text-4xl  md:text-5xl lg:text-5xl xl:text-6xl"
+              className="text-4xl  sm:text-4xl  md:text-5xl lg:text-5xl xl:text-6xl"
               data-aos="zoom-y-out"
             >
               <span className="to-base-main from-base-main bg-gradient-to-r bg-clip-text text-transparent">

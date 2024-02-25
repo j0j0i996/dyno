@@ -23,7 +23,7 @@ const TarifItem = ({ tarif }) => {
   return (
     <div
       key={tarif.id}
-      className={`bg-neutral-main container  mx-auto my-3 flex flex-col items-center rounded-xl px-3  py-6 text-lg transition duration-300 ease-in-out md:flex-row `}
+      className={`bg-neutral-main container  mx-auto my-3 flex flex-col items-center rounded-xl px-3  py-6 text-lg transition duration-300 ease-in-out md:flex-row overflow-hidden`}
     >
       <div className=" md-6 flex-1 ">
         <img
@@ -33,14 +33,12 @@ const TarifItem = ({ tarif }) => {
           className="mx-auto rounded-xl"
         />
       </div>
-      <div className="mx-auto mt-3 mb-3 flex flex-1 flex-row items-start place-self-start md:mt-0 md:flex-col">
-        <h1 className="mr-3 text-2xl">{tarif.company}</h1>
+      <div className="mt-3 mb-3 flex-1 flex-col md:items-start items-center">
+        <h1 className="text-2xl">{tarif.company}</h1>
         <h1 className="text-2xl font-bold ">{tarif.product}</h1>
-
         <div
-          className={`text-neutral-main ml-3 inline-block rounded-3xl p-1 px-2 text-base md:ml-0 md:mt-3 ${
-            tagStylingMap[tarif.type]
-          }`}
+          className={`text-neutral-main inline-block rounded-3xl p-1 px-2 text-base md:ml-0 mt-2 ${tagStylingMap[tarif.type]
+            }`}
         >
           <text className="">{tarif.type_label}</text>
         </div>
@@ -50,10 +48,10 @@ const TarifItem = ({ tarif }) => {
           <h1 className="h2">
             {Math.round(
               100 *
-                (tarif.base_monthly_eur +
-                  (((spotPrice + tarif.additional_ct_kwh) / 100) *
-                    consumption) /
-                    12),
+              (tarif.base_monthly_eur +
+                (((spotPrice + tarif.additional_ct_kwh) / 100) *
+                  consumption) /
+                12),
             ) / 100}{" "}
             €
           </h1>
@@ -70,7 +68,7 @@ const TarifItem = ({ tarif }) => {
             <text className="border-base-main inline-block border-b border-dotted">
               Arbeitspreis:
             </text>
-            <text> {tarif.additional_ct_kwh} ct/kWh + Spotpreis</text>
+            <text> {tarif.additional_ct_kwh} ct/kWh + Börsenpreis</text>
           </div>
         </div>
       </div>
@@ -98,7 +96,7 @@ function TarifCompare() {
       company: "Rabot",
       product: "Rabot.Charge",
       logo_svg: RabotLogo,
-      logo_resize_pct: "80%",
+      logo_resize_pct: "70%",
       type: "dynamic",
       type_label: "Dynamisch",
       base_monthly_eur: 13.85,
@@ -111,7 +109,7 @@ function TarifCompare() {
       company_info: "Tibber ist ein junges norwegisches Unternehmen aus ",
       product: "Pulse",
       logo_svg: TibberLogo,
-      logo_resize_pct: "75%",
+      logo_resize_pct: "60%",
       type: "dynamic",
       type_label: "Dynamisch",
       base_monthly_eur: 22.72,

@@ -1,5 +1,4 @@
 import {
-  TypeQuestion,
   LoadProfileQuestion,
   FlexQuestion,
   PostalCodeQuestion,
@@ -85,7 +84,7 @@ function WhatTypeQuiz() {
       ></div>
       <div className="bg-neutral-main absolute left-0 right-0 m-auto h-12 w-px -translate-y-1/2 transform p-px"></div>
 
-      <div className="relative mx-auto flex max-w-7xl items-center justify-center px-4 py-3 pt-9 sm:px-2">
+      <div className="relative mx-auto flex max-w-7xl items-center justify-center px-4 py-3 pt-9">
         {/* Tabs buttons */}
         {selectedQuestionNo === 1 ? (
           <FlexQuestion

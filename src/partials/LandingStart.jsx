@@ -32,22 +32,18 @@ function LandingStart({ onTarifClick }) {
             />
           </h1>
           <h1
-            className="leading-tighter text-neutral-main text-3xl font-extrabold tracking-tighter sm:mt-6 sm:text-4xl  md:text-5xl lg:text-5xl xl:text-6xl"
+            className="leading-tighter text-neutral-main text-4xl font-extrabold tracking-tighter mt-6 sm:text-4xl  md:text-5xl lg:text-5xl xl:text-6xl"
             data-aos="zoom-y-out"
           >
             Finde deinen passenden Stromtarif
           </h1>
           <div className="mx-auto max-w-3xl">
             <p
-              className="text-neutral-main mt-4 text-sm sm:mt-6 sm:text-base md:text-lg lg:text-xl xl:text-xl"
+              className="text-neutral-main mt-6 sm:text-base md:text-lg lg:text-xl xl:text-xl"
               data-aos="zoom-y-out"
               data-aos-delay="150"
             >
-              Besitzer von Elektroautos, Wärmepumpen oder Batteriespeichern
-              können mit dynamische Stromtarifen bis zu{" "}
-              <b className="text-tags-green-bg">600€</b> im Jahr sparen. Finde
-              heraus, ob dynamische Tarife zu dir passen und welchen Anbieter du
-              wählen solltest.{" "}
+              Als Besitzer von Elekroautos, Wärmepumpen oder Batteriespeichern hättest du mit einem dynamischen Stromtarif 2023 durchschnittlich 45% weniger für Strom bezahlt.
             </p>
             <div
               className="mx-auto mt-8 max-w-xs items-center justify-center sm:mt-12 sm:flex sm:max-w-none"
