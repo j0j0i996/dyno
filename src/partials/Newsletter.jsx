@@ -105,7 +105,7 @@ function Newsletter() {
                 </label>
 
                 {/* CTA form */}
-                <form className="w-full lg:w-auto" name="newsletter" onSubmit={handleSubmit} method="POST" data-netlify="true">
+                <form className="w-full lg:w-auto" name="newsletter" onSubmit={handleSubmit} method="POST" data-netlify="true" netlify>
                   <div className="mx-auto flex max-w-xs flex-col justify-center sm:max-w-md sm:flex-row lg:mx-0">
                     <input
                       type="email"
