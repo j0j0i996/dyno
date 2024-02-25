@@ -23,12 +23,7 @@ function Newsletter() {
     // Your form submission logic here
     try {
 
-
-      const createContactData = {
-        email: email + isInterested.toString(),
-        listIds: [listId],
-      };
-
+      const myForm = e.target;
       const formData = new FormData(myForm);
 
       fetch("/", {
