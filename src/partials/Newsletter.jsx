@@ -32,7 +32,7 @@ function Newsletter() {
         listIds: [listId],
       };
 
-      fetch(apiUrl, {
+      fetch("/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
