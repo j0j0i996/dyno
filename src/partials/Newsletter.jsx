@@ -22,15 +22,14 @@ function Newsletter() {
 
     // Your form submission logic here
     try {
-      const apiKey =
-        "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";
-      const listId = 2;
-      const apiUrl = "https://api.sendinblue.com/v3/contacts";
+
 
       const createContactData = {
         email: email + isInterested.toString(),
         listIds: [listId],
       };
+
+      const formData = new FormData(myForm);
 
       fetch("/", {
         method: "POST",
@@ -38,7 +37,7 @@ function Newsletter() {
           "Content-Type": "application/json",
           "api-key": apiKey,
         },
-        body: JSON.stringify(createContactData),
+        body: new URLSearchParams(formData).toString(),
       })
         .then((response) => {
           if (!response.ok) {
@@ -110,7 +109,7 @@ function Newsletter() {
                 </label>
 
                 {/* CTA form */}
-                <form className="w-full lg:w-auto" onSubmit={handleSubmit} netlify>
+                <form className="w-full lg:w-auto" onSubmit={handleSubmit} method="POST" data-netlify="true">
                   <div className="mx-auto flex max-w-xs flex-col justify-center sm:max-w-md sm:flex-row lg:mx-0">
                     <input
                       type="email"
