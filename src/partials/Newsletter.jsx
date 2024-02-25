@@ -59,10 +59,6 @@ function Newsletter() {
     }
   };
 
-  document
-    .querySelector("form")
-    .addEventListener("submit", handleSubmit)
-
   return (
     <section>
       <div className="mx-auto mt-32 max-w-6xl px-4 sm:px-6">
