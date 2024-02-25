@@ -23,7 +23,7 @@ function Newsletter() {
     // Your form submission logic here
     try {
       const apiKey =
-        "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";
+        "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";
       const listId = 2;
       const apiUrl = "https://api.sendinblue.com/v3/contacts";
 
