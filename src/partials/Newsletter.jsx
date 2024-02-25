@@ -30,7 +30,6 @@ function Newsletter() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "api-key": apiKey,
         },
         body: new URLSearchParams(formData).toString(),
       })
