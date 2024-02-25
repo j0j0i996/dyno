@@ -110,7 +110,7 @@ function Newsletter() {
                 </label>
 
                 {/* CTA form */}
-                <form className="w-full lg:w-auto" onSubmit={handleSubmit}>
+                <form className="w-full lg:w-auto" onSubmit={handleSubmit} netlify>
                   <div className="mx-auto flex max-w-xs flex-col justify-center sm:max-w-md sm:flex-row lg:mx-0">
                     <input
                       type="email"
