@@ -23,7 +23,7 @@ function Newsletter() {
     // Your form submission logic here
     try {
       const apiKey =
-        "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";
+        "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";
       const listId = 2;
       const apiUrl = "https://api.sendinblue.com/v3/contacts";
 
@@ -92,8 +92,8 @@ function Newsletter() {
                 </h3>
                 <p className="text-base-main mb-6 text-lg">
                   Der Dyno hat frisch das Licht der Welt erblickt, und es stehen
-                  viele spannende Entwicklungen bevor. Du willst mehr über uns oder dynamische Tarife wissen? Wir auch mehr über dich!
-                  Registriere dich für den <b>Dyno-Newsletter</b> und frage eine kostenlose Energieberatung an.
+                  viele spannende Entwicklungen bevor. Du willst mehr über uns oder dynamische Tarife wissen?
+                  Registriere dich für den <b>Dyno-Newsletter</b> und frage eine kostenlose Tarifberatung an.
                 </p>
 
                 {/* Checkbox for "kostenlose Tarifberatung" */}

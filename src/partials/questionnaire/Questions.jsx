@@ -305,14 +305,36 @@ export const Result = ({
         )}
       </div>
       <div className="text-neutral-main m-1  mx-auto max-w-4xl text-center">
-        <h1 className="text-xl">Einsparpotential:</h1>
-        <text className="text-tags-green-bg text-xl font-bold">
-          {(
-            persistedConsumption *
-            (0.4 * (0.27 + (flexibleDevices ? 0.21 : 0)))
-          ).toFixed(0)}
-          € / Jahr
-        </text>
+        <h1 className="text-xl">In den letzen beiden Jahren hättest du insgesamt <text className="font-bold text-tags-green-bg">{(persistedConsumption * 0.82 - persistedConsumption * (flexibleDevices ? 0.559 : 0.775)).toFixed(0)} € </text> gespart. </h1>
+
+        <h1 className="text-xl mt-3">Deine geschätzten Kosten im Vergleich:</h1>
+        <table className="mx-auto mt-3 table-auto">
+          <thead>
+            <tr>
+              <th className="border px-4"></th>
+              <th className="border px-4">Fixpreis</th>
+              <th className="border px-4">{(flexibleDevices ? "Dynamisch" : "Variabel")}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border px-4">2022</td>
+              <td className="border px-4">{(persistedConsumption * 0.41).toFixed(0)} €</td>
+              <td className="border px-4">{(persistedConsumption * (flexibleDevices ? 0.321 : 0.433)).toFixed(0)} €</td>
+            </tr>
+            <tr>
+              <td className="border px-4">2023</td>
+              <td className="border px-4">{(persistedConsumption * 0.43).toFixed(0)} €</td>
+              <td className="border ">{(persistedConsumption * (flexibleDevices ? 0.248 : 0.342)).toFixed(0)} €</td>
+            </tr>
+            <tr>
+              <td className="border font-bold">Total</td>
+              <td className="border">{(persistedConsumption * 0.82).toFixed(0)} €</td>
+              <td className="border">{(persistedConsumption * (flexibleDevices ? 0.559 : 0.775)).toFixed(0)} €</td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
 
 
