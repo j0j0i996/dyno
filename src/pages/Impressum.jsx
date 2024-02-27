@@ -12,7 +12,7 @@ const Impressum = () => {
       {/*  Page content */}
       <main className="flex-grow">
         {/*  Page sections */}
-        <div className='mt-24 ml-12 text-neutral-main'>
+        <div className='mt-24 mx-72 text-neutral-main'>
           <div className='text-5xl'>Impressum</div>
           <div className='text-xl'>Die Website Dyno wird bereitgestellt von</div>
           <div className='text'>Jonathan Schulte</div>
