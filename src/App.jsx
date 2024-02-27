@@ -11,6 +11,7 @@ import AOS from "aos";
 
 import Home from "./pages/Home";
 import Compare from "./pages/Compare";
+import Impressum from "./pages/Impressum";
 import FilterQuestions from "./pages/FilterQuestions";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/questionnaire" element={<FilterQuestions />} />
           <Route path="/compare" element={<Compare />} />
+          <Route path="/impressum" element={<Impressum />} />
         </Routes>
       </PersistGate>
     </Provider>

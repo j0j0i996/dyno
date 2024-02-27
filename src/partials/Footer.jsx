@@ -30,6 +30,12 @@ function Footer() {
               >
                 Datenschutzerklärung
               </Link>
+              <Link
+                to="/impressum"
+                className="text-neutral-main hover:text-base-main transition duration-150 ease-in-out hover:underline"
+              >
+                Impressum
+              </Link>
             </div>
           </div>
 
