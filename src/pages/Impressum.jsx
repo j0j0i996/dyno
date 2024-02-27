@@ -17,6 +17,7 @@ const Impressum = () => {
           <div className='text-xl'>Die Website Dyno wird bereitgestellt von</div>
           <div className='text'>Jonathan Schulte</div>
           <div className='text'>50968 Köln</div>
+          <div className='text'>Samariterstraße 15</div>
           <div className='text'>jonathan@dynocheck.de</div>
         </div>
       </main>
